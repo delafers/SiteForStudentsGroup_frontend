@@ -1,0 +1,13 @@
+.Calendar {
+    background-color: #1e2745;
+}
+
+.Table {
+    border-collapse: collapse;
+}
+.Table td, tr {
+    border: 1px solid grey;
+    width: 100px;
+    height: 70px;
+
+}

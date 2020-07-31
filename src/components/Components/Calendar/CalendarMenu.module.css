@@ -1,0 +1,7 @@
+.CalendarMenu {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 30px;
+    margin: 10px 50px 10px 50px;
+
+}
