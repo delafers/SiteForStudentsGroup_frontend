@@ -15,16 +15,4 @@ export default class LettersService{
         const url = `${API_URL}/api/letters/${id}`;
         return axios.get(url).then(response => response.data);
     }
-    deleteLetter(id){
-        const url = `${API_URL}/api/letters/${id}`;
-        return axios.delete(url);
-    }
-    createLetter(letter){
-        const url = `${API_URL}/api/letters/`;
-        return axios.post(url, letter);
-    }
-    updateLetter(letter){
-        const url = `${API_URL}/api/letters/${letter.id}`;
-        return axios.put(url, letter);
-    }
 }

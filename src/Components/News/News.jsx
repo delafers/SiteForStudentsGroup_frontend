@@ -5,6 +5,7 @@ const News = (props) => {
     return (
         <div>
             news
+            {console.log(props)}
         </div>
     );
 };
