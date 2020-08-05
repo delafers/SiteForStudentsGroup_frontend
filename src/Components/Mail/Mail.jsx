@@ -47,7 +47,7 @@ class Mail extends Component {
                     <div>{letter.mailer}</div>
                     <div>{letter.topic}</div>
                     <div>{letter.text}</div>
-                    <a href={"/mail/" + letter.id}>Open</a>
+                    <a href={'/mail/' + letter.id}>Open</a>
                     </div>
                 )}
                 <button onClick={ this.nextPage }>Next</button>

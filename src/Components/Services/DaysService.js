@@ -3,8 +3,8 @@ const API_URL = 'http://localhost:8000';
 
 export default class DaysService{
 
-    getDays() {
-        const url = `${API_URL}/api/days/`;
+    getDays(year, month) {
+        const url = `${API_URL}/api/days/${year}${month}`;
         return axios.get(url).then(response => response.data);
     }
     getDaysByURL(link){
