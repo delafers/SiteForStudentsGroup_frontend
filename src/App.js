@@ -1,5 +1,5 @@
 import React, { Component } from  'react';
-import './App.css';
+import Style from './App.module.css';
 import Header from './Components/Header/Header.jsx';
 import Footer from './Components/Footer/Footer.jsx';
 import Calendar from './Components/Calendar/Calendar.jsx';
@@ -9,7 +9,7 @@ import { Route, Link } from  'react-router-dom'
 
 const App = () => {
     return (
-        <div className='App'>
+        <div className={Style.App}>
             <Header className='App-header'/>
             <Route path='/calendar/' component={Calendar}/>
             <Route path='/news' render={ () => <News/>}/>
