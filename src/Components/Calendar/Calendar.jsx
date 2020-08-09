@@ -11,15 +11,14 @@ class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            week: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+            week: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+            month_name: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
             day: 0,
             day_data: null,
             days: [],
             year: 0,
             month: 0,
-            nextPage: '',
-            prevPage: '',
-
         };
         this.DayUpdate = this.DayUpdate.bind(this);
     }
@@ -85,13 +84,33 @@ class Calendar extends Component {
         });
     }
 
+
     DayUpdate(day) {
         if (day) {
             let self = this;
+            let error = true;
             daysService.getDay(day).then(function (result) {
-                self.setState({day_data: result.data})
+                console.log(result);
+                error = false;
+                let events = [];
+                result.data.event.map((event, i) => {
+                    events[i] = [event.description, event.time]
+                });
+                self.setState({
+                    day_data: {
+                        id: result.data.id,
+                        date: Number(result.data.date.slice(8, 10)),
+                        topic: result.data.topic,
+                        event: events,
+                    }
+                })
+
             });
-            console.log(this.state.day)
+            if (error) {
+                self.setState({day_data: {
+                    date: day,
+                    event: ["В этот день не будет важных событий"]}});
+            }
         }
     }
 
@@ -99,24 +118,34 @@ class Calendar extends Component {
     render() {
         if (this.state.day_data) {
             return (
-                <div className={Style.Calendar}>
-                    {console.log(this)}
-                    <div className={Style.Table}>
-                        {this.state.week.map( (day)  =>
-                            <div className={Style.Elem} key={day} >{day}</div>
-                        )}
-                        {this.state.days.map( (day, i)  =>
-                            <button className={Style.Elem} key={i} onClick={() => this.DayUpdate(day.day)}>
-                                {day.day}
-                            </button>
-                        )}
+                <div className={Style.CalendarMenu}>
+                    <div className={Style.Calendar}>
+                        <div className={Style.Date}>
+                            <a href={this.state.prevMonth}>&#60;</a>
+                            <div>{this.state.month_name[this.state.month-1]}</div>
+                            <a href={this.state.nextMonth}>&#62;</a>
+                            <a href={this.state.prevYear}>&#60;</a>
+                            <div>{this.state.year}</div>
+                            <a href={this.state.nextYear}>&#62;</a>
+                        </div>
+                        <div className={Style.Table}>
+                            {this.state.week.map( (day)  =>
+                                <div className={Style.WeekElem} key={day} >{day}</div>
+                            )}
+                            {this.state.days.map( (day, i)  =>
+                                <div className={Style.Elem}>
+                                    <button className={Style.Button} key={i} onClick={() => this.DayUpdate(day.day)}>
+                                        {day.day}
+                                    </button>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                    <Day day={this.state.day_data.date}/>
-                    <a href={this.state.prevYear}>Previous year</a>
-                    <a href={this.state.prevMonth}>Previous month</a>
-                    <a href={this.state.nextMonth}>Next month</a>
-                    <a href={this.state.nextYear}>Next year</a>
-
+                    <div className={Style.Day}>
+                        <Day year={this.state.year} month={this.state.month_name[this.state.month]}
+                             day={this.state.day_data.date} event={this.state.day_data.event}/>
+                        {console.log(this)}
+                    </div>
                 </div>
             )
         }
