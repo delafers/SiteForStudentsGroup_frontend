@@ -5,7 +5,6 @@ import Style from './Day.module.css';
 const Day = (props) => {
     return (
         <div>
-            {console.log(props)}
             <p className={Style.Date}>{props.year}</p>
             <p className={Style.Date}>{props.month}</p>
             <p className={Style.Date}>{props.day}</p>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from  'react-router-dom'
 import Style from './Calendar.module.css';
 import Day from './Day';
 import DaysService from '../Services/DaysService.js';
@@ -30,7 +31,7 @@ class Calendar extends Component {
         let month = searchString.get('month');
         const date = new Date();   // нынешняя дата
         const day = date.getDate();
-        this.DayUpdate(date.getDate());
+        this.DayUpdate(date.getFullYear(), date.getMonth(), date.getDate());
         let days = [];
 
         // если год и месяц записаны в параметрах url, они передаются объекту date
@@ -67,10 +68,12 @@ class Calendar extends Component {
         const next_month = date.getMonth();
         const next_year = date.getFullYear();
 
-        daysService.getDays(year, (Number(month) + 1)).then(function (result) {
-                result.data.map( day => (
-                    days[day.date.slice(8,10) - 1 + days_before_first_day] = day
-                ));
+        daysService.getDays(year, (Number(month))).then(function (result) {
+
+            result.data.map( day => {
+                console.log(day.date.slice(8, 10));
+                days[day.date.slice(8, 10) - 1 + days_before_first_day] = {day: Number(day.date.slice(8, 10))};
+            });
             self.setState({
                 day: day,
                 days: days,
@@ -85,12 +88,11 @@ class Calendar extends Component {
     }
 
 
-    DayUpdate(day) {
+    DayUpdate(year, month, day) {
         if (day) {
             let self = this;
             let error = true;
-            daysService.getDay(day).then(function (result) {
-                console.log(result);
+            daysService.getDay(year, month, day).then(function (result) {
                 error = false;
                 let events = [];
                 result.data.event.map((event, i) => {
@@ -133,9 +135,10 @@ class Calendar extends Component {
                                 <div className={Style.WeekElem} key={day} >{day}</div>
                             )}
                             {this.state.days.map( (day, i)  =>
-                                <div className={Style.Elem}>
-                                    <button className={Style.Button} key={i} onClick={() => this.DayUpdate(day.day)}>
-                                        {day.day}
+                                <div className={Style.Elem} key={i}>
+                                    <button className={Style.Button}
+                                            onClick={() => this.DayUpdate(this.state.year, this.state.month, day.day)}>
+                                        <div className={Style.Number}>{day.day}</div>
                                     </button>
                                 </div>
                             )}
@@ -144,7 +147,6 @@ class Calendar extends Component {
                     <div className={Style.Day}>
                         <Day year={this.state.year} month={this.state.month_name[this.state.month]}
                              day={this.state.day_data.date} event={this.state.day_data.event}/>
-                        {console.log(this)}
                     </div>
                 </div>
             )
