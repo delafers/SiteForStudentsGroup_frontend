@@ -3,8 +3,10 @@ import { Link } from  'react-router-dom'
 import Style from './Calendar.module.css';
 import Day from './Day';
 import DaysService from '../Services/DaysService.js';
+import InfoService from '../Services/InfoService.js';
 
 const daysService = new DaysService();
+const infoService = new InfoService();
 
 
 class Calendar extends Component {
@@ -20,6 +22,7 @@ class Calendar extends Component {
             days: [],
             year: 0,
             month: 0,
+            info: [],
         };
         this.DayUpdate = this.DayUpdate.bind(this);
     }
@@ -52,10 +55,12 @@ class Calendar extends Component {
            if (i >= days_before_first_day && i < days_before_first_day + days_in_month) {
                days[i] = {
                    day: i + 1 - days_before_first_day,
+                   colors: [],
                }
            }
            else { days[i] = {
                day: '',
+               colors: [],
            }}
         }
 
@@ -69,10 +74,20 @@ class Calendar extends Component {
         const next_year = date.getFullYear();
 
         daysService.getDays(year, (Number(month))).then(function (result) {
-
+            // проходится по полученным дням и записывает их в общий массив
             result.data.map( day => {
-                console.log(day.date.slice(8, 10));
-                days[day.date.slice(8, 10) - 1 + days_before_first_day] = {day: Number(day.date.slice(8, 10))};
+                let colors = [];
+                day.event.map( (event, i) => {
+                    if (event.event_info) {
+                        colors[i] = event.event_info.color;
+                    }
+                });
+                if (!colors) {colors = []}
+                days[day.date.slice(8, 10) - 1 + days_before_first_day] = {
+                    day: Number(day.date.slice(8, 10)),
+                    colors: colors,
+                };
+                console.log(day);
             });
             self.setState({
                 day: day,
@@ -83,6 +98,12 @@ class Calendar extends Component {
                 prevMonth: '/calendar/?year=' + prev_year + '&month=' + prev_month,
                 nextYear: '/calendar/?year=' + (Number(year) + 1) + '&month=' + month,
                 prevYear: '/calendar/?year=' + (Number(year) - 1) + '&month=' + month,
+            })
+        });
+
+        infoService.getInfo().then(function (result) {
+            self.setState({
+                info: result.data
             })
         });
     }
@@ -106,7 +127,6 @@ class Calendar extends Component {
                         event: events,
                     }
                 })
-
             });
             if (error) {
                 self.setState({day_data: {
@@ -123,6 +143,7 @@ class Calendar extends Component {
                 <div className={Style.CalendarMenu}>
                     <div className={Style.Calendar}>
                         <div className={Style.Date}>
+                            {console.log(this.state)}
                             <a href={this.state.prevMonth}>&#60;</a>
                             <div>{this.state.month_name[this.state.month-1]}</div>
                             <a href={this.state.nextMonth}>&#62;</a>
@@ -139,10 +160,29 @@ class Calendar extends Component {
                                     <button className={Style.Button}
                                             onClick={() => this.DayUpdate(this.state.year, this.state.month, day.day)}>
                                         <div className={Style.Number}>{day.day}</div>
+                                        {day.colors.map( color  =>
+                                            <div key={color} className={Style.ElemColors}>
+                                            <div className={Style.ElemColor} style={{
+                                                backgroundColor: color,
+                                                boxShadow: '0 0 5px' + color,
+                                            }}> </div></div>
+                                        )}
                                     </button>
                                 </div>
                             )}
                         </div>
+                    </div>
+                    <div className={Style.Info}>
+                        События:
+                        {this.state.info.map( (info)  =>
+                            <div className={Style.InfoElem} key={info.topic}>
+                                <div className={Style.InfoColor} style={{
+                                    backgroundColor: info.color,
+                                    boxShadow: '0 0 5px' + info.color,
+                                }}> </div>
+                                <div>{info.topic}</div>
+                            </div>
+                        )}
                     </div>
                     <div className={Style.Day}>
                         <Day year={this.state.year} month={this.state.month_name[this.state.month]}

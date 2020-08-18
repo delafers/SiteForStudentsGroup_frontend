@@ -9,7 +9,7 @@ export default class DaysService{
         return axios.get(url).then(response => response.data);
     }
     getDay(year, month, day) {
-        if (month.length === 1) {month = '0' + month};
+        if (String(month).length === 1) {month = '0' + String(month)};
         if (String(day).length === 1) {day = '0' + String(day)};
         const url = `${API_URL}/api/days/${year}${month}${day}`;
         return axios.get(url).then(response => response.data);
