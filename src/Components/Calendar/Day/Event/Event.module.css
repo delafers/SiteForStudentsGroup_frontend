@@ -1,0 +1,51 @@
+.Event {
+    display: grid;
+    grid-template-columns: 25px 5fr;
+    grid-template-rows: 20px auto;
+    grid-template-areas:
+            "color time"
+            ". title";
+    margin-top: 15px;
+    transition: all 1s;
+}
+
+.Color {
+    grid-area: color;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    margin-left: 13px;
+    margin-top: 10px;
+}
+
+.NoColor {
+    grid-area: color;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: unset;
+    box-shadow: unset;
+}
+
+.Time {
+    margin-left: 10px;
+    grid-area: time;
+    text-align: left;
+}
+
+.Title {
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-area: title;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+
+}

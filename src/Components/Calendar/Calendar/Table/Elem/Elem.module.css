@@ -1,0 +1,51 @@
+.Elem {
+    border: 1px solid grey;
+    border-top: 0;
+    width: 100%;
+    height: 55px;
+}
+
+.Button {
+    width: 100%;
+    height: 100%;
+    background-color: #1e2745;
+    color: #8c91b6;
+    border: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2px;
+    grid-template-rows: 45% 55%;
+    grid-template-areas:
+            ". . number ."
+            ". color . .";
+}
+
+.Number {
+    padding-top: 0;
+    grid-area: number;
+    text-align: end;
+}
+
+.ElemColors {
+    grid-area: color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.ElemColor {
+    margin: 0 4px 0 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+
+}

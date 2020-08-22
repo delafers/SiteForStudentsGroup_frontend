@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from  'react-router-dom'
-import Style from './Calendar.module.css';
-import Day from './Day';
+import Style from './CalendarMenu.module.css';
+import Day from './Day/Day';
+import Table from './Calendar/Table/Table';
+import Info from './Info/Info';
+import DateBlock from './Calendar/Date/Date';
 import DaysService from '../Services/DaysService.js';
 import InfoService from '../Services/InfoService.js';
 
@@ -9,7 +12,7 @@ const daysService = new DaysService();
 const infoService = new InfoService();
 
 
-class Calendar extends Component {
+class CalendarMenu extends Component {
 
     constructor(props) {
         super(props);
@@ -23,6 +26,8 @@ class Calendar extends Component {
             year: 0,
             month: 0,
             info: [],
+            CalendarStyle: Style.CalendarMenu,
+            DayStyle: Style.Day,
         };
         this.DayUpdate = this.DayUpdate.bind(this);
     }
@@ -87,7 +92,6 @@ class Calendar extends Component {
                     day: Number(day.date.slice(8, 10)),
                     colors: colors,
                 };
-                console.log(day);
             });
             self.setState({
                 day: day,
@@ -113,11 +117,12 @@ class Calendar extends Component {
         if (day) {
             let self = this;
             let error = true;
+
             daysService.getDay(year, month, day).then(function (result) {
                 error = false;
                 let events = [];
                 result.data.event.map((event, i) => {
-                    events[i] = [event.description, event.time]
+                    events[i] = [event.description, event.time, event.event_info.color];
                 });
                 self.setState({
                     day_data: {
@@ -129,64 +134,57 @@ class Calendar extends Component {
                 })
             });
             if (error) {
+                let events = [];
+                events[0] = ["В этот день не будет важных событий"];
                 self.setState({day_data: {
                     date: day,
-                    event: ["В этот день не будет важных событий"]}});
+                    event: events}});
             }
         }
     }
-
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.divRef){
+            if (this.divRef.offsetHeight >= 340 && this.state.CalendarStyle === Style.CalendarMenu) {
+                this.setState({
+                    CalendarStyle: Style.CalendarMenuLine,
+                    DayStyle: Style.DayLine,
+                })
+            }
+            console.log(this.divRef.offsetHeight);
+        }
+        else {
+            console.log("this.divRef.offsetHeight");
+        }
+    }
 
     render() {
         if (this.state.day_data) {
             return (
-                <div className={Style.CalendarMenu}>
+                <div className={this.state.CalendarStyle}>
                     <div className={Style.Calendar}>
-                        <div className={Style.Date}>
-                            {console.log(this.state)}
-                            <a href={this.state.prevMonth}>&#60;</a>
-                            <div>{this.state.month_name[this.state.month-1]}</div>
-                            <a href={this.state.nextMonth}>&#62;</a>
-                            <a href={this.state.prevYear}>&#60;</a>
-                            <div>{this.state.year}</div>
-                            <a href={this.state.nextYear}>&#62;</a>
-                        </div>
-                        <div className={Style.Table}>
-                            {this.state.week.map( (day)  =>
-                                <div className={Style.WeekElem} key={day} >{day}</div>
-                            )}
-                            {this.state.days.map( (day, i)  =>
-                                <div className={Style.Elem} key={i}>
-                                    <button className={Style.Button}
-                                            onClick={() => this.DayUpdate(this.state.year, this.state.month, day.day)}>
-                                        <div className={Style.Number}>{day.day}</div>
-                                        {day.colors.map( color  =>
-                                            <div key={color} className={Style.ElemColors}>
-                                            <div className={Style.ElemColor} style={{
-                                                backgroundColor: color,
-                                                boxShadow: '0 0 5px' + color,
-                                            }}> </div></div>
-                                        )}
-                                    </button>
-                                </div>
-                            )}
-                        </div>
+                        <DateBlock
+                            prevMonth={this.state.prevMonth}
+                            nextMonth={this.state.nextMonth}
+                            prevYear={this.state.prevYear}
+                            nextYear={this.state.nextYear}
+                            year={this.state.year}
+                            month={this.state.month}
+                        />
+                        <Table
+                            DayUpdate={this.DayUpdate}
+                            days={this.state.days}
+                            year={this.state.year}
+                            month={this.state.month}
+                        />
                     </div>
-                    <div className={Style.Info}>
-                        События:
-                        {this.state.info.map( (info)  =>
-                            <div className={Style.InfoElem} key={info.topic}>
-                                <div className={Style.InfoColor} style={{
-                                    backgroundColor: info.color,
-                                    boxShadow: '0 0 5px' + info.color,
-                                }}> </div>
-                                <div>{info.topic}</div>
-                            </div>
-                        )}
-                    </div>
-                    <div className={Style.Day}>
-                        <Day year={this.state.year} month={this.state.month_name[this.state.month]}
-                             day={this.state.day_data.date} event={this.state.day_data.event}/>
+                    <Info info={this.state.info}/>
+                    <div className={this.state.DayStyle} ref={ (divRef) => this.divRef = divRef}>
+                        <Day
+                            year={this.state.year}
+                            month={this.state.month_name[this.state.month - 1]}
+                            day={this.state.day_data.date}
+                            event={this.state.day_data.event}
+                        />
                     </div>
                 </div>
             )
@@ -195,4 +193,4 @@ class Calendar extends Component {
     }
 }
 
-export default Calendar;
+export default CalendarMenu;

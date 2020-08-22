@@ -1,0 +1,79 @@
+.CalendarMenu {
+     padding: 10px;
+     display: grid;
+     color: #8c91b6;
+     margin: 5px auto 0 auto;
+     grid-template-columns: 2fr 1fr;
+     grid-template-rows: auto max-content;
+     width: 748px;
+     grid-template-areas:
+             "calendar day"
+             "calendar info";
+ }
+
+.CalendarMenuLine {
+    padding: 10px;
+    display: grid;
+    color: #8c91b6;
+    margin: 5px auto 0 auto;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto max-content auto;
+    width: 748px;
+    grid-template-areas:
+            "calendar info"
+            "calendar ."
+            "day day";
+}
+
+.Calendar {
+    grid-area: calendar;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1e2745;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+}
+
+
+.Day {
+    grid-area: day;
+    margin-left: 30px;
+    width: 200px;
+    background-color: #1e2745;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+}
+
+.DayLine {
+    grid-area: day;
+    margin-top: 30px;
+    width: 100%;
+    background-color: #1e2745;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+}
+
+
+@media (max-width: 768px) {
+    .CalendarMenu {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 100px auto;
+        grid-template-areas:
+                "calendar"
+                "info"
+                "day";
+        width: 525px;
+    }
+
+    .Day {
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+
+}

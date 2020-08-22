@@ -1,0 +1,32 @@
+.Info {
+    margin: 20px 19px 0 30px;
+    grid-area: info;
+    background-color: #1e2745;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.InfoElem {
+    display: flex;
+}
+
+.InfoColor {
+    margin: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .Info {
+        margin: 15px 0 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+
+}

@@ -1,26 +1,3 @@
-.CalendarMenu {
-    padding: 10px;
-    display: grid;
-    color: #8c91b6;
-    margin: 0 auto;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 3fr auto;
-    width: 748px;
-    grid-template-areas: "calendar day"
-    "calendar info"
-}
-
-.Calendar {
-    grid-area: calendar;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #1e2745;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #29324f;
-}
-
 .Table{
     display: grid;
     width: 100%;
@@ -47,23 +24,26 @@
     color: #8c91b6;
     border: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 2fr 3fr;
-    grid-template-areas:
-            ". . number"
-            ". color .";
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
 }
 
 .Number {
-    grid-area: number;
+    width: 29%;
+    margin: 0;
+    padding-left: 50px;
+    text-align: end;
 
 }
 
 .ElemColors {
-    grid-area: color;
-
-
+    margin: 10px 10px 5px 10px;
+    width: 50px;
+    height: 10px;
+    display: inline-block;
+    justify-content: space-around;
 }
 
 .ElemColor {
@@ -127,9 +107,10 @@
     .CalendarMenu {
         grid-template-columns: 1fr;
         grid-template-rows: auto 100px auto;
-        grid-template-areas: "calendar"
-        "info"
-        "day";
+        grid-template-areas:
+                "calendar"
+                "info"
+                "day";
         width: 525px;
     }
 
