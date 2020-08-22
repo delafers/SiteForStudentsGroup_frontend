@@ -1,15 +1,15 @@
 .CalendarMenu {
-     padding: 10px;
-     display: grid;
-     color: #8c91b6;
-     margin: 5px auto 0 auto;
-     grid-template-columns: 2fr 1fr;
-     grid-template-rows: auto max-content;
-     width: 748px;
-     grid-template-areas:
-             "calendar day"
-             "calendar info";
- }
+    padding: 10px;
+    display: grid;
+    color: #8c91b6;
+    margin: 5px auto 0 auto;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: max-content auto;
+    width: 748px;
+    grid-template-areas:
+            "calendar info"
+            "calendar day";
+}
 
 .CalendarMenuLine {
     padding: 10px;
@@ -23,7 +23,23 @@
             "calendar info"
             "calendar ."
             "day day";
+
 }
+
+@keyframes gridChange {
+    0% {
+        grid-template-areas:
+                "calendar info"
+                "calendar day";
+    }
+    100% {
+        grid-template-areas:
+                "calendar info"
+                "calendar ."
+                "day day";
+    }
+}
+
 
 .Calendar {
     grid-area: calendar;
@@ -36,14 +52,27 @@
     box-shadow: 0 0 10px #29324f;
 }
 
-
 .Day {
     grid-area: day;
-    margin-left: 30px;
+    margin: 19px 0 0 30px;
     width: 200px;
     background-color: #1e2745;
     border-radius: 10px;
     box-shadow: 0 0 10px #29324f;
+    opacity: 0;
+    animation: appeard 1s forwards;
+}
+
+@keyframes appeard {
+    0% {
+        opacity: 0;
+    }
+    60%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
 }
 
 .DayLine {
@@ -53,8 +82,28 @@
     background-color: #1e2745;
     border-radius: 10px;
     box-shadow: 0 0 10px #29324f;
+    padding: 5px 0;
+    opacity: 0;
+    animation: appearance 1s forwards;
 }
 
+
+@keyframes appearance {
+    0% {
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.DayNone {
+    grid-area: day;
+    opacity: 0;
+}
 
 @media (max-width: 768px) {
     .CalendarMenu {
@@ -77,3 +126,54 @@
 @media (max-width: 480px) {
 
 }
+
+/*.CalendarMenuLine {*/
+/*    padding: 10px;*/
+/*    display: grid;*/
+/*    color: #8c91b6;*/
+/*    margin: 5px auto 0 auto;*/
+/*    grid-template-columns: 2fr 1fr;*/
+/*    grid-template-rows: auto max-content;*/
+/*    width: 748px;*/
+/*    grid-template-areas:*/
+/*            "calendar day"*/
+/*            "calendar info";*/
+/*    !*animation: zoom1 1s forwards;*!*/
+/*}*/
+
+/*@keyframes zoom1 {*/
+/*    0% {*/
+/*        grid-template-areas:*/
+/*                "calendar day"*/
+/*                "calendar info";*/
+/*    }*/
+/*    50% {*/
+/*        grid-template-areas:*/
+/*                "calendar day"*/
+/*                "calendar info";*/
+/*    }*/
+/*    100% {*/
+/*        grid-template-areas:*/
+/*                "calendar info"*/
+/*                "calendar ."*/
+/*                "day day";*/
+/*    }*/
+/*}*/
+
+/*@keyframes zoomIn {*/
+/*    0% {*/
+/*        transform: translateX(0)*/
+/*    }*/
+/*    100% {*/
+/*        transform: translateX(1000px)*/
+/*    }*/
+/*}*/
+
+/*@keyframes zoomIn2 {*/
+/*    0% {*/
+/*        transform: translateX(-1000)*/
+/*    }*/
+/*    100% {*/
+/*        transform: translateX(0)*/
+/*    }*/
+/*}*/

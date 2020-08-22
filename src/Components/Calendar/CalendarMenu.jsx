@@ -117,7 +117,6 @@ class CalendarMenu extends Component {
         if (day) {
             let self = this;
             let error = true;
-
             daysService.getDay(year, month, day).then(function (result) {
                 error = false;
                 let events = [];
@@ -130,30 +129,43 @@ class CalendarMenu extends Component {
                         date: Number(result.data.date.slice(8, 10)),
                         topic: result.data.topic,
                         event: events,
-                    }
+                    },
+                    CalendarStyle: Style.CalendarMenu,
+                    DayStyle: Style.Day,
                 })
             });
             if (error) {
                 let events = [];
                 events[0] = ["В этот день не будет важных событий"];
-                self.setState({day_data: {
-                    date: day,
-                    event: events}});
+                self.setState({
+                    day_data: {
+                        date: day,
+                        event: events,
+                    },
+                    DayStyle: Style.DayNone,
+                });
             }
         }
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.divRef){
-            if (this.divRef.offsetHeight >= 340 && this.state.CalendarStyle === Style.CalendarMenu) {
+            if (this.divRef.offsetHeight > 340 &&
+                this.state.CalendarStyle === Style.CalendarMenu &&
+                this.state.DayStyle !== Style.DayNone) {
+
                 this.setState({
                     CalendarStyle: Style.CalendarMenuLine,
                     DayStyle: Style.DayLine,
                 })
             }
-            console.log(this.divRef.offsetHeight);
-        }
-        else {
-            console.log("this.divRef.offsetHeight");
+            else if (this.divRef.offsetHeight <= 90 &&
+                this.state.CalendarStyle === Style.CalendarMenuLine &&
+                this.state.DayStyle !== Style.DayNone) {
+                this.setState({
+                    CalendarStyle: Style.CalendarMenu,
+                    DayStyle: Style.Day,
+                })
+            }
         }
     }
 
