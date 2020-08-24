@@ -8,7 +8,7 @@ const Event = (props) => {
         <div className={Style.Event}>
             <div className={Style.Color} style={{
                 backgroundColor: props.color,
-                boxShadow: props.color,
+                boxShadow: '0 0 10px ' + props.color,
             }}> </div>
             <div className={Style.Time}>{props.time}</div>
             <div className={Style.Title}>{props.title}</div>
