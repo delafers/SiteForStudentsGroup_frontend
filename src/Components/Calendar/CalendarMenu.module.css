@@ -14,7 +14,6 @@
 .CalendarMenuLine {
     padding: 10px;
     display: grid;
-    color: #8c91b6;
     margin: 5px auto 0 auto;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto max-content auto;
@@ -23,7 +22,6 @@
             "calendar info"
             "calendar ."
             "day day";
-
 }
 
 @keyframes gridChange {
@@ -54,8 +52,7 @@
 
 .Day {
     grid-area: day;
-    margin: 19px 0 0 30px;
-    width: 200px;
+    margin: 19px 0 0 20px;
     background-color: #1e2745;
     border-radius: 10px;
     box-shadow: 0 0 10px #29324f;
@@ -106,7 +103,7 @@
 }
 
 @media (max-width: 768px) {
-    .CalendarMenu {
+    .CalendarMenu, .CalendarMenuLine {
         grid-template-columns: 1fr;
         grid-template-rows: auto 100px auto;
         grid-template-areas:
@@ -114,6 +111,7 @@
                 "info"
                 "day";
         width: 525px;
+        margin: 0 auto;
     }
 
     .Day {
@@ -126,54 +124,3 @@
 @media (max-width: 480px) {
 
 }
-
-/*.CalendarMenuLine {*/
-/*    padding: 10px;*/
-/*    display: grid;*/
-/*    color: #8c91b6;*/
-/*    margin: 5px auto 0 auto;*/
-/*    grid-template-columns: 2fr 1fr;*/
-/*    grid-template-rows: auto max-content;*/
-/*    width: 748px;*/
-/*    grid-template-areas:*/
-/*            "calendar day"*/
-/*            "calendar info";*/
-/*    !*animation: zoom1 1s forwards;*!*/
-/*}*/
-
-/*@keyframes zoom1 {*/
-/*    0% {*/
-/*        grid-template-areas:*/
-/*                "calendar day"*/
-/*                "calendar info";*/
-/*    }*/
-/*    50% {*/
-/*        grid-template-areas:*/
-/*                "calendar day"*/
-/*                "calendar info";*/
-/*    }*/
-/*    100% {*/
-/*        grid-template-areas:*/
-/*                "calendar info"*/
-/*                "calendar ."*/
-/*                "day day";*/
-/*    }*/
-/*}*/
-
-/*@keyframes zoomIn {*/
-/*    0% {*/
-/*        transform: translateX(0)*/
-/*    }*/
-/*    100% {*/
-/*        transform: translateX(1000px)*/
-/*    }*/
-/*}*/
-
-/*@keyframes zoomIn2 {*/
-/*    0% {*/
-/*        transform: translateX(-1000)*/
-/*    }*/
-/*    100% {*/
-/*        transform: translateX(0)*/
-/*    }*/
-/*}*/

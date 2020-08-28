@@ -1,0 +1,18 @@
+.Date {
+    margin: 0;
+}
+
+.Events {
+    display: grid;
+    max-height: 340px;
+}
+
+.Event {
+    display: grid;
+    grid-template-columns: 40px 5fr;
+    grid-template-rows: 20px auto;
+    grid-template-areas:
+            "color time"
+            ". title";
+    margin-top: 10px;
+}

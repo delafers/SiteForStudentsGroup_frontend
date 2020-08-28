@@ -1,12 +1,13 @@
 import React from 'react';
 import Style from './Header.module.css';
+import { Link } from  'react-router-dom'
 
 const Header = (props) => {
     return (
         <header>
-            <a href="/calendar">календарь</a>
-            <a href="/mail">почта</a>
-            <a href="/news">новости</a>
+            <Link to="/calendar">календарь</Link>
+            <Link to="/mail">почта</Link>
+            <Link to="/demosnews">суровости</Link>
 
 
         </header>

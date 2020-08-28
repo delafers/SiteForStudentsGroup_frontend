@@ -1,0 +1,48 @@
+.DemosNews {
+    padding: 10px;
+    display: grid;
+    color: #8c91b6;
+    margin: 5px auto 0 auto;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 150px auto;
+    width: 748px;
+    grid-template-areas:
+            "addpost tags"
+            "posts tags";
+}
+
+.AppPost {
+    grid-area: addpost;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1e2745;
+    padding: 10px;
+    margin: 0 10px 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+}
+
+.Posts {
+    grid-area: posts;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1e2745;
+    padding: 10px;
+    margin: 10px 10px 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+}
+
+.Tags {
+    grid-area: tags;
+    display: flex;
+    background-color: #1e2745;
+    padding: 10px;
+    margin: 0 10px 0 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #29324f;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}

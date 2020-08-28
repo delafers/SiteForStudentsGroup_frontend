@@ -5,6 +5,7 @@ import Day from './Day/Day';
 import Table from './Calendar/Table/Table';
 import Info from './Info/Info';
 import DateBlock from './Calendar/Date/Date';
+import Loading from '../Loading/Loading'
 import DaysService from '../Services/DaysService.js';
 import InfoService from '../Services/InfoService.js';
 
@@ -151,7 +152,8 @@ class CalendarMenu extends Component {
         if (this.divRef){
             if (this.divRef.offsetHeight > 340 &&
                 this.state.CalendarStyle === Style.CalendarMenu &&
-                this.state.DayStyle !== Style.DayNone) {
+                this.state.DayStyle !== Style.DayNone &&
+                window.innerWidth > 768) {
 
                 this.setState({
                     CalendarStyle: Style.CalendarMenuLine,
@@ -160,7 +162,8 @@ class CalendarMenu extends Component {
             }
             else if (this.divRef.offsetHeight <= 90 &&
                 this.state.CalendarStyle === Style.CalendarMenuLine &&
-                this.state.DayStyle !== Style.DayNone) {
+                this.state.DayStyle !== Style.DayNone &&
+                window.innerWidth > 768) {
                 this.setState({
                     CalendarStyle: Style.CalendarMenu,
                     DayStyle: Style.Day,
@@ -170,7 +173,8 @@ class CalendarMenu extends Component {
     }
 
     render() {
-        if (this.state.day_data) {
+        console.log(this)
+        if (this.state.month) {
             return (
                 <div className={this.state.CalendarStyle}>
                     <div className={Style.Calendar}>
@@ -201,7 +205,7 @@ class CalendarMenu extends Component {
                 </div>
             )
         }
-        else {return(<p>loading...</p>)}
+        else {return(<Loading/>)}
     }
 }
 
