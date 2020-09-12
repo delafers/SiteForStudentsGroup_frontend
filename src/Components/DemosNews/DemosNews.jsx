@@ -4,6 +4,7 @@ import DemosNewsService from '../Services/DemosNewsService.js';
 import Post from "./Post/Post";
 import AddPost from "./AddPost/AddPost";
 import Tags from "./Tags/Tags";
+import Loading from "../Loading/Loading";
 
 const demosNewsService = new DemosNewsService();
 
@@ -14,33 +15,76 @@ class DemosNewsMenu extends Component {
         super(props);
         this.state = {
             posts: [],
+            numPages: 0,
+            recentPage: 0,
         };
+        this.loadMore = this.loadMore.bind(this);
     }
 
     componentDidMount() {
-    let self = this;
-        demosNewsService.getPosts().then(function (result) {
+        let self = this;
+        const params = this.props.location.search;
+        demosNewsService.getPosts(params).then(function (result) {
             self.setState({
-                posts: result.posts_page,
+                posts: result.postsPage,
                 tags: result.tags,
+                numPages: result.numPages,
+                recentPage: self.state.recentPage + 1,
+            })
+        });
+    }
+
+    loadMore(){
+        let self = this;
+        const params = this.props.location.pathname + this.props.location.search;
+        let pastPosts = this.state.posts;
+        let url;
+        if (this.props.location.search) {
+            url = '/api' + params + '&page=' + (this.state.recentPage + 1);
+        }
+        else {
+            url = '/api' + params + '?tag=0' + '&page=' + (this.state.recentPage + 1);
+        }
+
+        demosNewsService.getPostsByURL(url).then(function (result) {
+            self.setState({
+                posts: pastPosts.concat(result.postsPage),
+                tags: result.tags,
+                numPages: result.numPages,
+                recentPage: self.state.recentPage + 1,
             })
         });
     }
 
     render() {
-        if (this.state) {
+        if (this.state.posts) {
+
+            let load_more;
+            if (this.state.recentPage < this.state.numPages) {
+                load_more = <div onClick={ this.loadMore } className={Style.LoadMore}>load more</div>;
+            }
+
             return (
                 <div className={Style.DemosNews}>
                     <AddPost />
-                    {this.state.posts.map( post =>
-                        <Post post={post}/>
-                    )}
-                    <Tags tags={this.state.tags}/>
-                    {console.log(this.state)}
+                    <div  className={Style.Posts}>
+                        {this.state.posts.map( post =>
+                            <Post post={post}
+                                  key={post.id}
+                                  location={this.props.location.search}
+                                  style={Style.TagsInPost}
+                            />
+                        )}
+                    </div>
+                    <Tags tags={this.state.tags}
+                          url={this.props.location.search}
+                          style={Style.TagsMain}/>
+
+                    {load_more}
                 </div>
             )
         }
-        else {return(<p>loading...</p>)}
+        else {return(<Loading/>)}
     }
 }
 

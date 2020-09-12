@@ -12,8 +12,8 @@ const App = () => {
         <div className={Style.App}>
             <Header className='App-header'/>
             <Route path='/calendar/' component={CalendarMenu}/>
-            <Route path='/demosnews' render={ () => <DemosNews/>}/>
-            <Route path='/demosnews/:id' render={ () => <DemosNews/>}/>
+            <Route path='/demosnews' component={DemosNews}/>
+            <Route path='/demosnews/:id' component={DemosNews}/>
             <Route path='/mail' exact component={Mail}/>
             <Route path='/mail/:id' component={Mail}/>
             <Footer/>

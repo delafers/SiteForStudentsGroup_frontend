@@ -3,8 +3,8 @@ const API_URL = 'http://localhost:8000';
 
 export default class LettersService{
 
-    getPosts() {
-        const url = `${API_URL}/api/demosnews/`;
+    getPosts(params) {
+        const url = `${API_URL}/api/demosnews/` + params;
         return axios.get(url).then(response => response.data);
     }
     getPostsByURL(link){

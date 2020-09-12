@@ -29,6 +29,7 @@ class CalendarMenu extends Component {
             info: [],
             CalendarStyle: Style.CalendarMenu,
             DayStyle: Style.Day,
+            days_in_month: 0,
         };
         this.DayUpdate = this.DayUpdate.bind(this);
     }
@@ -103,6 +104,7 @@ class CalendarMenu extends Component {
                 prevMonth: '/calendar/?year=' + prev_year + '&month=' + prev_month,
                 nextYear: '/calendar/?year=' + (Number(year) + 1) + '&month=' + month,
                 prevYear: '/calendar/?year=' + (Number(year) - 1) + '&month=' + month,
+                days_in_month: days_total,
             })
         });
 
@@ -137,7 +139,7 @@ class CalendarMenu extends Component {
             });
             if (error) {
                 let events = [];
-                events[0] = ["В этот день не будет важных событий"];
+                events[0] = [" "];
                 self.setState({
                     day_data: {
                         date: day,
@@ -149,35 +151,26 @@ class CalendarMenu extends Component {
         }
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.divRef){
-            if (this.divRef.offsetHeight > 340 &&
+        if (this.dayRef){
+            if ((this.dayRef.offsetHeight + this.eventRef.offsetHeight > 98 + this.state.days_in_month / 7 * 55 &&
                 this.state.CalendarStyle === Style.CalendarMenu &&
+                window.innerWidth > 768 ||
+                this.dayRef.offsetWidth > 250) &&
                 this.state.DayStyle !== Style.DayNone &&
-                window.innerWidth > 768) {
-
+                this.state.DayStyle !== Style.DayLine) {
                 this.setState({
                     CalendarStyle: Style.CalendarMenuLine,
                     DayStyle: Style.DayLine,
-                })
-            }
-            else if (this.divRef.offsetHeight <= 90 &&
-                this.state.CalendarStyle === Style.CalendarMenuLine &&
-                this.state.DayStyle !== Style.DayNone &&
-                window.innerWidth > 768) {
-                this.setState({
-                    CalendarStyle: Style.CalendarMenu,
-                    DayStyle: Style.Day,
                 })
             }
         }
     }
 
     render() {
-        console.log(this)
         if (this.state.month) {
             return (
                 <div className={this.state.CalendarStyle}>
-                    <div className={Style.Calendar}>
+                    <div className={Style.Calendar} ref={ (calendarRef) => this.calendarRef = calendarRef}>
                         <DateBlock
                             prevMonth={this.state.prevMonth}
                             nextMonth={this.state.nextMonth}
@@ -193,8 +186,10 @@ class CalendarMenu extends Component {
                             month={this.state.month}
                         />
                     </div>
-                    <Info info={this.state.info}/>
-                    <div className={this.state.DayStyle} ref={ (divRef) => this.divRef = divRef}>
+                    <div ref={ (eventRef) => this.eventRef = eventRef}>
+                        <Info info={this.state.info}/>
+                    </div>
+                    <div className={this.state.DayStyle} ref={ (dayRef) => this.dayRef = dayRef}>
                         <Day
                             year={this.state.year}
                             month={this.state.month_name[this.state.month - 1]}

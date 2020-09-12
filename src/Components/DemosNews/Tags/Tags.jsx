@@ -1,13 +1,12 @@
 import React from 'react';
 import Style from './Tags.module.css';
-import StyleParent from '../DemosNews.module.css';
 
 const Tags = (props) => {
     if (props.tags) {
         return (
-            <div className={StyleParent.Tags}>
+            <div className={props.style}>
                 {props.tags.map( tag =>
-                    <div className={Style.Tag} key={tag.name}>{tag.name}</div>
+                    <a href={'http://localhost:3000/demosnews/?tag=' + tag.id} className={Style.Tag} key={tag.name}>{tag.name}</a>
                 )}
             </div>
         );
