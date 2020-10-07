@@ -25,7 +25,7 @@ class CalendarMenu extends Component {
             day_data: null,
             days: [],
             year: 0,
-            month: 0,
+            month: undefined,
             info: [],
             CalendarStyle: Style.CalendarMenu,
             DayStyle: Style.Day,
@@ -38,7 +38,8 @@ class CalendarMenu extends Component {
         let self = this;
         const searchString = new URLSearchParams(this.props.location.search);
         let year = searchString.get('year');
-        let month = searchString.get('month');
+        let month_user = searchString.get('month'); // месяц, удобный для пользвателя, отсчёт с 1, а не с 0
+        let month = month_user - 1;
         const date = new Date();   // нынешняя дата
         const day = date.getDate();
         this.DayUpdate(date.getFullYear(), date.getMonth(), date.getDate());
@@ -47,16 +48,26 @@ class CalendarMenu extends Component {
         // если год и месяц записаны в параметрах url, они передаются объекту date
         if (!year) {year = date.getFullYear()}
         else {date.setFullYear(+year)}
-        if (!month) {month = date.getMonth() + 1}
-        else {date.setMonth(+month-1)}
+        if (month_user === null) {month = date.getMonth()}
+        else {date.setMonth(+month)}
 
         date.setDate(33);
         const days_in_month = 33 - date.getDate();
 
-        date.setFullYear(Number(year), (Number(month) - 1), 1);
+        date.setFullYear(Number(year), (Number(month)), 1);
         const first_day = date.getDay();    // номер первого дня, где вс это 0
         const days_before_first_day = first_day === 0 ? 6 : first_day - 1;
-        const days_total = days_before_first_day + days_in_month + 7 - (days_in_month + days_before_first_day) % 7;
+
+        // поиск количества дней, которых не хватает для заполнения таблицы
+        let additional_days;
+        if ((days_in_month + days_before_first_day) % 7) {
+            additional_days = 7 - (days_in_month + days_before_first_day) % 7;
+        }
+        else {
+            additional_days = 0
+        }
+
+        const days_total = days_before_first_day + days_in_month + additional_days;
 
         for (let i = 0; i < days_total; i++) {
            if (i >= days_before_first_day && i < days_before_first_day + days_in_month) {
@@ -79,8 +90,10 @@ class CalendarMenu extends Component {
         date.setMonth(+month+1);
         const next_month = date.getMonth();
         const next_year = date.getFullYear();
+        debugger;
 
-        daysService.getDays(year, (Number(month))).then(function (result) {
+
+        daysService.getDays(year, (Number(month) + 1)).then(function (result) {
             // проходится по полученным дням и записывает их в общий массив
             result.data.map( day => {
                 let colors = [];
@@ -100,10 +113,10 @@ class CalendarMenu extends Component {
                 days: days,
                 year: year,
                 month: month,
-                nextMonth: '/calendar/?year=' + next_year + '&month=' + next_month,
-                prevMonth: '/calendar/?year=' + prev_year + '&month=' + prev_month,
-                nextYear: '/calendar/?year=' + (Number(year) + 1) + '&month=' + month,
-                prevYear: '/calendar/?year=' + (Number(year) - 1) + '&month=' + month,
+                nextMonth: '/calendar/?year=' + next_year + '&month=' + (Number(next_month) + 1),
+                prevMonth: '/calendar/?year=' + prev_year + '&month=' + (Number(prev_month) + 1),
+                nextYear: '/calendar/?year=' + (Number(year) + 1) + '&month=' + (Number(month) + 1),
+                prevYear: '/calendar/?year=' + (Number(year) - 1) + '&month=' + (Number(month) + 1),
                 days_in_month: days_total,
             })
         });
@@ -167,7 +180,7 @@ class CalendarMenu extends Component {
     }
 
     render() {
-        if (this.state.month) {
+        if (this.state.month !== undefined) {
             return (
                 <div className={this.state.CalendarStyle}>
                     <div className={Style.Calendar} ref={ (calendarRef) => this.calendarRef = calendarRef}>
@@ -177,7 +190,7 @@ class CalendarMenu extends Component {
                             prevYear={this.state.prevYear}
                             nextYear={this.state.nextYear}
                             year={this.state.year}
-                            month={this.state.month}
+                            month={this.state.month + 1}
                         />
                         <Table
                             DayUpdate={this.DayUpdate}

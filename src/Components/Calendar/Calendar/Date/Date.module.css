@@ -1,57 +1,3 @@
-.Table{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-
-.Elem {
-    border: 1px solid grey;
-    border-top: 0;
-    width: 100%;
-    height: 70px;
-}
-
-.WeekElem {
-    border: 1px solid grey;
-    width: 100%;
-    height: 30px;
-}
-
-.Button {
-    width: 100%;
-    height: 100%;
-    background-color: #1e2745;
-    color: #8c91b6;
-    border: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-}
-
-.Number {
-    width: 29%;
-    margin: 0;
-    padding-left: 50px;
-    text-align: end;
-
-}
-
-.ElemColors {
-    margin: 10px 10px 5px 10px;
-    width: 50px;
-    height: 10px;
-    display: inline-block;
-    justify-content: space-around;
-}
-
-.ElemColor {
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-}
-
 .Date {
     display: flex;
     padding-bottom: 20px;
@@ -70,66 +16,8 @@
     padding-top: 5px;
 }
 
-.Day {
-    grid-area: day;
-    margin-left: 30px;
-    width: 200px;
-    height: 460px;
-    background-color: #1e2745;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #29324f;
-}
-
-.Info {
-    margin: 20px 19px 0 30px;
-    grid-area: info;
-    background-color: #1e2745;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #29324f;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.InfoElem {
-    display: flex;
-}
-
-.InfoColor {
-    margin: 7px;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-}
-
 @media (max-width: 768px) {
-    .CalendarMenu {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto 100px auto;
-        grid-template-areas:
-                "calendar"
-                "info"
-                "day";
-        width: 525px;
-    }
 
-    .Day {
-        margin: 0 auto;
-        width: 100%;
-        height: auto;
-    }
-
-    .Elem {
-        border: 1px solid grey;
-        border-top: 0;
-        width: 100%;
-        height: 50px;
-    }
-
-    .Info {
-        margin: 15px 0 15px 0;
-    }
 }
 
 @media (max-width: 480px) {
