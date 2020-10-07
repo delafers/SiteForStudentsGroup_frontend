@@ -133,7 +133,7 @@ class CalendarMenu extends Component {
         if (day) {
             let self = this;
             let error = true;
-            daysService.getDay(year, month, day).then(function (result) {
+            daysService.getDay(year, month + 1, day).then(function (result) {
                 error = false;
                 let events = [];
                 result.data.event.map((event, i) => {
