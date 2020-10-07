@@ -2,7 +2,6 @@ import React from 'react';
 import Style from './Event.module.css';
 
 const Event = (props) => {
-    //color = event ? [event, '0 0 5px' + event] : ['unset', 'unset'];
 
     return (
         <div className={Style.Event}>

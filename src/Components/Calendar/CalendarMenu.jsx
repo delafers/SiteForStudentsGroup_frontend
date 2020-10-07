@@ -90,7 +90,6 @@ class CalendarMenu extends Component {
         date.setMonth(+month+1);
         const next_month = date.getMonth();
         const next_year = date.getFullYear();
-        debugger;
 
 
         daysService.getDays(year, (Number(month) + 1)).then(function (result) {
