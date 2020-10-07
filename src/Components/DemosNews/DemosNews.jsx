@@ -5,6 +5,8 @@ import Post from "./Post/Post";
 import AddPost from "./AddPost/AddPost";
 import Tags from "./Tags/Tags";
 import Loading from "../Loading/Loading";
+import { Link } from  'react-router-dom'
+
 
 const demosNewsService = new DemosNewsService();
 
@@ -19,6 +21,7 @@ class DemosNewsMenu extends Component {
             recentPage: 0,
         };
         this.loadMore = this.loadMore.bind(this);
+        this.changeTag = this.changeTag.bind(this);
     }
 
     componentDidMount() {
@@ -37,7 +40,7 @@ class DemosNewsMenu extends Component {
     loadMore(){
         let self = this;
         const params = this.props.location.pathname + this.props.location.search;
-        let pastPosts = this.state.posts;
+        const pastPosts = this.state.posts;
         let url;
         if (this.props.location.search) {
             url = '/api' + params + '&page=' + (this.state.recentPage + 1);
@@ -52,6 +55,20 @@ class DemosNewsMenu extends Component {
                 tags: result.tags,
                 numPages: result.numPages,
                 recentPage: self.state.recentPage + 1,
+            })
+        });
+    }
+
+    changeTag(tag){
+        let self = this;
+        const params = this.props.location.pathname;
+        const url = '/api' + params + '?tag=' + tag;
+
+        demosNewsService.getPostsByURL(url).then(function (result) {
+            self.setState({
+                posts: result.postsPage,
+                numPages: result.numPages,
+                recentPage: 1,
             })
         });
     }
@@ -73,12 +90,15 @@ class DemosNewsMenu extends Component {
                                   key={post.id}
                                   location={this.props.location.search}
                                   style={Style.TagsInPost}
+                                  changeTag={this.changeTag}
                             />
                         )}
                     </div>
                     <Tags tags={this.state.tags}
                           url={this.props.location.search}
-                          style={Style.TagsMain}/>
+                          style={Style.TagsMain}
+                          changeTag={this.changeTag}
+                    />
 
                     {load_more}
                 </div>
