@@ -1,1 +1,8 @@
+.activePage {
+    font-weight: bold;
+}
+.letter{
 
+    border: solid white 1px;
+    text-align: center;
+}
