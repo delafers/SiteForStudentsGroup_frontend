@@ -9,7 +9,7 @@ class letterContainer extends React.Component {
     componentDidMount() {
         debugger
         this.props.toggleIsFetching(true)
-        axios.get(`http://localhost:8000/api/letters/?count=2`).then(responce => {
+        axios.get(`http://localhost:8000/api/letters/?count=10`).then(responce => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(responce.data.results)
             this.props.setTotalUsersCount(responce.data.count)
@@ -18,7 +18,9 @@ class letterContainer extends React.Component {
     onPageChanged= (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true)
-        axios.get(`http://localhost:8000/api/letters/?count=3&page=${Math.ceil(this.props.totalUsersCount/2) + 1 - pageNumber}`).then(responce => {
+        axios.get(`http://localhost:8000/api/letters/?count=10&page=
+        ${Math.ceil(this.props.totalUsersCount/10) + 1 - pageNumber}`).
+        then(responce => {
             debugger
             this.props.toggleIsFetching(false)
             this.props.setUsers(responce.data.results);

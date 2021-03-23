@@ -3,7 +3,6 @@ const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const TOGGLE_IS_FETING = 'TOGGLE-IS-FETING'
-
 /*export default class LettersService{
 
     getLetters() {
