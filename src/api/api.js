@@ -4,22 +4,46 @@ import * as axios from "axios";
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'http://localhost:8000/',
-    headers: {}
 });
 
 export const authAPI = {
-    me() {
-        return  instance.get(`auth/me`)
+    me(result) {
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${result}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+        };
+        return fetch("http://localhost:8000/auth/users/me/", requestOptions)
     },
-    login(username, password) {
-        debugger
-        return instance.post(`auth/jwt/create/`, {username, password})
+    login(requestOptions) {
+        return fetch("http://localhost:8000/auth/jwt/create/", requestOptions)
     },
     logout() {
-        return instance.delete(`auth/login`)
+        return instance.delete(`auth/login/`)
     },
-    auth(username, email, password) {
+    auth(requestOptions) {
         debugger
-        return instance.post(`/auth/users/`, {username, email, password})
+        return fetch("http://localhost:8000/auth/users/", requestOptions)
+    },
+    registrConfirm(requestOptions){
+        debugger
+        return fetch("http://localhost:8000/auth/users/activation/", requestOptions)
+    },
+}
+export const tokenAPI = {
+    refreshAccess(){
+        let a = document.cookie.split(/(\;)/)
+        let myHeaders = new Headers();
+        myHeaders.append("Cookie", `${a[0]}` );
+        debugger
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow',
+            withCredentials: true
+        };
+        return fetch("http://localhost:8000/auth/jwt/refresh/", requestOptions)
     }
 }

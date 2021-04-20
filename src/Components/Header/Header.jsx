@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
 import Style from './Header.module.css';
 import {Link, NavLink} from 'react-router-dom'
-import AuthorizationService from '../Services/AuthorizationService.js';
-
-const authorizationService = new AuthorizationService();
 
 
-class Header extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
-        // this.loadMore = this.loadMore.bind(this);
-    }
-
-
-    render() {
+const Header =  (props) => {
+        console.log(props.isAuth)
         return (
             <header>
                 <NavLink to="/calendar">календарь</NavLink>
                 <NavLink to="/mail">почта</NavLink>
                 <NavLink to="/demosnews">суровости</NavLink>
-                <NavLink to="/login">login</NavLink>
-                <NavLink to="/registrate">auth</NavLink>
+                    {props.isAuth
+                        ? <a>{props.username}  <button>Log out</button></a>
+                        : <NavLink to='/login' >Profile</NavLink>}
             </header>
         );
-    }
 }
+
 
 export default Header;

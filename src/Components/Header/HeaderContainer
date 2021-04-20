@@ -1,0 +1,17 @@
+import React from 'react';
+import Header from "./Header";
+import {connect} from "react-redux";
+import {getUserAuthData, logout} from "../../Redux/auth_reducer";
+let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE3ODkyMDY3LCJqdGkiOiJjZGFiOTJkMWRhMjE0NWM2ODU2ZDA0NTRjMGVlNmE3YyIsInVzZXJfaWQiOjd9.6UPsE9OKKAKLiav96hXzSdDDz5KGRkPusKiJEYVW9EY'
+
+class Contain extends React.Component {
+    render() {
+        return (
+            <Header />
+        );
+    }
+}
+const mapStateToProps= (state) => ({
+
+})
+export default connect(mapStateToProps,{})(Contain)

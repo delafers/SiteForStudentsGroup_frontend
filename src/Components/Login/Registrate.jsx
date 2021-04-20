@@ -1,8 +1,8 @@
 import React from 'react'
 import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
+import {login, logout, registr} from "../../Redux/createUser_reducer";
 import {NavLink, Redirect} from "react-router-dom";
-import {login} from "../../Redux/token_reducer";
 
 const LoginForm = (props) => {
     return(
@@ -11,44 +11,49 @@ const LoginForm = (props) => {
                 <Field placeholder={"Username"} name={'username'} component={'input'}/>
             </div>
             <div>
-                <Field placeholder={"Password"} name={'password'} component={'input'} type={"password"}/>
+                <Field placeholder={"Email"} name={'email'} component={'input'}/>
             </div>
             <div>
-                <button>Login</button>
+                <Field placeholder={"Password"} name={'password'} component={'input'} type={"password"}/>
+            </div>
+
+            <div>
+                <button>Create Account</button>
             </div>
         </form>
     )
 }
-const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
+const CreateAccountReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (props) => {
+const Registration = (props) => {
     const onSubmit = (formdatas) => {
+        debugger
         let formdata = new FormData();
         formdata.append("username",formdatas.username);
+        formdata.append("email",formdatas.email);
         formdata.append("password",formdatas.password);
         let myHeaders = new Headers();
-        myHeaders.append("Cookie", "refresh=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNTY5MjM4MywianRpIjoiNTExMmY3Y2I4MDUxNDkxMjk5MTYzNTMyZThmNmQ3NzAiLCJ1c2VyX2lkIjo3fQ.E6dVPsW4aK-iT1E1ibwgHn0fXgXPxq0ELLyRPRc2Cv4");
+        myHeaders.append("Cookie", "refresh=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
+            "eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNDYwOTY5MywianRpIjoiZGEzOGI2YTAyNzBlNGQ2OGI2MzcwMTY0N2UwMjZiZDIiLCJ1c2VyX2lkIjo3fQ." +
+            "pCIe85qGPWDQxsMLZ_2KLmHfvvsN4AdlUJE7Bube4DY");
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: formdata,
-            redirect:'follow',
-            withCredentials: true
+            redirect:'follow'
         }
-        props.login(requestOptions)
+        props.registr(requestOptions)
     }
-    if(props.isAuth) {
-        return <Redirect to={'/calendar'}/>
-    }
+
     return<div>
-        <h1>Login</h1>
-        <LoginReduxForm onSubmit={onSubmit}/>
+        <h1>Create account</h1>
+        <CreateAccountReduxForm onSubmit={onSubmit}/>
         <p>
-            <NavLink to='/registrate'>if you not registr, click here! </NavLink>
+            <NavLink to='/login'> already registered? </NavLink>
         </p>
     </div>
 }
 const mapStateToProps = (state) => ({
     isAuth:state.auth.isAuth
 })
-export default connect(mapStateToProps, {login}) (Login)
+export default connect(mapStateToProps, {registr}) (Registration)
