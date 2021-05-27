@@ -8,3 +8,13 @@ a {
     text-decoration: none;
     margin: 10px;
 }
+.item a {
+    color: #8c91b6;
+    text-decoration: none;
+    margin: 10px;}
+.item a.active {
+    color: black;
+    box-shadow: 0 0 30px #103a;
+    border-radius: 15px;
+
+}

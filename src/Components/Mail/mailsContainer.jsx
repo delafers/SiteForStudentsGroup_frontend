@@ -4,12 +4,12 @@ import * as axios from "axios";
 import Loading from "../Loading/Loading";
 import {setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching} from "../../Redux/LettersService";
 import Mail from "./MailsView";
-
+const baseURL = 'http://localhost:8000/'
 class letterContainer extends React.Component {
     componentDidMount() {
         debugger
         this.props.toggleIsFetching(true)
-        axios.get(`http://localhost:8000/api/letters/?count=10`).then(responce => {
+        axios.get(baseURL + `api/letters/?count=10`).then(responce => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(responce.data.results)
             this.props.setTotalUsersCount(responce.data.count)
@@ -18,7 +18,7 @@ class letterContainer extends React.Component {
     onPageChanged= (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true)
-        axios.get(`http://localhost:8000/api/letters/?count=10&page=
+        axios.get(baseURL +`api/letters/?count=10&page=
         ${Math.ceil(this.props.totalUsersCount/10) + 1 - pageNumber}`).
         then(responce => {
             debugger

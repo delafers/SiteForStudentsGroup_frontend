@@ -27,7 +27,6 @@ const Login = (props) => {
         formdata.append("username",formdatas.username);
         formdata.append("password",formdatas.password);
         let myHeaders = new Headers();
-        myHeaders.append("Cookie", "refresh=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNTY5MjM4MywianRpIjoiNTExMmY3Y2I4MDUxNDkxMjk5MTYzNTMyZThmNmQ3NzAiLCJ1c2VyX2lkIjo3fQ.E6dVPsW4aK-iT1E1ibwgHn0fXgXPxq0ELLyRPRc2Cv4");
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,

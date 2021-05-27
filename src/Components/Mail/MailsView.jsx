@@ -12,7 +12,7 @@ let Mail = (props) => {
     }
 
     return <div>
-        <div>
+        <div className={s.letterHead}>
             {pages.map(p => {
                 return <span className={props.currentPage === p && s.activePage}
                              onClick={(e) => {
@@ -21,16 +21,15 @@ let Mail = (props) => {
                 >{p}</span>
             })}
         </div>
-        {
-            props.users.map(u => <div key={u.id} className={s.letter}>
+        {props.users.map(u => <div key={u.id} className={s.letter}>
                 <NavLink to={'/mail/' + u.id}>
-                <div>
+                <div >
                     {u.mailer}
                 </div>
                 <div>
                     {u.topic}
                 </div>
-                <div>
+                <div className={s.text}>
                     {u.text}
                     {u.id}
                 </div>

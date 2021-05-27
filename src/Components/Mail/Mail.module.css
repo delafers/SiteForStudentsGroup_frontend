@@ -2,7 +2,30 @@
     font-weight: bold;
 }
 .letter{
-
     border: solid white 1px;
     text-align: center;
+    display: flex;
+    margin: 5px auto 0px auto;
+    padding: 0 10px ;
+    word-wrap: break-word;
+    align-items: center;
+    width: 150vh;
+    flex-direction: column;
+    border-radius: 15px;
+    max-width: 151vh;
+}
+.letterHead{
+    display: flex;
+    text-align: center;
+    margin: 5px auto 0px auto;
+    padding: 10px;
+    width: 150vh;
+    box-shadow: 0 0 10px #29324f;
+    border-radius: 15px;
+    align-items: center;
+    border: solid darkgray 1px;
+}
+.text{
+    width: 140vh;
+    padding: 0 5px;
 }

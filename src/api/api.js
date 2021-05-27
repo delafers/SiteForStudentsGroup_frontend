@@ -1,10 +1,15 @@
 import * as axios from "axios";
 
+const debug = true
+const baseURL = 'http://localhost:8000/'
 
-const instance = axios.create({
+if (debug !== true){
+    const baseURL = 'https://aficionadoleague.ru/'}
+
+/*const instance = axios.create({
     withCredentials: true,
     baseURL: 'http://localhost:8000/',
-});
+});*/
 
 export const authAPI = {
     me(result) {
@@ -15,21 +20,28 @@ export const authAPI = {
             headers: myHeaders,
             redirect: 'follow',
         };
-        return fetch("http://localhost:8000/auth/users/me/", requestOptions)
+        return fetch(baseURL + "auth/users/me/", requestOptions)
     },
     login(requestOptions) {
-        return fetch("http://localhost:8000/auth/jwt/create/", requestOptions)
+        return fetch(baseURL + "auth/jwt/create/", requestOptions)
     },
     logout() {
-        return instance.delete(`auth/login/`)
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            redirect: 'follow',
+        };
+        return fetch(baseURL + `auth/users/me/`, requestOptions)
     },
     auth(requestOptions) {
         debugger
-        return fetch("http://localhost:8000/auth/users/", requestOptions)
+        return fetch(baseURL + "auth/users/", requestOptions)
     },
     registrConfirm(requestOptions){
         debugger
-        return fetch("http://localhost:8000/auth/users/activation/", requestOptions)
+        return fetch(baseURL + "auth/users/activation/", requestOptions)
     },
 }
 export const tokenAPI = {
@@ -44,6 +56,6 @@ export const tokenAPI = {
             redirect: 'follow',
             withCredentials: true
         };
-        return fetch("http://localhost:8000/auth/jwt/refresh/", requestOptions)
+        return fetch(baseURL + "auth/jwt/refresh/", requestOptions)
     }
 }

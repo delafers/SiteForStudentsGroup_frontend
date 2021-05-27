@@ -10,7 +10,6 @@ import OneMail from "./Components/Mail/One_Letter/OneLetterContainer";
 import Login from "./Components/Login/Login";
 import Registration from "./Components/Login/Registrate";
 import MailConfirm from "./Components/Login/MailConfirmContainer";
-import Contain from "./Components/Header/HeaderContainer";
 import TeddyHead from "./Components/Header/Teddy";
 
 
@@ -19,7 +18,7 @@ const App = (props) => {
         <BrowserRouter>
         <div className={Style.App}>
             <TeddyHead/>
-            <Route path='/calendar' component={CalendarMenu}/>
+            <Route exact path='/' component={CalendarMenu}/>
             <Route path='/demosnews' component={DemosNews}/>
             <Route exact path='/mail' render={() => <MailsContainer/>}/>
             <Route path='/mail/:mailId' render={() => <OneMail/>}/>

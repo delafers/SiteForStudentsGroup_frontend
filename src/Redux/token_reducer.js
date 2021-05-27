@@ -35,7 +35,7 @@ export const login = (requestOptions) => (dispatch) => {
             if ((timeLifeToken - now.getTime()/1000 -1800) < 60){
                 dispatch(setTokenData(accessToken, timeLifeToken))
                 dispatch(getUserAuthData(accessToken.access))
-                //localStorage.setItem("access", accessToken.access)
+                localStorage.setItem("access", accessToken.access)
             }else{
                 dispatch(refreshToken(requestOptions))
             }
@@ -50,8 +50,6 @@ export const refreshToken = () => (dispatch) => {
             //let secondPart = atob(parceAccess[2])
             //let now = new Date();
             localStorage.setItem("access", accessToken.access)
-            console.log(localStorage.getItem("access"))
-            console.log(document.cookie)
             dispatch(getUserAuthData(localStorage.getItem("access")))
         }
     )

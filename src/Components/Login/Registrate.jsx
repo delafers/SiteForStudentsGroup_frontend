@@ -33,9 +33,6 @@ const Registration = (props) => {
         formdata.append("email",formdatas.email);
         formdata.append("password",formdatas.password);
         let myHeaders = new Headers();
-        myHeaders.append("Cookie", "refresh=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9." +
-            "eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNDYwOTY5MywianRpIjoiZGEzOGI2YTAyNzBlNGQ2OGI2MzcwMTY0N2UwMjZiZDIiLCJ1c2VyX2lkIjo3fQ." +
-            "pCIe85qGPWDQxsMLZ_2KLmHfvvsN4AdlUJE7Bube4DY");
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -56,4 +53,5 @@ const Registration = (props) => {
 const mapStateToProps = (state) => ({
     isAuth:state.auth.isAuth
 })
+
 export default connect(mapStateToProps, {registr}) (Registration)

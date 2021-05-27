@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import {connect} from "react-redux";
-import {getUserAuthData} from "../../Redux/auth_reducer";
+import {getUserAuthData, logout} from "../../Redux/auth_reducer";
 import {refreshToken} from "../../Redux/token_reducer";
 class TeddyHead extends React.Component {
     componentDidMount() {
@@ -21,7 +21,6 @@ class TeddyHead extends React.Component {
         }
 
     }
-
     render() {
         return(
             <Header {...this.props}/>
@@ -31,8 +30,6 @@ class TeddyHead extends React.Component {
 const mapStateToProps = (state) => ({
     isAuth:state.auth.isAuth,
     username: state.auth.username,
-    timeToken:state.token.timeLifeToken,
-    access:state.token.accessToken
 })
 
-export default connect(mapStateToProps,{getUserAuthData,refreshToken})(TeddyHead)
+export default connect(mapStateToProps,{getUserAuthData,refreshToken, logout})(TeddyHead)

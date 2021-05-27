@@ -35,9 +35,9 @@ export const getUserAuthData = (resultAccess) => (dispatch) => {
 export const logout = () => (dispatch) => {
     authAPI.logout().
     then(response => {
-        if (response.data.resultCode === 0){
             dispatch(setAuthUserData(null , null, null, false ))
-        }});
+            localStorage.removeItem('access')
+        });
 }
 
 export default authReducer
