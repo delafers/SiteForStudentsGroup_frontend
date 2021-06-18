@@ -1,0 +1,61 @@
+.returnBack {
+    color: brown;
+    text-align: left;
+}
+
+.mail {
+    border: solid black 2px;
+    display: flex;
+    margin: 5px auto 0px auto;
+    padding: 5px 5px ;
+    word-wrap: break-word;
+    width: 70vw;
+    flex-direction: column;
+    border-radius: 15px;
+    max-width: 71vw;
+    background-color: #282c34;
+    box-shadow: 0 1px 10px black;
+}
+
+.sender {
+    margin-top: 15px;
+    color: white;
+    width: 65vw;
+    border: solid black 2px;
+    padding: 5px 5px;
+    background-color: #182039;
+}
+
+.topic {
+    margin-top: 15px;
+    color: white;
+    width: 65vw;
+    border: solid black 2px;
+    padding: 5px 5px;
+    background-color: #182039;
+}
+
+.text {
+    margin-top: 15px;
+    color: white;
+    width: 65vw;
+    border: solid black 2px;
+    padding: 7px 7px;
+    background-color: #182039;
+}
+
+.file {
+    margin-top: 25px;
+    color: blue;
+    width: 65vw;
+    background-color: #182039;
+
+}
+
+.description {
+    color: black;
+    padding: 20px;
+}
+
+.main {
+}

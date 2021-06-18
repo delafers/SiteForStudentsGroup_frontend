@@ -10,7 +10,7 @@ let Mail = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i)
     }
-
+    debugger
     return <div>
         <div className={s.letterHead}>
             {pages.map(p => {
@@ -23,19 +23,21 @@ let Mail = (props) => {
         </div>
         {props.users.map(u => <div key={u.id} className={s.letter}>
                 <NavLink to={'/mail/' + u.id}>
-                <div >
-                    {u.mailer}
-                </div>
-                <div>
-                    {u.topic}
-                </div>
-                <div className={s.text}>
-                    {u.text}
-                    {u.id}
-                </div>
+                    <div className={s.text}>
+                        {u.mailer}
+                    </div>
+                    <div className={s.text}>
+                        {u.topic}
+                    </div>
+                    <div className={s.text}>
+
+                    </div>
+                    <div>
+                        {u.letter.file ? u.letter.file : ""}
+                    </div>
                 </NavLink>
-                </div>
-                )
+            </div>
+        )
 
         }
     </div>

@@ -1,7 +1,10 @@
 header {
     background-color: #1e2745;
-    height: 30px;
+    height: 32px;
     width: 100%;
+    text-align: center;
+    align-items: end;
+    justify-content: end;
 }
 a {
     color: #8c91b6;
@@ -11,10 +14,11 @@ a {
 .item a {
     color: #8c91b6;
     text-decoration: none;
-    margin: 10px;}
+}
+
 .item a.active {
     color: black;
-    box-shadow: 0 0 30px #103a;
-    border-radius: 15px;
+    box-shadow: 0 0 3px #103a;
+    border-radius: 11px;
 
 }

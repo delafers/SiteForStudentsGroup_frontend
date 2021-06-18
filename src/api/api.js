@@ -59,3 +59,8 @@ export const tokenAPI = {
         return fetch(baseURL + "auth/jwt/refresh/", requestOptions)
     }
 }
+export const mailAPI = {
+    OneMail(mailId){
+       return  axios.get(baseURL +`api/letters/` + mailId)
+    }
+}

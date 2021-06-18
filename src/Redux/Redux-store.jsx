@@ -5,6 +5,7 @@ import {reducer as formReducer} from 'redux-form'
 import authReducer from "./createUser_reducer";
 import thunkMiddleware from "redux-thunk"
 import tokenReducer from "./token_reducer";
+import DemosNewsReducer from "./demosNews_reducer";
 
 
 
@@ -13,6 +14,7 @@ let reducers = combineReducers({
         letterPage: MailReducer,
         auth: authReducer,
         token: tokenReducer,
+        news: DemosNewsReducer,
         form: formReducer
     }
 );

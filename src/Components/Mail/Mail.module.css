@@ -9,23 +9,27 @@
     padding: 0 10px ;
     word-wrap: break-word;
     align-items: center;
-    width: 150vh;
+    width: 70vw;
     flex-direction: column;
     border-radius: 15px;
-    max-width: 151vh;
+    max-width: 71vw;
+}
+.letter:hover{
+    border: solid lightslategray 3px;
+    box-shadow: 0 0 10px #10394f;
 }
 .letterHead{
     display: flex;
     text-align: center;
     margin: 5px auto 0px auto;
     padding: 10px;
-    width: 150vh;
+    width: 70vw;
     box-shadow: 0 0 10px #29324f;
     border-radius: 15px;
     align-items: center;
-    border: solid darkgray 1px;
+    border: solid black 3px;
 }
 .text{
-    width: 140vh;
+    width: 65vw;
     padding: 0 5px;
 }

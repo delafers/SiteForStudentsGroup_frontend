@@ -37,7 +37,7 @@ const Login = (props) => {
         props.login(requestOptions)
     }
     if(props.isAuth) {
-        return <Redirect to={'/calendar'}/>
+        return <Redirect to={'/mail'}/>
     }
     return<div>
         <h1>Login</h1>
