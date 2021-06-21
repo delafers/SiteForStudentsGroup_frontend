@@ -1,10 +1,10 @@
 import * as axios from "axios";
 
-const debug = true
+const debug = false
 const baseURL = 'http://localhost:8000/'
 
 if (debug !== true){
-    const baseURL = 'https://aficionadoleague.ru/'}
+    const baseURL = 'https://debug.aficionadoleague.ru/'}
 
 /*const instance = axios.create({
     withCredentials: true,
