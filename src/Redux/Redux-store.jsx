@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import lettersReducer from "./LettersService";
 import MailReducer from "./Letter_reducer";
 import {reducer as formReducer} from 'redux-form'
-import authReducer from "./createUser_reducer";
+import authReducer from "./auth_reducer";
 import thunkMiddleware from "redux-thunk"
 import tokenReducer from "./token_reducer";
 import DemosNewsReducer from "./demosNews_reducer";

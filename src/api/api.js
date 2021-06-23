@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const debug = false
+const debug = true
 const baseURL = 'http://localhost:8000/'
 
 if (debug !== true){
@@ -64,3 +64,28 @@ export const mailAPI = {
        return  axios.get(baseURL +`api/letters/` + mailId)
     }
 }
+export const NewsAPI = {
+    getCurrentNews(tagsId){
+        debugger
+        let requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        {tagsId == undefined? tagsId = "": tagsId = "?tags="+tagsId}
+        return fetch(baseURL+"api/demosnews/posts/", requestOptions)
+    }
+}
+export default class DaysService {
+    getDays(year, month) {
+        if (String(month).length === 1) {month = '0' + String(month)};
+        const url = `${baseURL}/api/calendar/days/${year}${month}`;
+        return axios.get(url).then(response => response.data);
+    }
+    getDay(year, month, day) {
+        if (String(month).length === 1) {month = '0' + String(month)};
+        if (String(day).length === 1) {day = '0' + String(day)};
+        const url = `${baseURL}/api/calendar/days/${year}${month}${day}`;
+        return axios.get(url).then(response => response.data);
+    }
+}
+

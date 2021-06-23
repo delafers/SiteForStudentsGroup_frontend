@@ -6,8 +6,8 @@ import Table from './Calendar/Table/Table';
 import Info from './Info/Info';
 import DateBlock from './Calendar/Date/Date';
 import Loading from '../Loading/Loading'
-import DaysService from '../Services/DaysService.js';
-import InfoService from '../Services/InfoService.js';
+import DaysService from '../Services/DaysService';
+import InfoService from '../Services/InfoService';
 
 const daysService = new DaysService();
 const infoService = new InfoService();

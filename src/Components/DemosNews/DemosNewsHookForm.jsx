@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
@@ -6,8 +6,11 @@ import s from './DemosNews.module.css'
 import OneTag from "./OneTag";
 import PostsContainer from "./Post/PostContainer";
 import ModalCreate from "./CreateNewsPopup/CreateNews";
+import {getNewsByTags} from "../../Redux/demosNews_reducer";
+import PostsView from "./AddPost/AddPostContainer";
 
 const TagsForm = (props) => {
+
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={s.tagBar}>
@@ -22,11 +25,13 @@ const TagsForm = (props) => {
 const TagsReduxForm = reduxForm({form: 'login'})(TagsForm)
 
 const Tags = (props) => {
+
     const [tags, setTags] = useState([]);
     const [modalActive, setModalActive] = useState(false)
 
+
     const onSubmit = (formdatas) => {
-        debugger
+
         setTags([...tags, formdatas.tagName])
     }
     const deleteTextFromTags = textToRemove => {
@@ -51,19 +56,18 @@ const Tags = (props) => {
             <button onClick={() => setModalActive(true)}>Добавить новость</button>
         </div>
         <div>
-            <ModalCreate active={modalActive} setActive={setModalActive}>
-                <p>
-                    why?
-                </p>
+            <ModalCreate active={modalActive} setActive={setModalActive} >
+                <PostsContainer/>
             </ModalCreate>
         </div>
         <div>
-            <PostsContainer/>
+            <PostsView/>
         </div>
 
     </div>
 }
 const mapStateToProps = (state) => ({
-    postData :state.news.postInfo
+    postData :state.news.postInfo,
+    username: state.auth.username
 })
 export default connect(mapStateToProps, {}) (Tags)

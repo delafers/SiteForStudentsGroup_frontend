@@ -4,19 +4,12 @@ import * as axios from "axios";
 import Loading from "../Loading/Loading";
 import {setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching} from "../../Redux/LettersService";
 import Mail from "./MailsView";
-const baseURL = 'https://debug.aficionadoleague.ru/'
+const baseURL = 'http://localhost:8000/'
 class letterContainer extends React.Component {
     componentDidMount() {
-        let myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
-        let requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow',
-            withCredentials: true
-        };
+
         this.props.toggleIsFetching(true)
-        axios.get(baseURL + `api/letters/?count=10`,requestOptions).then(responce => {
+        axios.get(baseURL + `api/letters/?count=10&page=1`).then(responce => {
             this.props.toggleIsFetching(false)
             this.props.setUsers(responce.data.results)
             this.props.setTotalUsersCount(responce.data.count)
@@ -52,7 +45,6 @@ class letterContainer extends React.Component {
     }
 }
 let mapStateToProps =(state) => {
-    console.log(state)
     return{
         users: state.MailPage.users,
         totalUsersCount: state.MailPage.totalUsersCount,
