@@ -21,7 +21,7 @@ const LoginForm = (props) => {
 }
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (formdatas) => {
         let formdata = new FormData();
         formdata.append("username",formdatas.username);
@@ -34,11 +34,10 @@ const Login = (props) => {
             redirect:'follow',
             withCredentials: true
         }
-        props.login(requestOptions)
+        debugger
+        login(requestOptions)
     }
-    if(props.isAuth) {
-        return <Redirect to={'/mail'}/>
-    }
+
     return<div>
         <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit}/>

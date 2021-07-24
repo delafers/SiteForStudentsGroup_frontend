@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
-const debug = true
-const baseURL = 'http://localhost:8000/'
+const debug = false
+const baseURL = 'https://debug.aficionadoleague.ru/'
 
 if (debug !== true){
     const baseURL = 'https://debug.aficionadoleague.ru/'}
@@ -23,6 +23,7 @@ export const authAPI = {
         return fetch(baseURL + "auth/users/me/", requestOptions)
     },
     login(requestOptions) {
+        debugger
         return fetch(baseURL + "auth/jwt/create/", requestOptions)
     },
     logout() {
@@ -48,13 +49,11 @@ export const tokenAPI = {
     refreshAccess(){
         let a = document.cookie.split(/(\;)/)
         let myHeaders = new Headers();
-        myHeaders.append("Cookie", `${a[0]}` );
-        debugger
+        myHeaders.append("Cookie", `${a[2]}` );
         let requestOptions = {
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow',
-            withCredentials: true
         };
         return fetch(baseURL + "auth/jwt/refresh/", requestOptions)
     }
@@ -71,8 +70,31 @@ export const NewsAPI = {
             method: 'GET',
             redirect: 'follow'
         };
-        {tagsId == undefined? tagsId = "": tagsId = "?tags="+tagsId}
-        return fetch(baseURL+"api/demosnews/posts/", requestOptions)
+        {tagsId === undefined? tagsId = "": tagsId = "?tags="+tagsId}
+        return fetch(baseURL+`api/demosnews/posts/${tagsId}`, requestOptions)
+    },
+    sendNewPost(tag, text, username){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let formdata = new FormData();
+        formdata.append("title", tag);
+        formdata.append("text", text);
+        formdata.append("username", username);
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+        return fetch(baseURL +"demosnews/posts/", requestOptions)
+    },
+    getAllTags(){
+        let requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+       return  fetch(baseURL +"demosnews/tags/", requestOptions)
+
     }
 }
 export default class DaysService {

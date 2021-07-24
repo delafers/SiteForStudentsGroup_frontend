@@ -1,5 +1,9 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8000';
+const debug = false
+const API_URL = 'https://debug.aficionadoleague.ru/'
+
+if (debug !== true){
+    const API_URL = 'https://debug.aficionadoleague.ru/'}
 
 export default class InfoService{
     getInfo() {

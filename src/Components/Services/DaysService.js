@@ -1,8 +1,12 @@
 import axios from 'axios';
-const API_URL = 'http://localhost:8000';
+const debug = false
+const API_URL = 'https://debug.aficionadoleague.ru/'
+
+if (debug !== true){
+    const API_URL = 'https://debug.aficionadoleague.ru/'}
+
 
 export default class DaysService{
-
     getDays(year, month) {
         if (String(month).length === 1) {month = '0' + String(month)};
         const url = `${API_URL}/api/calendar/days/${year}${month}`;

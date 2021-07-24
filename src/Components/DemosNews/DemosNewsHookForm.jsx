@@ -6,8 +6,8 @@ import s from './DemosNews.module.css'
 import OneTag from "./OneTag";
 import PostsContainer from "./Post/PostContainer";
 import ModalCreate from "./CreateNewsPopup/CreateNews";
-import {getNewsByTags} from "../../Redux/demosNews_reducer";
 import PostsView from "./AddPost/AddPostContainer";
+import {getNewsByTags, SetActiveTags} from "../../Redux/demosNews_reducer";
 
 const TagsForm = (props) => {
 
@@ -31,16 +31,16 @@ const Tags = (props) => {
 
 
     const onSubmit = (formdatas) => {
-
+        debugger
         setTags([...tags, formdatas.tagName])
+        props.SetActiveTags(formdatas.tagName)
+
     }
-    const deleteTextFromTags = textToRemove => {
+    const deleteTextFromTags = (textToRemove) => {
         setTags(tags.filter(tag => tag != textToRemove))
     }
 
-    if(props.isAuth) {
-        return <Redirect to={'/Login'}/>
-    }
+
     return<div className={s.main}>
         <h1>Create news</h1>
         <div className={s.tagBar}>
@@ -66,8 +66,10 @@ const Tags = (props) => {
 
     </div>
 }
+
 const mapStateToProps = (state) => ({
     postData :state.news.postInfo,
     username: state.auth.username
 })
-export default connect(mapStateToProps, {}) (Tags)
+
+export default connect(mapStateToProps, {getNewsByTags, SetActiveTags}) (Tags)

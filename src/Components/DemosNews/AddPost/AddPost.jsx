@@ -1,29 +1,32 @@
 import React from 'react';
-import Style from './AddPost.module.css';
-import StyleParent from '../DemosNews.module.css';
+import s from './AddPost.module.css';
 
 
 const OnePost = (props) => {
     return   (
-        <div >
-            <p>
-                tags : {props.tags}
-            </p>
+        <div className={s.Event}>
             <div >
-                {props.username}
+                Пользователь: {props.username}
+                <span>
+                    теги: {props.tags}
+                </span>
             </div>
-            <p>
-                {props.text}
-            </p>
-
+            <div>
+                Текст: {props.text}
+                <span>
+                    {props.date}
+                </span>
+            </div>
         </div>
 
     )
 }
 const AddPost = (props) => {
-    let PostsElements = props.postInfo.map(post => <OnePost username={post.username} tags={post.title} text={post.text}/>);
+    debugger
+    let PostsElements = props.postInfo.map(post => <OnePost date={post.date} username={post.author.username}
+                                                            tags={post.title} text={post.text}/>);
     return(
-        <div>
+        <div >
             {PostsElements}
         </div>
     )

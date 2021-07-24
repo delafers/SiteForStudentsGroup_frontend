@@ -1,33 +1,25 @@
 import React from "react";
 import s from './Mail.module.css'
 import {NavLink} from "react-router-dom";
+import Paginator from "../common/Paginator/Paginator";
 
-let Mail = (props) => {
-
-    let pagesCount = Math.ceil(props.totalUsersCount / 10)
-
-    let pages = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i)
-    }
-    debugger
+let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching}) => {
     return <div>
         <div className={s.letterHead}>
-            {pages.map(p => {
-                return <span className={props.currentPage === p && s.activePage}
-                             onClick={(e) => {
-                                 props.onPageChanged(p)
-                             }}
-                >{p}</span>
-            })}
+            <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged} pageSize={"10"} />
+            <button onClick={() => {}}>Update mails list</button>
         </div>
-        {props.users.map(u => <div key={u.id} className={s.letter}>
+        {users.map(u => <div key={u.id} className={s.letter}>
                 <NavLink to={'/mail/' + u.id}>
                     <div className={s.text}>
                         {u.mailer}
+                        <span className={s.time}>
+                            {u.date_time}
+                        </span>
                     </div>
                     <div className={s.text}>
                         {u.topic}
+
                     </div>
                     <div className={s.text}>
 

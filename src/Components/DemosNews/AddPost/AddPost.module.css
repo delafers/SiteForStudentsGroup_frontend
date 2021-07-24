@@ -8,11 +8,21 @@
 }
 
 .Event {
-    display: grid;
-    grid-template-columns: 40px 5fr;
-    grid-template-rows: 20px auto;
-    grid-template-areas:
-            "color time"
-            ". title";
-    margin-top: 10px;
+    border: solid white 2px;
+    text-align: center;
+    display: flex;
+    margin: 5px auto 0px auto;
+    padding: 0 10px ;
+    word-wrap: break-word;
+    align-items: center;
+    width: 70vw;
+    flex-direction: column;
+    border-radius: 15px;
+    max-width: 70vw;
+
+}
+.Event span{
+    color: brown;
+    padding-left: 30px;
+    margin-right: auto;
 }

@@ -29,7 +29,16 @@
     align-items: center;
     border: solid black 3px;
 }
+.letterHead button{
+    background-color: brown;
+    color: lightgreen;
+    border: solid black 3px;
+}
 .text{
     width: 65vw;
     padding: 0 5px;
+}
+.time{
+    padding-left: 40px;
+    color: lightgreen;
 }
