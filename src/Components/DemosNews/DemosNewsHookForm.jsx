@@ -7,7 +7,7 @@ import OneTag from "./OneTag";
 import PostsContainer from "./Post/PostContainer";
 import ModalCreate from "./CreateNewsPopup/CreateNews";
 import PostsView from "./AddPost/AddPostContainer";
-import {getNewsByTags, SetActiveTags} from "../../Redux/demosNews_reducer";
+import {getNewsByTags, removeTag, SetActiveTags} from "../../Redux/demosNews_reducer";
 
 const TagsForm = (props) => {
 
@@ -31,13 +31,13 @@ const Tags = (props) => {
 
 
     const onSubmit = (formdatas) => {
-        debugger
         setTags([...tags, formdatas.tagName])
         props.SetActiveTags(formdatas.tagName)
 
     }
     const deleteTextFromTags = (textToRemove) => {
         setTags(tags.filter(tag => tag != textToRemove))
+        props.removeTag(textToRemove)
     }
 
 
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => ({
     username: state.auth.username
 })
 
-export default connect(mapStateToProps, {getNewsByTags, SetActiveTags}) (Tags)
+export default connect(mapStateToProps, {getNewsByTags, SetActiveTags, removeTag}) (Tags)

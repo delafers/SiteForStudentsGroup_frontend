@@ -6,7 +6,7 @@ import {
     addPostToServer,
     getNewsByTags,
     onPostChange,
-    onTagsChange, pushAllTags
+    onTagsChange, onTitleChange, pushAllTags
 } from "../../../Redux/demosNews_reducer";
 import Post from "./Post";
 
@@ -36,6 +36,6 @@ let mapStateToProps = (state) => {
 
 
 
-const PostsContainer = connect(mapStateToProps,{onPostChange, onTagsChange,
+const PostsContainer = connect(mapStateToProps,{onPostChange, onTagsChange, onTitleChange,
     addComments, getNewsByTags,addPostToServer, pushAllTags})(PostContainer);
 export default PostsContainer

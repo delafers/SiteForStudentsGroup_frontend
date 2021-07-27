@@ -10,3 +10,12 @@
     box-shadow: 0 0 10px #29324f;
     width: 100%;
 }
+.text {
+    width: 90%;
+    height: 150px;
+    background-color: orange;
+}
+.title {
+    width: 90%;
+    height: 80px;
+}

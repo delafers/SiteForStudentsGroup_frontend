@@ -1,9 +1,5 @@
 import axios from 'axios';
-const debug = false
-const API_URL = 'https://debug.aficionadoleague.ru/'
-
-if (debug !== true){
-    const API_URL = 'https://debug.aficionadoleague.ru/'}
+const API_URL = 'http://80.78.240.154/'
 
 export default class InfoService{
     getInfo() {

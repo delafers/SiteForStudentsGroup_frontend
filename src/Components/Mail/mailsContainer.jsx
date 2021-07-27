@@ -4,7 +4,7 @@ import * as axios from "axios";
 import Loading from "../Loading/Loading";
 import {setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching} from "../../Redux/LettersService";
 import Mail from "./MailsView";
-const baseURL = 'https://debug.aficionadoleague.ru/'
+const baseURL = 'http://80.78.240.154/'
 class letterContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true)

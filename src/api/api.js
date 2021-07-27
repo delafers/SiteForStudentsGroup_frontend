@@ -1,10 +1,10 @@
 import * as axios from "axios";
 
 const debug = false
-const baseURL = 'https://debug.aficionadoleague.ru/'
+const baseURL = 'http://80.78.240.154/'
 
 if (debug !== true){
-    const baseURL = 'https://debug.aficionadoleague.ru/'}
+    const baseURL = 'https://aficionadoleague.ru/'}
 
 /*const instance = axios.create({
     withCredentials: true,
@@ -64,14 +64,34 @@ export const mailAPI = {
     }
 }
 export const NewsAPI = {
-    getCurrentNews(tagsId){
+    getCurrentNews(tags){
         debugger
+        let i = 0;
+        let activeTag = "";
+        if(tags != undefined) {
+            if (tags != []) {
+                while (i < tags.length) {
+                    if(i === 0){
+                    activeTag = tags[i]
+                    i++
+                    }else {
+                        activeTag = activeTag+","+tags[i]
+                        i++
+                    }
+                }
+                let requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+                return fetch(baseURL + `api/demosnews/posts/?tags=${activeTag}`, requestOptions)
+            }
+        }
+        {(tags === undefined || tags.length === 0) ? tags = "": tags = "?tags="+tags}
         let requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
-        {tagsId === undefined? tagsId = "": tagsId = "?tags="+tagsId}
-        return fetch(baseURL+`api/demosnews/posts/${tagsId}`, requestOptions)
+        return fetch(baseURL+`api/demosnews/posts/${tags}`, requestOptions)
     },
     sendNewPost(tag, text, username){
         let myHeaders = new Headers();
@@ -86,14 +106,14 @@ export const NewsAPI = {
             body: formdata,
             redirect: 'follow'
         };
-        return fetch(baseURL +"demosnews/posts/", requestOptions)
+        return fetch(baseURL +"api/demosnews/posts/", requestOptions)
     },
     getAllTags(){
         let requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
-       return  fetch(baseURL +"demosnews/tags/", requestOptions)
+       return  fetch(baseURL +"api/demosnews/tags/", requestOptions)
 
     }
 }

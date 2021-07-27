@@ -39,12 +39,13 @@ export const login = (requestOptions) => (dispatch) => {
             }else{
                 dispatch(refreshToken(requestOptions))
             }
-        })
+        }).catch()
 }
 export const refreshToken = () => (dispatch) => {
     tokenAPI.refreshAccess().
         then(response => response.text()).
         then(result => {
+            debugger
             let accessToken = JSON.parse(result)
             let parceAccess = accessToken.access.split(/(\.)/);
             //let secondPart = atob(parceAccess[2])
