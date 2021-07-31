@@ -25,15 +25,12 @@ const TagsForm = (props) => {
 const TagsReduxForm = reduxForm({form: 'login'})(TagsForm)
 
 const Tags = (props) => {
-
     const [tags, setTags] = useState([]);
     const [modalActive, setModalActive] = useState(false)
-
 
     const onSubmit = (formdatas) => {
         setTags([...tags, formdatas.tagName])
         props.SetActiveTags(formdatas.tagName)
-
     }
     const deleteTextFromTags = (textToRemove) => {
         setTags(tags.filter(tag => tag != textToRemove))
@@ -57,7 +54,7 @@ const Tags = (props) => {
         </div>
         <div>
             <ModalCreate active={modalActive} setActive={setModalActive} >
-                <PostsContainer/>
+                <PostsContainer setActive={setModalActive}/>
             </ModalCreate>
         </div>
         <div>

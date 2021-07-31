@@ -61,6 +61,15 @@ export const tokenAPI = {
 export const mailAPI = {
     OneMail(mailId){
        return  axios.get(baseURL +`api/letters/` + mailId)
+    },
+    mailCheck(){
+        return axios.get(baseURL +"/api/letters/check_email/10")
+    },
+    getAllMails(){
+        return axios.get(baseURL + `api/letters/?count=10&page=1`)
+    },
+    getCurrentPageMails(pageNumber){
+        return axios.get(baseURL +`api/letters/?count=10&page=${pageNumber}`)
     }
 }
 export const NewsAPI = {
@@ -86,20 +95,20 @@ export const NewsAPI = {
                 return fetch(baseURL + `api/demosnews/posts/?tags=${activeTag}`, requestOptions)
             }
         }
-        {(tags === undefined || tags.length === 0) ? tags = "": tags = "?tags="+tags}
+        {tags === undefined ? tags = "": tags = "?tags="+tags}
         let requestOptions = {
             method: 'GET',
             redirect: 'follow'
         };
         return fetch(baseURL+`api/demosnews/posts/${tags}`, requestOptions)
     },
-    sendNewPost(tag, text, username){
+    sendNewPost(title, text, tag){
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
         let formdata = new FormData();
-        formdata.append("title", tag);
+        formdata.append("title", title);
         formdata.append("text", text);
-        formdata.append("username", username);
+        formdata.append("tags", tag);
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -117,7 +126,7 @@ export const NewsAPI = {
 
     }
 }
-export default class DaysService {
+export class DaysService {
     getDays(year, month) {
         if (String(month).length === 1) {month = '0' + String(month)};
         const url = `${baseURL}/api/calendar/days/${year}${month}`;

@@ -25,5 +25,5 @@ let mapStateToProps = (state) => {
 
 
 
-const PostsView = connect(mapStateToProps,{onPostChange, addComments, getNewsByTags})(AddPostContainer);
+const PostsView = connect(mapStateToProps,{onPostChange, getNewsByTags})(AddPostContainer);
 export default PostsView

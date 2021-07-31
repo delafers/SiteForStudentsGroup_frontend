@@ -22,14 +22,14 @@ const Posts = (props) => {
     }
 
     let onAddComments = () => {
-        let date = new Date()
-        props.addPostToServer(props.title, props.textUser, date, props.username)
+        props.addPostToServer(props.title, props.textUser, props.postTag)
+        props.setActive(false)
     }
 
     return (
         <div>
             <div>
-                <textarea ref={NewTag} onChange={onTagsChange} value={props.title} className={s.title}>Your tags</textarea>
+                <textarea ref={NewTag} onChange={onTagsChange} value={props.postTag} className={s.title}>Your tags</textarea>
             </div>
             <div>
                 <textarea ref={Title} onChange={onTitleChange} value={props.title} className={s.title}>Your title</textarea>

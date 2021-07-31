@@ -1,3 +1,5 @@
+import {mailAPI} from "../api/api";
+
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
@@ -43,4 +45,28 @@ export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, current
 export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalCount})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETING, isFetching})
 
+export const getMails = () => {
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        let response = await mailAPI.getAllMails()
+        dispatch(setUsers(response.data.results))
+        dispatch(setTotalUsersCount(response.data.count))
+        dispatch(toggleIsFetching(false))
+    }
+}
+export const setMailPage= (pageNumber) =>{
+    return async (dispatch) =>{
+        dispatch(setCurrentPage(pageNumber));
+        dispatch(toggleIsFetching(true));
+        const response = await mailAPI.getCurrentPageMails(pageNumber)
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(response.data.results));
+    }
+}
+export const updateMails = () => {
+    return async (dispatch) =>{
+        await mailAPI.mailCheck()
+        dispatch(getMails())
+    }
+}
 export default lettersReducer

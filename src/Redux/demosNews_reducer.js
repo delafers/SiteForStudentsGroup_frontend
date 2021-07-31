@@ -14,28 +14,12 @@ let initialState = {
     activeTags: [],
     title: null,
     textUser: null,
-    username: null,
+    postTag: null,
     tagsCreate: null
 };
 
 const DemosNewsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_COMMENT: {
-            debugger;
-            let newcomment = {
-                username: "Vlad",
-                title: state.title,
-                text: state.textUser
-            };
-            debugger
-            let stateCopy = {
-                ...state,
-                postInfo: [...state.postInfo, newcomment],
-                textUser: "",
-                title: ""
-            }
-            return stateCopy;
-        }
         case  UPDATE_COMMENT_TEXT: {
             return {
                 ...state,
@@ -46,14 +30,13 @@ const DemosNewsReducer = (state = initialState, action) => {
             debugger
             return {
                 ...state,
-                title: action.textareatag,
+                postTag: action.textareatag,
             }
         }
         case  UPDATE_TITLE_TEXT: {
-            debugger
             return {
                 ...state,
-                title: action.textareatag,
+                title: action.textareatitle,
             }
         }
         case SET_NEWS: {
@@ -89,8 +72,7 @@ const DemosNewsReducer = (state = initialState, action) => {
 }
 export const onPostChange = (comment) => ({type: UPDATE_COMMENT_TEXT, texariacomment: comment})
 export const onTagsChange = (comment) => ({type: UPDATE_TAGS_TEXT, textareatag: comment})
-export const onTitleChange = (comment) => ({type: UPDATE_TITLE_TEXT, textareatag: comment})
-export const addComments = () => ({type: ADD_COMMENT})
+export const onTitleChange = (comment) => ({type: UPDATE_TITLE_TEXT, textareatitle: comment})
 const setNewsData = (postInfo) => ({type: SET_NEWS, postInfo})
 const setTagsData = (tags) => ({type: SET_TAGS, tags})
 const removeActiveTag = (oneTag) => ({type: REMOVE_TAG, oneTag})
@@ -104,11 +86,10 @@ export const getNewsByTags = (tags) => (dispatch) => {
             dispatch(setNewsData(NewsData.results))
         })
 }
-export const addPostToServer = (tag, text, date, username) => (dispatch) => {
-    NewsAPI.sendNewPost(tag, text, username)
+export const addPostToServer = (title, text, tag ) => (dispatch) => {
+    NewsAPI.sendNewPost(title, text, tag)
         .then(response => response.text())
-        .then(result => console.log(result))
-    dispatch(addComments())
+        .then(result => dispatch(getNewsByTags()))
 }
 export const pushAllTags = () => (dispatch) => {
     NewsAPI.getAllTags()

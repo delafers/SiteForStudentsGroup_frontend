@@ -2,7 +2,6 @@ import React from 'react'
 import Posts from "./Post";
 import {connect} from "react-redux";
 import {
-    addComments,
     addPostToServer,
     getNewsByTags,
     onPostChange,
@@ -19,8 +18,8 @@ class PostContainer extends React.Component{
         return<div>
             <Post postInfo={this.props.postInfo} textUser={this.props.textUser}
                   title={this.props.title} onTagsChange={this.props.onTagsChange}
-                onPostChange={this.props.onPostChange} addComments={this.props.addComments}
-                  addPostToServer={this.props.addPostToServer} username={this.props.username}/>
+                onPostChange={this.props.onPostChange} addPostToServer={this.props.addPostToServer} username={this.props.username}
+                  postTag={this.props.postTag} onTitleChange={this.props.onTitleChange} setActive={this.props.setActive}/>
         </div>
     }
 }
@@ -30,6 +29,7 @@ let mapStateToProps = (state) => {
         title: state.news.title,
         textUser: state.news.textUser,
         username: state.news.username,
+        postTag: state.news.postTag,
     }
 }
 
@@ -37,5 +37,5 @@ let mapStateToProps = (state) => {
 
 
 const PostsContainer = connect(mapStateToProps,{onPostChange, onTagsChange, onTitleChange,
-    addComments, getNewsByTags,addPostToServer, pushAllTags})(PostContainer);
+    getNewsByTags,addPostToServer, pushAllTags})(PostContainer);
 export default PostsContainer
