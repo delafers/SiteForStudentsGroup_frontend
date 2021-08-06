@@ -1,13 +1,16 @@
 import React from "react";
 import s from './Mail.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import Paginator from "../common/Paginator/Paginator";
 
-let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, updateMails}) => {
+let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, updateMails,isAuth}) => {
+    if(!isAuth){
+        return <Redirect to={"/Login"}/>
+    }
     return <div>
         <div className={s.letterHead}>
             <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged} pageSize={"10"} />
-            <button onClick={() => {updateMails()}}>Update mails list</button>
+            <button onClick={() => {updateMails()}} disabled={isFetching}>Update mails list</button>
         </div>
         {users.map(u => <div key={u.id} className={s.letter}>
                 <NavLink to={'/mail/' + u.id}>

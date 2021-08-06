@@ -8,6 +8,7 @@ import PostsContainer from "./Post/PostContainer";
 import ModalCreate from "./CreateNewsPopup/CreateNews";
 import PostsView from "./AddPost/AddPostContainer";
 import {getNewsByTags, removeTag, SetActiveTags} from "../../Redux/demosNews_reducer";
+import {createField} from "../common/FormsControls/FormsControls";
 
 const TagsForm = (props) => {
 
@@ -15,6 +16,8 @@ const TagsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={s.tagBar}>
                 <Field placeholder={"Add Tag"} name={'tagName'} component={'input'}/>
+                {createField("Add Tag", 'tagName', [] )}
+
                 <button>Create</button>
                   search by tag
             </div>
@@ -22,9 +25,10 @@ const TagsForm = (props) => {
         </form>
     )
 }
-const TagsReduxForm = reduxForm({form: 'login'})(TagsForm)
+const TagsReduxForm = reduxForm({form: 'tags'})(TagsForm)
 
 const Tags = (props) => {
+
     const [tags, setTags] = useState([]);
     const [modalActive, setModalActive] = useState(false)
 
@@ -60,13 +64,13 @@ const Tags = (props) => {
         <div>
             <PostsView/>
         </div>
-
     </div>
 }
 
 const mapStateToProps = (state) => ({
     postData :state.news.postInfo,
-    username: state.auth.username
+    username: state.auth.username,
+    isAuth: state.auth.isAuth
 })
 
 export default connect(mapStateToProps, {getNewsByTags, SetActiveTags, removeTag}) (Tags)

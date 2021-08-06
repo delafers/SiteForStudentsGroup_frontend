@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
@@ -35,8 +36,9 @@ export const getUserAuthData = () => (dispatch) => {
 export const registr = (requestOptions) => (dispatch) => {
     authAPI.auth(requestOptions).
         then(response => {
-            debugger
-            console.log(response.statusText)
+            if(response.status != 200 ){
+            dispatch(stopSubmit("auth", {_error: response.statusText}))
+            }
         })
 }
 

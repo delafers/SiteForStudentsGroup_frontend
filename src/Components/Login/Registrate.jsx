@@ -3,6 +3,7 @@ import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {login, logout, registr} from "../../Redux/createUser_reducer";
 import {NavLink, Redirect} from "react-router-dom";
+import s from "./login.module.css";
 
 const LoginForm = (props) => {
     return(
@@ -16,14 +17,16 @@ const LoginForm = (props) => {
             <div>
                 <Field placeholder={"Password"} name={'password'} component={'input'} type={"password"}/>
             </div>
-
+            { props.error && <div className={s.formSummaryError}>
+                {props.error}
+            </div>}
             <div>
                 <button>Create Account</button>
             </div>
         </form>
     )
 }
-const CreateAccountReduxForm = reduxForm({form: 'login'})(LoginForm)
+const CreateAccountReduxForm = reduxForm({form: 'auth'})(LoginForm)
 
 const Registration = (props) => {
     const onSubmit = (formdatas) => {
@@ -42,7 +45,7 @@ const Registration = (props) => {
         props.registr(requestOptions)
     }
 
-    return<div>
+    return<div className={s.center}>
         <h1>Create account</h1>
         <CreateAccountReduxForm onSubmit={onSubmit}/>
         <p>

@@ -23,7 +23,6 @@ export const authAPI = {
         return fetch(baseURL + "auth/users/me/", requestOptions)
     },
     login(requestOptions) {
-        debugger
         return fetch(baseURL + "auth/jwt/create/", requestOptions)
     },
     logout() {
@@ -37,11 +36,9 @@ export const authAPI = {
         return fetch(baseURL + `auth/users/me/`, requestOptions)
     },
     auth(requestOptions) {
-        debugger
         return fetch(baseURL + "auth/users/", requestOptions)
     },
     registrConfirm(requestOptions){
-        debugger
         return fetch(baseURL + "auth/users/activation/", requestOptions)
     },
 }

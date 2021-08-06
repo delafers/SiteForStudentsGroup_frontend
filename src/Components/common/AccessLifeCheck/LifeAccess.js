@@ -3,7 +3,7 @@ const CheckAccess = () => {
     let secondPart = atob(parceAccess[2]);
     let timeLifeToken = JSON.parse(secondPart).exp;
     let now = new Date();
-    if ((timeLifeToken - now.getTime()/1000) < 1800){
+    if ((timeLifeToken - now.getTime()/1000) < 180){
         return true
     }else {
         return false

@@ -4,9 +4,17 @@
 
 .Events {
     display: grid;
-    max-height: 340px;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
 }
-
+.Events div{
+    background-color: #10394f;
+    border: solid white 2px;
+}
+.Events div:nth-child(odd){
+    background-color: #61dafb;
+    border: solid white 2px;
+}
 .Event {
     border: solid white 2px;
     text-align: center;

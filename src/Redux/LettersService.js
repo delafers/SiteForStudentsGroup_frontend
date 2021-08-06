@@ -3,14 +3,16 @@ import {mailAPI} from "../api/api";
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
-const TOGGLE_IS_FETING = 'TOGGLE-IS-FETING'
+const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETING'
+const BUTTON_DISABLED = "BUTTON-DISABLED"
 
 let initialState = {
     users: [],
     //pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    isDisabled: false,
 };
 const lettersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,7 +31,7 @@ const lettersReducer = (state = initialState, action) => {
                 ...state,
                 totalUsersCount: action.count
             }
-        case TOGGLE_IS_FETING:
+        case TOGGLE_IS_FETCHING:
             return{
                 ...state,
                 isFetching: action.isFetching
@@ -43,7 +45,9 @@ const lettersReducer = (state = initialState, action) => {
 export const setUsers = (users) => ({type: SET_USERS, users})
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalCount})
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETING, isFetching})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
+export const disableButton = (isDisabled) => ({type: BUTTON_DISABLED, isDisabled})
+
 
 export const getMails = () => {
     return async (dispatch) => {
@@ -65,8 +69,10 @@ export const setMailPage= (pageNumber) =>{
 }
 export const updateMails = () => {
     return async (dispatch) =>{
+        dispatch(disableButton(true))
         await mailAPI.mailCheck()
         dispatch(getMails())
+        dispatch(disableButton(false))
     }
 }
 export default lettersReducer

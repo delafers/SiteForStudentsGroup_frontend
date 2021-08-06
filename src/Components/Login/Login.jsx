@@ -3,16 +3,22 @@ import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import {login} from "../../Redux/token_reducer";
+import s from "./login.module.css"
+import {createField, Input} from "../common/FormsControls/FormsControls";
+import {required} from "../../utils/validators/validator";
 
 const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={"Username"} name={'username'} component={'input'}/>
+                {createField("Username", "username", [required], Input)}
             </div>
             <div>
-                <Field placeholder={"Password"} name={'password'} component={'input'} type={"password"}/>
+                {createField("Password", "password", [required], Input, "password")}
             </div>
+            { props.error && <div className={s.formSummaryError}>
+                {props.error}
+            </div>}
             <div>
                 <button>Login</button>
             </div>
@@ -34,15 +40,14 @@ const Login = ({login, isAuth}) => {
             redirect:'follow',
             withCredentials: true
         }
-        debugger
         login(requestOptions)
     }
 
-    return<div>
+    return<div className={s.center}>
         <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
         <p>
-            <NavLink to='/registrate'>if you not registr, click here! </NavLink>
+            <NavLink to='/registrate'>if you not registrated, click here! </NavLink>
         </p>
     </div>
 }

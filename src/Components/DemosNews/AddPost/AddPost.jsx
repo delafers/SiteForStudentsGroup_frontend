@@ -5,7 +5,7 @@ import s from './AddPost.module.css';
 const OnePost = (props) => {
     return (
         <div className={s.Event}>
-            <div >
+            <div>
                 Пользователь: {props.username}
                 <span>
                     Тэги: {props.tags[0] && props.tags[0].name}, {props.tags[1] && props.tags[1].name} {props.tags[2] && props.tags[2].name}

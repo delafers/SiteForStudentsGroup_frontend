@@ -24,7 +24,9 @@ class letterContainer extends React.Component {
             {this.props.isFetching ? <Loading/> : null}
             <Mail users={this.props.users} totalUsersCount={this.props.totalUsersCount}
                   currentPage={this.props.currentPage} isFetching={this.props.isFetching}
-                    onPageChanged={this.onPageChanged} updateMails={this.props.updateMails}/>
+                  onPageChanged={this.onPageChanged} updateMails={this.props.updateMails}
+                  isAuth={this.props.isAuth}
+            />
             </>
 
     }
@@ -34,7 +36,8 @@ let mapStateToProps =(state) => {
         users: state.MailPage.users,
         totalUsersCount: state.MailPage.totalUsersCount,
         currentPage: state.MailPage.currentPage,
-        isFetching: state.MailPage.isFetching
+        isFetching: state.MailPage.isFetching,
+        isAuth: state.auth.isAuth
     }
 }
 
