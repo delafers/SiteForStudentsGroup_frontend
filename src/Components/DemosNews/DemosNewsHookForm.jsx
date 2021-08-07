@@ -8,15 +8,14 @@ import PostsContainer from "./Post/PostContainer";
 import ModalCreate from "./CreateNewsPopup/CreateNews";
 import PostsView from "./AddPost/AddPostContainer";
 import {getNewsByTags, removeTag, SetActiveTags} from "../../Redux/demosNews_reducer";
-import {createField} from "../common/FormsControls/FormsControls";
+import {createField, Input} from "../common/FormsControls/FormsControls";
 
 const TagsForm = (props) => {
 
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={s.tagBar}>
-                <Field placeholder={"Add Tag"} name={'tagName'} component={'input'}/>
-                {createField("Add Tag", 'tagName', [] )}
+                {createField("Add Tag", 'tagName', [], Input )}
 
                 <button>Create</button>
                   search by tag

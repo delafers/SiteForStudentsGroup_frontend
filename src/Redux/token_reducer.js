@@ -1,6 +1,5 @@
 import {authAPI, tokenAPI} from "../api/api";
 import {getUserAuthData} from "./auth_reducer";
-import {setCookie, getCookie} from "cookielib"
 import {stopSubmit} from "redux-form";
 const SET_USER_DATA = 'SET_USER_DATA'
 
