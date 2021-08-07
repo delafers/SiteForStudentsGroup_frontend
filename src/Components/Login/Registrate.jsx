@@ -4,18 +4,20 @@ import {connect} from "react-redux";
 import {login, logout, registr} from "../../Redux/createUser_reducer";
 import {NavLink, Redirect} from "react-router-dom";
 import s from "./login.module.css";
+import {createField} from "../common/FormsControls/FormsControls";
+import {required} from "../../utils/validators/validator";
 
 const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={"Username"} name={'username'} component={'input'}/>
+                {createField("Username",'username',[required],'input')}
             </div>
             <div>
-                <Field placeholder={"Email"} name={'email'} component={'input'}/>
+                {createField("Email",'email',[required],'input')}
             </div>
             <div>
-                <Field placeholder={"Password"} name={'password'} component={'input'} type={"password"}/>
+                {createField("Password",'password',[required],'input',"password")}
             </div>
             { props.error && <div className={s.formSummaryError}>
                 {props.error}
