@@ -23,11 +23,11 @@ import {refreshToken} from "./Redux/token_reducer";
 class App extends Component {
     componentDidMount() {
         if (localStorage.getItem("access") !== null) {
-            if (CheckAccess()) {
+            if (CheckAccess() === true) {
                 this.props.getUserAuthData(localStorage.getItem("access"))
                 //this.props.initializeApp()
             } else {
-                localStorage.removeItem('access')
+                //localStorage.removeItem('access')
                 this.props.refreshToken()
             }
         }

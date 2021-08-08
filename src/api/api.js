@@ -44,13 +44,23 @@ export const authAPI = {
 }
 export const tokenAPI = {
     refreshAccess(){
+        debugger
+        let i = 0
         let a = document.cookie.split(/(\;)/)
-        let myHeaders = new Headers();
-        myHeaders.append("Cookie", `${a[2]}` );
+        console.log(document.cookie)
+        for(i in a.length){
+            let found = a[i].split(/=/)
+            if(found[0] === "refresh"){
+                console.log("рефреш найден")
+            }
+        i = i+2;
+        }
+        //let myHeaders = new Headers();
+        //myHeaders.append("Cookie", `${a[2]}`);
         let requestOptions = {
             method: 'GET',
-            headers: myHeaders,
             redirect: 'follow',
+            withCredentials: true
         };
         return fetch(baseURL + "auth/jwt/refresh/", requestOptions)
     }
