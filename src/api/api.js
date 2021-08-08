@@ -68,7 +68,6 @@ export const mailAPI = {
 }
 export const NewsAPI = {
     getCurrentNews(tags){
-        debugger
         let i = 0;
         let activeTag = "";
         if(tags != undefined) {

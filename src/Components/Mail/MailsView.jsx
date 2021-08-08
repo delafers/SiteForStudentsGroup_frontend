@@ -4,9 +4,6 @@ import {NavLink, Redirect} from "react-router-dom";
 import Paginator from "../common/Paginator/Paginator";
 
 let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, updateMails,isAuth}) => {
-    if(!isAuth){
-        return <Redirect to={"/Login"}/>
-    }
     return <div>
         <div className={s.letterHead}>
             <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged} pageSize={"10"} />
@@ -22,14 +19,11 @@ let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, upd
                     </div>
                     <div className={s.text}>
                         {u.topic}
-
+                        <img src={""}/>
                     </div>
                     <div className={s.text}>
+                    </div>
 
-                    </div>
-                    <div>
-                        {u.letter.file ? u.letter.file : ""}
-                    </div>
                 </NavLink>
             </div>
         )

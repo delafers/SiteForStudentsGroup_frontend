@@ -112,10 +112,10 @@ class CalendarMenu extends Component {
                 days: days,
                 year: year,
                 month: month,
-                nextMonth: '/calendar/?year=' + next_year + '&month=' + (Number(next_month) + 1),
-                prevMonth: '/calendar/?year=' + prev_year + '&month=' + (Number(prev_month) + 1),
-                nextYear: '/calendar/?year=' + (Number(year) + 1) + '&month=' + (Number(month) + 1),
-                prevYear: '/calendar/?year=' + (Number(year) - 1) + '&month=' + (Number(month) + 1),
+                nextMonth: '/?year=' + next_year + '&month=' + (Number(next_month) + 1),
+                prevMonth: '/?year=' + prev_year + '&month=' + (Number(prev_month) + 1),
+                nextYear: '/?year=' + (Number(year) + 1) + '&month=' + (Number(month) + 1),
+                prevYear: '/?year=' + (Number(year) - 1) + '&month=' + (Number(month) + 1),
                 days_in_month: days_total,
             })
         });

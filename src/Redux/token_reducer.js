@@ -51,11 +51,8 @@ export const refreshToken = () => (dispatch) => {
     tokenAPI.refreshAccess().
         then(response => response.text()).
         then(result => {
-            debugger
             let accessToken = JSON.parse(result)
             let parceAccess = accessToken.access.split(/(\.)/);
-            //let secondPart = atob(parceAccess[2])
-            //let now = new Date();
             localStorage.setItem("access", accessToken.access)
             dispatch(getUserAuthData(localStorage.getItem("access")))
         }

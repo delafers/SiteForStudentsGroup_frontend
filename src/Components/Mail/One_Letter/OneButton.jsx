@@ -7,7 +7,6 @@ const Modal = (props) => {
     if(!props.mail) {
         return <Redirect to="/mail"/>
     }
-    debugger
     return(
        <div >
            <div>
@@ -34,9 +33,11 @@ const Modal = (props) => {
                    </span>
                    {props.mail.text}
                </div>
-               <div className={s.file}>
-                    {props.mail.letter.file}
-               </div>
+               {props.mail.letter[0] && <div className={s.file}>
+                      <a href={props.mail.letter[0] === undefined ? "" : props.mail.letter[0].file}>
+                          {props.mail.letter[0] === undefined ? "" : props.mail.letter[0].file}
+                      </a>
+               </div>}
            </div>
        </div>
 
