@@ -27,7 +27,7 @@ class App extends Component {
                 this.props.getUserAuthData(localStorage.getItem("access"))
                 //this.props.initializeApp()
             } else {
-                //localStorage.removeItem('access')
+                localStorage.removeItem('access')
                 this.props.refreshToken()
             }
         }

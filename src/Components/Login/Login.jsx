@@ -44,10 +44,10 @@ const Login = ({login, isAuth}) => {
     }
 
     return<div className={s.center}>
-        <h1>Login</h1>
+        <h1>Авторизация</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
         <p>
-            <NavLink to='/registrate'>if you not registrated, click here! </NavLink>
+            <NavLink to='/registrate'>Если ты не зарегистрирован, жми сюда</NavLink>
         </p>
     </div>
 }

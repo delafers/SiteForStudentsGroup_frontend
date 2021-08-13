@@ -10,9 +10,11 @@ const Header =  (props) => {
                 <NavLink exact to="/" activeClassName={s.active}>календарь</NavLink>
                 <NavLink to="/mail" activeClassName={s.active}>почта</NavLink>
                 <NavLink to="/demosnews" activeClassName={s.active}>суровости</NavLink>
+                    <span className={s.loginPlace}>
                     {props.isAuth
-                        ? <a>{props.username}  <button onClick={props.logout}>Log out</button></a>
-                        : <NavLink to='/login' activeClassName={s.active} >Profile</NavLink>}
+                        ? <span>{props.username}  <button onClick={props.logout}>Выйти</button></span>
+                        : <NavLink to='/login' activeClassName={s.active} >Авторизация</NavLink>}
+                    </span>
             </header>
         );
 }

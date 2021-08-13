@@ -11,6 +11,15 @@ export const Input = ({input, meta, ...props}) => {
         </div>
     )
 }
+export const Textarea = ({input, meta, ...props}) => {
+    const hasErrorZeroLength = meta.touched && meta.error
+    return(
+        <div className={s.formControl + " " + (hasErrorZeroLength ? s.error : "")}>
+            <textarea {...input} {...props}/>
+            {hasErrorZeroLength && <span>{meta.error}</span>}
+        </div>
+    )
+}
 export const createField = (placeholder, name, validators, component, type={}, props={}, text="") => {
     return <span>
         <Field placeholder={placeholder} name={name}

@@ -3,31 +3,44 @@ import s from './Mail.module.css'
 import {NavLink, Redirect} from "react-router-dom";
 import Paginator from "../common/Paginator/Paginator";
 
-let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, updateMails,isAuth}) => {
+let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, updateMails, isAuth}) => {
     return <div>
-        <div className={s.letterHead}>
-            <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged} pageSize={"10"} />
-            <button onClick={() => {updateMails()}} disabled={isFetching}>Update mails list</button>
-        </div>
-        {users.map(u => <div key={u.id} className={s.letter}>
+        <span className={s.buttonUpdateMailsPlace}>
+            <button onClick={() => {
+                updateMails()
+            }} disabled={isFetching}>Update mails list
+            </button>
+            </span>
+        {users.map(u => <span>
                 <NavLink to={'/mail/' + u.id}>
-                    <div className={s.text}>
-                        {u.mailer}
-                        <span className={s.time}>
+                    <div key={u.id} className={s.letter}>
+                        <div className={s.text}>
+                            <span className={s.time}>Отправитель: </span>{u.mailer}
+                            <span className={s.time}>
                             {u.date_time}
-                        </span>
+                            </span>
+                        </div>
+                        <div className={s.text}>
+                            <span className={s.time}>Заголовок: </span>{u.topic}
+                            {u.letter[0] === undefined ? "" : <img src={"https://image.flaticon.com/icons/png/512/124/124506.png"}/>}
+                        </div>
+                        <div className={s.text}>
+                            <span className={s.time}>Текст: </span>{u.text}
+                        </div>
                     </div>
-                    <div className={s.text}>
-                        {u.topic}
-                        <img src={""}/>
-                    </div>
-                    <div className={s.text}>
-                    </div>
-
                 </NavLink>
-            </div>
+            </span>
         )
         }
+        <div className={s.letterHead}>
+            <span className={s.paginatorMail} >
+            <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged}
+                       pageSize={"10"}/>
+            </span>
+        </div>
+        <div>
+
+        </div>
     </div>
 }
 

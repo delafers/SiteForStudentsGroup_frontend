@@ -5,11 +5,23 @@ header {
     text-align: center;
     align-items: end;
     justify-content: end;
+    min-width: 640px;
 }
 a {
     color: #8c91b6;
     text-decoration: none;
     margin: 10px;
+}
+.loginPlace {
+    color: #8c91b6;
+    text-decoration: none;
+    position: absolute;
+    right: 10vw;
+}
+.loginPlace button{
+    width: 70px;
+    background-color: #10394f;
+    color: white;
 }
 .item a {
     color: #8c91b6;
@@ -20,5 +32,4 @@ a {
     color: black;
     box-shadow: 0 0 3px #103a;
     border-radius: 11px;
-
 }

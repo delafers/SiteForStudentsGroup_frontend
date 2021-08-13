@@ -1,7 +1,7 @@
 .center{
     text-align: center;
     margin: 5px auto 0px auto;
-    padding: 4px ;
+    padding: 50px ;
     align-items: center;
     width: auto;
     max-width: 150vh;
@@ -9,4 +9,11 @@
 .formSummaryError {
     padding-left: 10px;
     color: brown;
+    font-size: 26px;
+}
+.authButton button{
+
+}
+.text{
+    font-size: 30px;
 }

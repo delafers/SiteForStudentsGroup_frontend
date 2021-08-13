@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {NavLink, Redirect} from "react-router-dom";
 import s from './DemosNews.module.css'
 import OneTag from "./OneTag";
 import PostsContainer from "./Post/PostContainer";
@@ -9,6 +8,7 @@ import ModalCreate from "./CreateNewsPopup/CreateNews";
 import PostsView from "./AddPost/AddPostContainer";
 import {getNewsByTags, removeTag, SetActiveTags} from "../../Redux/demosNews_reducer";
 import {createField, Input} from "../common/FormsControls/FormsControls";
+import NewPostCreate from "./Post/CreatePost";
 
 const TagsForm = (props) => {
 
@@ -16,9 +16,8 @@ const TagsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={s.tagBar}>
                 {createField("Add Tag", 'tagName', [], Input )}
-
-                <button>Create</button>
-                  search by tag
+                <button>Поиск</button>
+                  Поиск новостей по тегам
             </div>
 
         </form>
@@ -42,7 +41,7 @@ const Tags = (props) => {
 
 
     return<div className={s.main}>
-        <h1>Create news</h1>
+        <h1>СТАТЬИ И НОВОСТИ</h1>
         <div className={s.tagBar}>
             {
                 tags.map(tag => (
@@ -52,12 +51,12 @@ const Tags = (props) => {
             }
         <TagsReduxForm onSubmit={onSubmit}/>
         </div>
-        <div>
+        <div className={s.modalButton}>
             <button onClick={() => setModalActive(true)}>Добавить новость</button>
         </div>
         <div>
             <ModalCreate active={modalActive} setActive={setModalActive} >
-                <PostsContainer setActive={setModalActive}/>
+                <NewPostCreate setActive={setModalActive}/>
             </ModalCreate>
         </div>
         <div>

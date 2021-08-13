@@ -4,4 +4,9 @@
 }
 .formControl.error span{
     color: red;
+    padding-left: 20px;
 }
+/*.formControl span{
+    position: absolute;
+    right: 22vw;
+}*/

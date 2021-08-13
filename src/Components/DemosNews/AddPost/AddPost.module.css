@@ -19,7 +19,7 @@
     border: solid white 2px;
     text-align: center;
     display: flex;
-    margin: 5px auto 0px auto;
+    margin: 10px auto 0px auto;
     padding: 0 10px ;
     word-wrap: break-word;
     align-items: center;
@@ -27,10 +27,15 @@
     flex-direction: column;
     border-radius: 15px;
     max-width: 70vw;
-
 }
+.Title span{
+    color: #E0CA3C;
+}
+.text{
+    width: 65vw;
+}
+
 .Event span{
-    color: brown;
     padding-left: 30px;
     margin-right: auto;
 }
