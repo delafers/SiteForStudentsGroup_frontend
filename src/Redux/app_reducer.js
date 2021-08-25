@@ -10,6 +10,7 @@ let initialState = {
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
+            debugger
             return {
                 ...state,
                 initialized: true
@@ -27,9 +28,6 @@ export const initializeApp = (token) => (dispatch) => {
 }
 export const initializeAppWithRefresh = () => (dispatch) => {
     dispatch(refreshToken())
-    dispatch(initializedSuccess())
-}
-export const initializeAppWithoutRefresh = () => (dispatch) => {
     dispatch(initializedSuccess())
 }
 

@@ -10,11 +10,14 @@ import MailConfirm from "./Components/Login/MailConfirmContainer";
 import TeddyHead from "./Components/Header/Teddy";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
-import {initializeApp, initializeAppWithoutRefresh, initializeAppWithRefresh} from "./Redux/app_reducer";
+import {
+    initializeApp,
+    initializeAppWithRefresh,
+    initializedSuccess
+} from "./Redux/app_reducer";
 import store from "./Redux/Redux-store";
 import CheckAccess from "./Components/common/AccessLifeCheck/LifeAccess";
 import {getUserAuthData} from "./Redux/auth_reducer";
-import {refreshToken} from "./Redux/token_reducer";
 import Loading from "./Components/Loading/Loading";
 import {withSuspense} from "./hoc/LazyFunctoin";
 
@@ -23,7 +26,9 @@ const Tags = React.lazy(() => import("./Components/DemosNews/DemosNewsHookForm")
 const OneMail = React.lazy(() => import("./Components/Mail/One_Letter/OneLetterContainer"))
 
 class App extends Component {
+
     componentDidMount() {
+        debugger
         if (localStorage.getItem("access") !== null) {
             if (CheckAccess()) {
                 this.props.initializeApp(localStorage.getItem("access"))
@@ -32,7 +37,7 @@ class App extends Component {
                 this.props.initializeAppWithRefresh()
             }
         }else{
-            initializeAppWithoutRefresh()
+            this.props.initializedSuccess()
         }
     }
     render() {
@@ -58,11 +63,13 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = (state) => (
-    {initialized: state.app.initialized})
+const mapStateToProps = (state) => {
+    debugger
+    return{initialized: state.app.initialized}
+}
 
 let AppContainer = compose(
-    connect(mapStateToProps, {initializeApp, getUserAuthData, initializeAppWithRefresh,initializeAppWithoutRefresh}))(App)
+    connect(mapStateToProps, {initializeApp, getUserAuthData, initializeAppWithRefresh, initializedSuccess}))(App)
 
 const LastFrontApp = (props) => {
     return <BrowserRouter>
