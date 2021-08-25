@@ -1,4 +1,5 @@
 import {getUserAuthData} from "./auth_reducer";
+import {refreshToken} from "./token_reducer";
 
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS'
 
@@ -20,14 +21,16 @@ const appReducer = (state = initialState, action) => {
 
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS})
 
-export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(getUserAuthData())
-    Promise.all([promise]).then(() => {
+export const initializeApp = (token) => (dispatch) => {
+        dispatch(getUserAuthData(token))
         dispatch(initializedSuccess())
-    })
-
 }
-
-
+export const initializeAppWithRefresh = () => (dispatch) => {
+    dispatch(refreshToken())
+    dispatch(initializedSuccess())
+}
+export const initializeAppWithoutRefresh = () => (dispatch) => {
+    dispatch(initializedSuccess())
+}
 
 export default appReducer

@@ -27,6 +27,7 @@
     flex-direction: column;
     border-radius: 15px;
     max-width: 70vw;
+    color: #8c91b6;
 }
 .Title span{
     color: #E0CA3C;

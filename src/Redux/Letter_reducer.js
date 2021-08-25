@@ -16,10 +16,9 @@ const MailReducer = (state = initialState, action) => {
 }
 
 export const setMailContent = (mail) => ({type:SET_MAIL_INFO, mail})
-export const getMailData = (mailId) => (dispatch) => {
-    debugger
-    mailAPI.OneMail(mailId).
-        then(responce => {
+export const getMailData = (mailId) => async (dispatch) => {
+    mailAPI.OneMail(mailId)
+        .then(responce => {
             dispatch(setMailContent(responce.data))
     })
 }

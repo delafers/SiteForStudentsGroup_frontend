@@ -6,8 +6,7 @@ import {connect} from "react-redux";
 export const withAuthRedirect = (Component) => {
     class RedirectComponent extends React.Component {
         render() {
-            if(!this.props.auth) return <Redirect to='/'/>
-
+            if(!this.props.auth) return <Redirect to='/login'/>
             return <Component {...this.props}/>
         }
     }
@@ -15,6 +14,5 @@ export const withAuthRedirect = (Component) => {
         auth: state.auth.isAuth
     });
     let ConnectedWithAuthRedirect = connect(mapStateToPropsForRedirect)(RedirectComponent)
-
     return ConnectedWithAuthRedirect
 }

@@ -1,6 +1,6 @@
 .tagBar {
     display: flex;
-    background-color: #8c91b6;
+    background-color: #282c34;
     text-align: center;
     margin: 5px auto 0px auto;
     padding: 4px ;
@@ -9,7 +9,13 @@
     max-width: 150vh;
     border-radius: 5px;
 }
+.tagBar input{
+    width: 20vw;
+    min-width: 90px;
+    height: 20px;
+}
 .tagBar button{
+    height: 20px;
     background-color: #E0CA3C;
     margin-left: 3px;
     margin-right: 30px;
@@ -18,6 +24,11 @@
 }
 .main{
     text-align: center;
+    width: 80vw;
+    margin: 0px auto 0px auto;
+    background-color: #211d36;
+    padding-top: 15px;
+
 }
 .modalButton{
     padding: 5px;

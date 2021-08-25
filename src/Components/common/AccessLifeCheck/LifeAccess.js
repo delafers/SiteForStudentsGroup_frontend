@@ -1,5 +1,4 @@
 const CheckAccess = () => {
-    debugger
     let parceAccess = localStorage.getItem("access").split(/(\.)/);
     let secondPart = atob(parceAccess[2]);
     let timeLifeToken = JSON.parse(secondPart).exp;

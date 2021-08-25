@@ -11,6 +11,7 @@ import Post from "./Post";
 
 class PostContainer extends React.Component{
     componentDidMount() {
+        debugger
         this.props.getNewsByTags();
         this.props.pushAllTags()
     }

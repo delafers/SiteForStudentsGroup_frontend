@@ -11,7 +11,9 @@ import {
     toggleIsFetching, updateMails
 } from "../../Redux/LettersService";
 import Mail from "./MailsView";
-const baseURL = 'http://80.78.240.154/'
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {withRouter} from "react-router-dom";
 class letterContainer extends React.Component {
     componentDidMount() {
         this.props.getMails()
@@ -41,5 +43,9 @@ let mapStateToProps =(state) => {
     }
 }
 
-const MailsContainer = connect(mapStateToProps, {getMails,setMailPage, updateMails})(letterContainer)
+const MailsContainer = compose(
+    connect(mapStateToProps, {getMails,setMailPage, updateMails}),
+    withRouter,
+    withAuthRedirect
+)(letterContainer)
 export default MailsContainer

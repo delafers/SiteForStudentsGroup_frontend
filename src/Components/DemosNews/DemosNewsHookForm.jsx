@@ -9,17 +9,18 @@ import PostsView from "./AddPost/AddPostContainer";
 import {getNewsByTags, removeTag, SetActiveTags} from "../../Redux/demosNews_reducer";
 import {createField, Input} from "../common/FormsControls/FormsControls";
 import NewPostCreate from "./Post/CreatePost";
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {NavLink, withRouter} from "react-router-dom";
 
 const TagsForm = (props) => {
-
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={s.tagBar}>
-                {createField("Add Tag", 'tagName', [], Input )}
+                {createField("Найти по тегу", 'tagName', [], Input )}
                 <button>Поиск</button>
-                  Поиск новостей по тегам
             </div>
-
+            <NavLink to="/mail/15495">test</NavLink>
         </form>
     )
 }
@@ -71,4 +72,8 @@ const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {getNewsByTags, SetActiveTags, removeTag}) (Tags)
+export default compose(
+    connect(mapStateToProps, {getNewsByTags, SetActiveTags, removeTag}),
+    withRouter,
+    withAuthRedirect
+    ) (Tags)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from  'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import Style from './CalendarMenu.module.css';
 import Day from './Day/Day';
 import Table from './Calendar/Table/Table';
@@ -8,6 +8,7 @@ import DateBlock from './Calendar/Date/Date';
 import Loading from '../Loading/Loading'
 import DaysService from '../Services/DaysService';
 import InfoService from '../Services/InfoService';
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 const daysService = new DaysService();
 const infoService = new InfoService();
@@ -215,5 +216,6 @@ class CalendarMenu extends Component {
         else {return(<Loading/>)}
     }
 }
+const CalendarMenuContainer = withRouter(CalendarMenu)
 
-export default CalendarMenu;
+export default CalendarMenuContainer;

@@ -84,6 +84,7 @@ export const getNewsByTags = (tags) => (dispatch) => {
         .then(result => {
             let NewsData = JSON.parse(result)
             dispatch(setNewsData(NewsData.results))
+            dispatch(pushAllTags())
         })
 }
 export const addPostToServer = (title, text, tag ) => (dispatch) => {
@@ -92,6 +93,7 @@ export const addPostToServer = (title, text, tag ) => (dispatch) => {
         .then(result => dispatch(getNewsByTags()))
 }
 export const pushAllTags = () => (dispatch) => {
+    debugger
     NewsAPI.getAllTags()
         .then(response => response.text())
         .then(result => {
@@ -102,7 +104,6 @@ export const SetActiveTags = (tag) => (dispatch, getState) => {
     let i = 0;
     let j = 0;
     let arr = getState().news.allTags;
-    debugger
     while (i < arr.length) {
         if (arr[i].name === tag) {
             dispatch(setActiveTag(arr[i].name))

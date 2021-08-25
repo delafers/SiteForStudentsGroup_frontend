@@ -11,6 +11,13 @@ let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, upd
             }} disabled={isFetching}>Update mails list
             </button>
             </span>
+        <div className={s.shadow}>
+        <div className={s.letterHead}>
+            <span className={s.paginatorMail} >
+            <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged}
+                       pageSize={"10"}/>
+            </span>
+        </div>
         {users.map(u => <span>
                 <NavLink to={'/mail/' + u.id}>
                     <div key={u.id} className={s.letter}>
@@ -32,14 +39,6 @@ let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, upd
             </span>
         )
         }
-        <div className={s.letterHead}>
-            <span className={s.paginatorMail} >
-            <Paginator totalItemsCount={totalUsersCount} currentPage={currentPage} onPageChanged={onPageChanged}
-                       pageSize={"10"}/>
-            </span>
-        </div>
-        <div>
-
         </div>
     </div>
 }

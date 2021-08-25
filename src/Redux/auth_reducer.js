@@ -11,6 +11,7 @@ let initialState = {
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
+            debugger
             return {
                 ...state,
                 ...action.payload,
@@ -30,7 +31,8 @@ export const getUserAuthData = (resultAccess) => (dispatch) => {
             let {id, email, username} = userData;
             dispatch(setAuthUserData(id , email, username, true ))
         })
-        ;
+    debugger
+    return "result"
 }
 export const logout = () => (dispatch) => {
     authAPI.logout().
