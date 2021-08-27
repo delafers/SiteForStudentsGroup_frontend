@@ -34,6 +34,7 @@ class letterContainer extends React.Component {
     }
 }
 let mapStateToProps =(state) => {
+    console.log("MailMapStateToProps")
     return{
         users: state.MailPage.users,
         totalUsersCount: state.MailPage.totalUsersCount,

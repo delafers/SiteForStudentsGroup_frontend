@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'http://80.78.240.154'
+const API_URL = 'https://devgang.online/'
 
 
 export default class DaysService{

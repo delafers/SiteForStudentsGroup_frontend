@@ -42,6 +42,7 @@ class App extends Component {
     }
     render() {
         if (!this.props.initialized) {
+            console.log("Rendering loading")
             return <Loading/>
         } else {
             return (
@@ -64,7 +65,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger
+    console.log("AppMapStateToProps")
     return{initialized: state.app.initialized}
 }
 

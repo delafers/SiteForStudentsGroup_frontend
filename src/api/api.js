@@ -1,7 +1,7 @@
 import * as axios from "axios";
 
 const debug = false
-const baseURL = 'http://80.78.240.154/'
+const baseURL = 'https://devgang.online/'
 
 if (debug !== true){
     const baseURL = 'https://aficionadoleague.ru/'}

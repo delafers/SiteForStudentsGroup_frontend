@@ -3,10 +3,9 @@
 }
 
 .letter {
-    border: solid white 1px;
     text-align: center;
     display: flex;
-    margin: 5px auto 0px auto;
+    margin: 0px auto 0px auto;
     align-items: center;
     width: 70vw;
     flex-direction: column;
@@ -14,10 +13,11 @@
     max-width: 71vw;
     min-height: 8vh;
     background-color: #1e2745;
+    border-top: 1px #252e4b solid;
 }
 
 .letter:hover {
-    border: solid lightslategray 3px;
+    border: solid lightslategray 1px;
     box-shadow: 0 0 10px #10394f;
 }
 
@@ -45,8 +45,8 @@
 .shadow{
     width: 80vw;
     margin: 0px auto 0px auto;
-    background-color: #211d36;
     padding-top: 15px;
+    min-height: 100vh;
 }
 
 .text img {

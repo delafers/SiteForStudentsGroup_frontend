@@ -1,11 +1,12 @@
 header {
     background-color: #1e2745;
-    height: 32px;
+    height: 6vh;
     width: 100%;
     text-align: center;
     align-items: end;
     justify-content: end;
     min-width: 640px;
+    font-size: calc(5px + 2vh);
 }
 a {
     color: #8c91b6;
@@ -14,11 +15,10 @@ a {
 }
 .loginPlace {
     color: #8c91b6;
-    text-decoration: none;
-    position: absolute;
-    right: 10vw;
+   padding-left: 10vw;
 }
 .loginPlace button{
+    height: calc(5px + 3vh);
     width: 70px;
     background-color: #10394f;
     color: white;
@@ -30,6 +30,6 @@ a {
 
 .item a.active {
     color: black;
-    box-shadow: 0 0 3px #103a;
+    box-shadow: 0 0 0px #103a;
     border-radius: 11px;
 }
