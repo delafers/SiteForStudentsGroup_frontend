@@ -28,7 +28,6 @@ const OneMail = React.lazy(() => import("./Components/Mail/One_Letter/OneLetterC
 class App extends Component {
 
     componentDidMount() {
-        debugger
         if (localStorage.getItem("access") !== null) {
             if (CheckAccess()) {
                 this.props.initializeApp(localStorage.getItem("access"))

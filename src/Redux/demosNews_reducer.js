@@ -27,7 +27,6 @@ const DemosNewsReducer = (state = initialState, action) => {
             }
         }
         case  UPDATE_TAGS_TEXT: {
-            debugger
             return {
                 ...state,
                 postTag: action.textareatag,
@@ -46,7 +45,6 @@ const DemosNewsReducer = (state = initialState, action) => {
             }
         }
         case SET_TAGS: {
-            debugger
             return {
                 ...state,
                 allTags: action.tags,
@@ -93,7 +91,6 @@ export const addPostToServer = (title, text, tag ) => (dispatch) => {
         .then(result => dispatch(getNewsByTags()))
 }
 export const pushAllTags = () => (dispatch) => {
-    debugger
     NewsAPI.getAllTags()
         .then(response => response.text())
         .then(result => {
@@ -102,7 +99,6 @@ export const pushAllTags = () => (dispatch) => {
 }
 export const SetActiveTags = (tag) => (dispatch, getState) => {
     let i = 0;
-    let j = 0;
     let arr = getState().news.allTags;
     while (i < arr.length) {
         if (arr[i].name === tag) {

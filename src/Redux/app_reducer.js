@@ -23,12 +23,17 @@ const appReducer = (state = initialState, action) => {
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS})
 
 export const initializeApp = (token) => (dispatch) => {
-        dispatch(getUserAuthData(token))
+    let promise = dispatch(getUserAuthData(token))
+    Promise.all([promise]).then(() => {
         dispatch(initializedSuccess())
+    })
 }
 export const initializeAppWithRefresh = () => (dispatch) => {
-    dispatch(refreshToken())
+    let promise = dispatch(refreshToken())
+    Promise.all([promise]).then(() => {
+        debugger
     dispatch(initializedSuccess())
+    })
 }
 
 export default appReducer

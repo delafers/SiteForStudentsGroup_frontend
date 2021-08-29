@@ -108,6 +108,7 @@ export const NewsAPI = {
             body: formdata,
             redirect: 'follow'
         };
+        debugger
         return fetch(baseURL +"api/demosnews/posts/", requestOptions)
     },
     getAllTags(){

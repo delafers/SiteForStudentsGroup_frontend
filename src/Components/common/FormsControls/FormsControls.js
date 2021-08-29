@@ -7,7 +7,7 @@ export const Input = ({input, meta, ...props}) => {
     return(
         <div className={s.formControl + " " + (hasErrorZeroLength ? s.error : "")}>
             <input {...input} {...props}/>
-            {hasErrorZeroLength && <span>{meta.error}</span>}
+            {hasErrorZeroLength && <div className={s.textError}>{meta.error}</div>}
         </div>
     )
 }
@@ -16,10 +16,12 @@ export const Textarea = ({input, meta, ...props}) => {
     return(
         <div className={s.formControl + " " + (hasErrorZeroLength ? s.error : "")}>
             <textarea {...input} {...props}/>
-            {hasErrorZeroLength && <span>{meta.error}</span>}
+            {hasErrorZeroLength && <div className={s.textError}>{meta.error}</div>}
         </div>
     )
 }
+
+
 export const createField = (placeholder, name, validators, component, type={}, props={}, text="") => {
     return <span>
         <Field placeholder={placeholder} name={name}

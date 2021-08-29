@@ -21,10 +21,19 @@
 .modal__content {
     padding: 20px;
     border-radius: 12px;
-    background-color: white;
+    background-color: #182039;
     width: 50vw;
     transform: scale(0.5);
     transition: 0.4s all;
+
+}
+.modal__content textarea{
+    background-color: #1e2745;
+    color: #8c91b6;
+}
+.modal__content button{
+    background-color: #282c34;
+    color: white;
 }
 .modal__content.active{
     transform: scale(1);

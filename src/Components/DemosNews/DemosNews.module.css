@@ -26,10 +26,7 @@
     text-align: center;
     width: 80vw;
     margin: 0px auto 0px auto;
-    background-color: #211d36;
     padding-top: 15px;
-    min-height: 100vh;
-
 }
 .modalButton{
     padding: 5px;
@@ -44,6 +41,7 @@
     font-size: 20px;
     font-weight: bold;
     border-radius: 5px;
+    margin: 5px auto 10px auto
 }
 .tag{
     margin-left: 0.5rem;

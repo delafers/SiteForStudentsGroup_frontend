@@ -30,9 +30,8 @@ export const getUserAuthData = (resultAccess) => (dispatch) => {
             let userData = JSON.parse(result)
             let {id, email, username} = userData;
             dispatch(setAuthUserData(id , email, username, true ))
+            return "result"
         })
-    debugger
-    return "result"
 }
 export const logout = () => (dispatch) => {
     authAPI.logout().

@@ -6,6 +6,9 @@
     color: red;
     padding-left: 20px;
 }
+.textError{
+    color: red;
+}
 /*.formControl span{
     position: absolute;
     right: 22vw;
