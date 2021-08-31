@@ -21,8 +21,8 @@ let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, upd
         {users.map(u => <span>
                 <NavLink to={'/mail/' + u.id}>
                     <div key={u.id} className={s.letter}>
-                        <div className={s.text}>
-                            <span className={s.time}>Отправитель: </span>{u.mailer}
+                        <div className={s.header}>
+                            <span className={s.sender}>{u.mailer}</span>
                             <span className={s.time}>
                             {u.date_time}
                             </span>

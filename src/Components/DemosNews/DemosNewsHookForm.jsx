@@ -42,6 +42,7 @@ const Tags = (props) => {
 
 
     return<div className={s.main}>
+        <div className={s.centralItems}>
         <h1>СТАТЬИ И НОВОСТИ</h1>
         <div className={s.tagBar}>
             {
@@ -54,6 +55,7 @@ const Tags = (props) => {
         </div>
         <div className={s.modalButton}>
             <button onClick={() => setModalActive(true)}>Добавить новость</button>
+        </div>
         </div>
         <div>
             <ModalCreate active={modalActive} setActive={setModalActive} >

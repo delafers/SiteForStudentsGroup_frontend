@@ -85,10 +85,9 @@ export const getNewsByTags = (tags) => (dispatch) => {
             dispatch(pushAllTags())
         })
 }
-export const addPostToServer = (title, text, tag ) => (dispatch) => {
-    NewsAPI.sendNewPost(title, text, tag)
-        .then(response => response.text())
-        .then(result => dispatch(getNewsByTags()))
+export const addPostToServer = (title, text, tag ) => async (dispatch) => {
+   const response = await NewsAPI.sendNewPost(title, text, tag)
+        dispatch(getNewsByTags())
 }
 export const pushAllTags = () => (dispatch) => {
     NewsAPI.getAllTags()

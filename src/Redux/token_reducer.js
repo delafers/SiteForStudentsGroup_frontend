@@ -52,7 +52,6 @@ export const refreshToken = () => (dispatch) => {
         then(response => response.text()).
         then(result => {
             let accessToken = JSON.parse(result)
-            let parceAccess = accessToken.access.split(/(\.)/);
             localStorage.setItem("access", accessToken.access)
             dispatch(getUserAuthData(localStorage.getItem("access")))
         }

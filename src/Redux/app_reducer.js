@@ -11,6 +11,7 @@ const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
             console.log("INITIALIZEOnReducer")
+            debugger
             return {
                 ...state,
                 initialized: true
@@ -23,16 +24,13 @@ const appReducer = (state = initialState, action) => {
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS})
 
 export const initializeApp = (token) => (dispatch) => {
-    let promise = dispatch(getUserAuthData(token))
-    Promise.all([promise]).then(() => {
-        dispatch(initializedSuccess())
-    })
+    dispatch(getUserAuthData(token)).then(
+        dispatch(initializedSuccess()))
 }
-export const initializeAppWithRefresh = () => (dispatch) => {
+export const initializeAppWithRefresh = () =>  (dispatch) => {
     let promise = dispatch(refreshToken())
     Promise.all([promise]).then(() => {
-        debugger
-    dispatch(initializedSuccess())
+        dispatch(initializedSuccess())
     })
 }
 

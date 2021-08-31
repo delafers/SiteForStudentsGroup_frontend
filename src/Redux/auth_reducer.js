@@ -11,7 +11,6 @@ let initialState = {
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
-            debugger
             return {
                 ...state,
                 ...action.payload,
@@ -23,14 +22,13 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (id, email, username, isAuth) => ({type: SET_USER_DATA, payload:{id, email, username, isAuth}})
 
-export const getUserAuthData = (resultAccess) => (dispatch) => {
-    authAPI.me(resultAccess)
+export const getUserAuthData = (resultAccess) => async (dispatch) => {
+        await authAPI.me(resultAccess)
         .then(response => response.text())
         .then(result => {
             let userData = JSON.parse(result)
             let {id, email, username} = userData;
             dispatch(setAuthUserData(id , email, username, true ))
-            return "result"
         })
 }
 export const logout = () => (dispatch) => {

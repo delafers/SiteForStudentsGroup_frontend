@@ -26,7 +26,7 @@ const LoginForm = (props) => {
                 <button className={s.authButton}>Создать пользователя</button>
             </div>
             <div className={s.text}>
-                {props.error === "Created" && "greetings traveler"}
+                {props.error === "Created" && <div><div>Аккаунт создан</div>Подтвердите его через почту</div>}
             </div>
         </form>
     )

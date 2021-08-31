@@ -5,22 +5,24 @@ import s from './AddPost.module.css';
 const OnePost = (props) => {
     return (
         <div className={s.Event}>
-            <div className={s.Title}>
-                <span >Пользователь:</span> {props.username}
-                <span >Тэги:</span> {props.tags[0] && props.tags[0].name}{props.tags[1] && (", " + props.tags[1].name)}{props.tags[2] && ", " + props.tags[2].name}
+            <div className={s.Username}>
+                {props.username}
                 <span className={s.time}>
                     {props.date}
                 </span>
             </div>
             <div className={s.Title}>
-                <div>
-                    <span className={s.Title}>заголовок:</span> {props.title}
-                </div>
-                <div className={s.text}>
-                <span className={s.Title}>Текст:</span> {props.text}
+                {props.title}
+            </div>
+                <div className={s.tags}>
+                {props.tags[0] && props.tags[0].name}{props.tags[1] && (", " + props.tags[1].name)}{props.tags[2] && ", " + props.tags[2].name}
                 </div>
 
-            </div>
+                <div className={s.text}>
+                {props.text}
+                </div>
+
+
         </div>
 
     )

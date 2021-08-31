@@ -9,6 +9,6 @@ export const maxLengthCreator = (maxlength) => (value) =>{
 
 export const tagCheck = (value = "") => {
     if (value.indexOf(" ") !== -1){
-        return "Если хотиете ввести несколько тегов, то записывайте их через `,`"
+        return "Если хотиете записать несколько тегов, то разделите их запятой, без пробелов"
     }
 }
