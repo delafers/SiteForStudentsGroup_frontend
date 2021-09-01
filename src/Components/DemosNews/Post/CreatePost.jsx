@@ -3,7 +3,7 @@ import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
 import {addPostToServer} from "../../../Redux/demosNews_reducer";
-import {required} from "../../../utils/validators/validator";
+import {required, tagCheck} from "../../../utils/validators/validator";
 import s from "./Post.module.css"
 
 const NewsForm = (props) => {
@@ -11,7 +11,7 @@ const NewsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={s.Post}>
             <div>
-                {createField("Tags",'tags',[required], Textarea)}
+                {createField("Tags",'tags',[required, tagCheck], Textarea)}
             </div>
             <div>
                 {createField("Title",'title',[required], Textarea)}

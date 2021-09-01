@@ -1,6 +1,6 @@
 .tagBar {
     display: flex;
-    background-color: #282c34;
+    background-color: #1e2745;
     text-align: center;
     margin: 5px auto 0px auto;
     padding: 4px ;
@@ -12,15 +12,23 @@
 .tagBar input{
     width: 20vw;
     min-width: 90px;
-    height: 20px;
+    height: 30px;
+    border: 1px solid #252e4b;
+    background-color: #1e2745;
+    border-radius: 5px;
 }
 .tagBar button{
-    height: 20px;
-    background-color: #E0CA3C;
+    height: 25px;
+    background-color: #50b5ff;
     margin-left: 3px;
     margin-right: 30px;
     width: 10vw;
-    border: 2px solid #E0CA3C;
+    border: 2px solid #50b5ff;
+    color: white;
+    border-radius: 5px;
+}
+.tagBar input{
+
 }
 .main{
     width: 80vw;

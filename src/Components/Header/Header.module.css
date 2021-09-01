@@ -23,9 +23,11 @@ a {
 .loginPlace button{
     height: calc(5px + 3vh);
     width: 70px;
-    background-color: #10394f;
+    background-color: #50b5ff;
     color: white;
     margin-right: 10px;
+    border: none;
+    border-radius: 3px;
 }
 .item a {
     color: #8c91b6;

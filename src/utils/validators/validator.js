@@ -12,3 +12,8 @@ export const tagCheck = (value = "") => {
         return "Если хотиете записать несколько тегов, то разделите их запятой, без пробелов"
     }
 }
+export const tagCheckInSearch = (value = "") => {
+    if (value.indexOf(" ") !== -1){
+        return "Поиск по одному тегу"
+    }
+}

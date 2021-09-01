@@ -2,9 +2,13 @@
     font-weight: bold;
     color: #E0CA3C;
 }
+.page{
+    cursor: pointer;
+    margin-left: 2px;
+}
 s.buttons button{
     background-color: #E0CA3C;
     color: black;
     width: 80px;
-    border: #1e2745 solid 0px;
+    border: #1e2745 solid 1px;
 }
