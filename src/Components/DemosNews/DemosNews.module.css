@@ -27,9 +27,7 @@
     color: white;
     border-radius: 5px;
 }
-.tagBar input{
 
-}
 .main{
     width: 80vw;
     margin: 0px auto 0px auto;
@@ -37,6 +35,9 @@
 }
 .centralItems{
     text-align: center;
+}
+.centralItems h1{
+    color: #8c91b6;
 }
 .modalButton{
     padding: 5px;

@@ -10,8 +10,6 @@ let initialState = {
 const appReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZED_SUCCESS:
-            console.log("INITIALIZEOnReducer")
-            debugger
             return {
                 ...state,
                 initialized: true

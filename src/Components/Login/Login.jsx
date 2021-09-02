@@ -1,5 +1,5 @@
 import React from 'react'
-import {Field , reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import {login} from "../../Redux/token_reducer";
@@ -19,8 +19,8 @@ const LoginForm = (props) => {
             { props.error && <div className={s.formSummaryError}>
                 {props.error}
             </div>}
-            <div>
-                <button>Login</button>
+            <div className={s.authButton}>
+                <button>Авторизоваться</button>
             </div>
         </form>
     )

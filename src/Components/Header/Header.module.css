@@ -35,7 +35,8 @@ a {
 }
 
 .item a.active {
-    color: black;
-    box-shadow: 0 0 0px #103a;
-    border-radius: 11px;
+    color: #50b5ff;
+    box-shadow: 0 0 1px #103a;
+    border-radius: 3px;
+    background-color: #252e4b;
 }

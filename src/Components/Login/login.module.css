@@ -6,13 +6,24 @@
     width: auto;
     max-width: 150vh;
 }
+.center button{
+    border: 1px solid #252e4b;
+    background-color: #1e2745;
+    width: 10vw;
+    height: auto;
+    color: gray;
+}
 .formSummaryError {
     padding-left: 10px;
     color: brown;
     font-size: 26px;
 }
 .authButton button{
-
+    border: 1px solid #252e4b;
+    background-color: #1e2745;
+    width: 10vw;
+    height: auto;
+    color: gray;
 }
 .text{
     font-size: 30px;
