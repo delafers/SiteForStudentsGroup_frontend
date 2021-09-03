@@ -54,24 +54,52 @@ export const tokenAPI = {
 }
 export const mailAPI = {
     OneMail(mailId){
-       return  axios.get(baseURL +`api/letters/` + mailId)
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+       return  axios.get(baseURL +`api/letters/` + mailId, requestOptions)
     },
     mailCheck(){
-        return axios.get(baseURL +"/api/letters/check_email/10")
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        return axios.get(baseURL +"/api/letters/check_email/10", requestOptions)
     },
     getAllMails(){
-        return axios.get(baseURL + `api/letters/?count=10&page=1`)
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        }
+        return axios.get(baseURL + `api/letters/?count=10&page=1`, requestOptions)
     },
     getCurrentPageMails(pageNumber){
-        return axios.get(baseURL +`api/letters/?count=10&page=${pageNumber}`)
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        }
+        return axios.get(baseURL +`api/letters/?count=10&page=${pageNumber}`, requestOptions)
     }
 }
 export const NewsAPI = {
     getCurrentNews(tags){
         let i = 0;
         let activeTag = "";
-        if(tags != undefined) {
-            if (tags != []) {
+        if(tags !== undefined) {
+            if (tags !== []) {
                 while (i < tags.length) {
                     if(i === 0){
                     activeTag = tags[i]
@@ -81,16 +109,22 @@ export const NewsAPI = {
                         i++
                     }
                 }
+                let myHeaders = new Headers();
+                myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
                 let requestOptions = {
                     method: 'GET',
+                    headers: myHeaders,
                     redirect: 'follow'
                 };
                 return fetch(baseURL + `api/demosnews/posts/?tags=${activeTag}`, requestOptions)
             }
         }
         {tags === undefined ? tags = "": tags = "?tags="+tags}
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
         let requestOptions = {
             method: 'GET',
+            headers: myHeaders,
             redirect: 'follow'
         };
         return fetch(baseURL+`api/demosnews/posts/${tags}`, requestOptions)
@@ -108,12 +142,14 @@ export const NewsAPI = {
             body: formdata,
             redirect: 'follow'
         };
-        debugger
         return fetch(baseURL +"api/demosnews/posts/", requestOptions)
     },
     getAllTags(){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
         let requestOptions = {
             method: 'GET',
+            headers: myHeaders,
             redirect: 'follow'
         };
        return  fetch(baseURL +"api/demosnews/tags/", requestOptions)

@@ -3,7 +3,14 @@ const API_URL = 'https://devgang.online/'
 
 export default class InfoService{
     getInfo() {
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
         const url = `${API_URL}api/info/`;
-        return axios.get(url).then(response => response.data);
+        return axios.get(url, requestOptions).then(response => response.data);
     }
 }

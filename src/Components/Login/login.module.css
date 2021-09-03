@@ -9,7 +9,7 @@
 .center button{
     border: 1px solid #252e4b;
     background-color: #1e2745;
-    width: 10vw;
+    width: 100px;
     height: auto;
     color: gray;
 }
@@ -21,7 +21,7 @@
 .authButton button{
     border: 1px solid #252e4b;
     background-color: #1e2745;
-    width: 10vw;
+    width: 100px;
     height: auto;
     color: gray;
 }
