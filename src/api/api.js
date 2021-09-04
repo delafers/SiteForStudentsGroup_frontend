@@ -71,7 +71,7 @@ export const mailAPI = {
             headers: myHeaders,
             redirect: 'follow'
         };
-        return axios.get(baseURL +"/api/letters/check_email/10", requestOptions)
+        return fetch(baseURL +"api/letters/check_email/10", requestOptions)
     },
     getAllMails(){
         let myHeaders = new Headers();
@@ -81,7 +81,7 @@ export const mailAPI = {
             headers: myHeaders,
             redirect: 'follow'
         }
-        return axios.get(baseURL + `api/letters/?count=10&page=1`, requestOptions)
+        return fetch(baseURL + `api/letters/?count=10&page=1`, requestOptions)
     },
     getCurrentPageMails(pageNumber){
         let myHeaders = new Headers();

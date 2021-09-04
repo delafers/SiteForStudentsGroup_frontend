@@ -8,7 +8,7 @@ let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, upd
         <span className={s.buttonUpdateMailsPlace}>
             <button onClick={() => {
                 updateMails()
-            }} >Update mails list
+            }} >Обновить почту
             </button>
             </span>
         <div className={s.shadow}>

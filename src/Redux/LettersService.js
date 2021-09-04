@@ -51,19 +51,29 @@ export const disableButton = (isDisabled) => ({type: BUTTON_DISABLED, isDisabled
 export const getMails = () => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        let response = await mailAPI.getAllMails()
-        dispatch(setUsers(response.data.results))
-        dispatch(setTotalUsersCount(response.data.count))
-        dispatch(toggleIsFetching(false))
+        await mailAPI.getAllMails()
+            .then(response => response.text())
+            .then(result => {
+                let mailsData = JSON.parse(result)
+                dispatch(setUsers(mailsData.results))
+                dispatch(setTotalUsersCount(mailsData.count))
+                dispatch(toggleIsFetching(false))
+            })
+
     }
 }
 export const setMailPage= (pageNumber) =>{
     return async (dispatch) =>{
         dispatch(setCurrentPage(pageNumber));
         dispatch(toggleIsFetching(true));
-        const response = await mailAPI.getCurrentPageMails(pageNumber)
-        dispatch(toggleIsFetching(false))
-        dispatch(setUsers(response.data.results));
+        await mailAPI.getCurrentPageMails(pageNumber)
+            .then(response => response.text())
+            .then(result => {
+                let mailsData = JSON.parse(result)
+                dispatch(setUsers(mailsData.results))
+                dispatch(toggleIsFetching(false))
+            })
+
     }
 }
 export const updateMails = () => {

@@ -10,7 +10,7 @@ export default class InfoService{
             headers: myHeaders,
             redirect: 'follow'
         };
-        const url = `${API_URL}api/info/`;
-        return axios.get(url, requestOptions).then(response => response.data);
+        const url = `${API_URL}api/calendar/info/`;
+        return fetch(url, requestOptions).then(response => response.text());
     }
 }

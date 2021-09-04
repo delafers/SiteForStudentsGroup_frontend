@@ -95,7 +95,7 @@ class CalendarMenu extends Component {
 
         daysService.getDays(year, (Number(month) + 1)).then(function (result) {
             // проходится по полученным дням и записывает их в общий массив
-            result.map( day => {
+            JSON.parse(result).map( day => {
                 let colors = [];
                 day.event.map( (event, i) => {
                     if (event.event_info) {
@@ -121,11 +121,12 @@ class CalendarMenu extends Component {
             })
         });
 
-        infoService.getInfo().then(function (result) {
+        infoService.getInfo().then(
+            function (result) {
             self.setState({
-                info: result
+                info: JSON.parse(result)
             })
-        });
+        })
     }
 
 
@@ -136,14 +137,16 @@ class CalendarMenu extends Component {
             daysService.getDay(year, month + 1, day).then(function (result) {
                 error = false;
                 let events = [];
-                result.event.map((event, i) => {
+                let results = JSON.parse(result)
+                debugger
+                results.event.map((event, i) => {
                     events[i] = [event.description, event.time, event.event_info.color];
                 });
                 self.setState({
                     day_data: {
-                        id: result.id,
-                        date: Number(result.date.slice(8, 10)),
-                        topic: result.topic,
+                        id: results.id,
+                        date: Number(results.date.slice(8, 10)),
+                        topic: results.topic,
                         event: events,
                     },
                     CalendarStyle: Style.CalendarMenu,

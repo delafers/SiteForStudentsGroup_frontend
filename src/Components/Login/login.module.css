@@ -6,10 +6,13 @@
     width: auto;
     max-width: 150vh;
 }
+.center h1{
+    color: #8c91b6;
+}
 .center button{
     border: 1px solid #252e4b;
     background-color: #1e2745;
-    width: 100px;
+    width: 120px;
     height: auto;
     color: gray;
 }
@@ -21,7 +24,7 @@
 .authButton button{
     border: 1px solid #252e4b;
     background-color: #1e2745;
-    width: 100px;
+    width: 120px;
     height: auto;
     color: gray;
 }

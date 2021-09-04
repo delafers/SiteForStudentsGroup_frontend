@@ -13,7 +13,7 @@ export default class DaysService{
             headers: myHeaders,
             redirect: 'follow'
         };
-        return axios.get(url, requestOptions).then(response => response.data);
+        return fetch(url, requestOptions).then(response => response.text());
     }
     getDay(year, month, day) {
         if (String(month).length === 1) {month = '0' + String(month)}
@@ -26,6 +26,6 @@ export default class DaysService{
             headers: myHeaders,
             redirect: 'follow'
         };
-        return axios.get(url, requestOptions).then(response => response.data);
+        return fetch(url, requestOptions).then(response => response.text());
     }
 }
