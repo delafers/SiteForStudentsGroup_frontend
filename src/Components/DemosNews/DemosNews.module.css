@@ -46,13 +46,14 @@
     width: 30vw;
     height: auto;
     max-height: 60px;
-    color: black;
+    color: white;
     background-color: #28c2ff;
     border: #28c2ff solid 2px;
     font-size: 20px;
     font-weight: bold;
     border-radius: 5px;
-    margin: 5px auto 10px auto
+    margin: 5px auto 10px auto;
+    padding: 5px;
 }
 .tag{
     margin-left: 0.5rem;

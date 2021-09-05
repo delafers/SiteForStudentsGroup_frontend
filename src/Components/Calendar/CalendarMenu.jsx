@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, withRouter} from 'react-router-dom'
+import {Link, Redirect, withRouter} from 'react-router-dom'
 import Style from './CalendarMenu.module.css';
 import Day from './Day/Day';
 import Table from './Calendar/Table/Table';
@@ -119,7 +119,9 @@ class CalendarMenu extends Component {
                 prevYear: '/?year=' + (Number(year) - 1) + '&month=' + (Number(month) + 1),
                 days_in_month: days_total,
             })
-        });
+        }).catch((error) => {
+            this.props.history.push("/login")
+        })
 
         infoService.getInfo().then(
             function (result) {
@@ -153,7 +155,9 @@ class CalendarMenu extends Component {
                         DayStyle: Style.Day,
                     })
                 }
-            });
+            }).catch((error) => {
+                return <Redirect to="/login" />
+            })
 
             if (error) {
                 let events = [];

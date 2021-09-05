@@ -35,8 +35,11 @@
     border: 1px solid #252e4b;
 }
 .modal__content button{
-    background-color: #282c34;
+    background-color: #28c2ff;
+    border: #50b5ff solid 1px;
     color: white;
+    height: 40px;
+    border-radius: 5px;
 }
 .modal__content.active{
     transform: scale(1);
