@@ -138,21 +138,23 @@ class CalendarMenu extends Component {
                 error = false;
                 let events = [];
                 let results = JSON.parse(result)
-                debugger
-                results.event.map((event, i) => {
-                    events[i] = [event.description, event.time, event.event_info.color];
-                });
-                self.setState({
-                    day_data: {
-                        id: results.id,
-                        date: Number(results.date.slice(8, 10)),
-                        topic: results.topic,
-                        event: events,
-                    },
-                    CalendarStyle: Style.CalendarMenu,
-                    DayStyle: Style.Day,
-                })
+                if (results.detail !== "Не найдено.") {
+                    results.event.map((event, i) => {
+                        events[i] = [event.description, event.time, event.event_info.color];
+                    });
+                    self.setState({
+                        day_data: {
+                            id: results.id,
+                            date: Number(results.date.slice(8, 10)),
+                            topic: results.topic,
+                            event: events,
+                        },
+                        CalendarStyle: Style.CalendarMenu,
+                        DayStyle: Style.Day,
+                    })
+                }
             });
+
             if (error) {
                 let events = [];
                 events[0] = [" "];
@@ -208,7 +210,7 @@ class CalendarMenu extends Component {
                     <div className={this.state.DayStyle} ref={ (dayRef) => this.dayRef = dayRef}>
                         <Day
                             year={this.state.year}
-                            month={this.state.month_name[this.state.month - 1]}
+                            month={this.state.month_name[this.state.month]}
                             day={this.state.day_data.date}
                             event={this.state.day_data.event}
                         />

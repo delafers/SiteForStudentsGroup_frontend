@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
+import {createField, Textarea} from "../../common/FormsControls/FormsControls";
 import {addPostToServer} from "../../../Redux/demosNews_reducer";
 import {required, tagCheck} from "../../../utils/validators/validator";
 import s from "./Post.module.css"
@@ -11,13 +11,13 @@ const NewsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={s.Post}>
             <div>
-                {createField("Tags",'tags',[required, tagCheck], Textarea)}
+                {createField("Тэги",'tags',[required, tagCheck], Textarea)}
             </div>
             <div>
-                {createField("Title",'title',[required], Textarea)}
+                {createField("Заголовок",'title',[required], Textarea)}
             </div>
             <div className={s.text}>
-                {createField("Text",'text',[required], Textarea)}
+                {createField("Текст",'text',[required], Textarea)}
             <div>
                 <button>Создать пост</button>
             </div>
@@ -35,7 +35,7 @@ const NewPostCreate = (props) => {
     }
 
     return<div >
-        <h1>Поделись новостью</h1>
+        <h2>Поделись новостью</h2>
         <CreatePostReduxForm onSubmit={onSubmit}/>
     </div>
 }

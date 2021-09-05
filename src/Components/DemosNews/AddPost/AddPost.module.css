@@ -10,7 +10,8 @@
 }
 .text{
     width: 65vw;
-    padding-top: 3vh
+    padding-top: 3vh;
+    padding-bottom: 2vh;
 }
 .Username{
     color: #50b5ff;
