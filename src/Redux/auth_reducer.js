@@ -1,4 +1,4 @@
-import {authAPI, tokenAPI} from "../api/api";
+import {authAPI} from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA'
 
 let initialState = {
@@ -6,7 +6,7 @@ let initialState = {
     email: null,
     username: null,
     isAuth: false,
-};
+}
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {

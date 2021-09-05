@@ -10,7 +10,7 @@ import {createField, Input} from "../common/FormsControls/FormsControls";
 import NewPostCreate from "./Post/CreatePost";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
-import {NavLink, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {tagCheckInSearch} from "../../utils/validators/validator";
 
 const TagsForm = (props) => {

@@ -3,7 +3,6 @@ import Style from './App.module.css';
 import Footer from './Components/Footer/Footer.jsx';
 import CalendarMenuContainer from './Components/Calendar/CalendarMenu.jsx';
 import {BrowserRouter, Route} from 'react-router-dom'
-//import OneMail from "./Components/Mail/One_Letter/OneLetterContainer";
 import Login from "./Components/Login/Login";
 import Registration from "./Components/Login/Registrate";
 import MailConfirm from "./Components/Login/MailConfirmContainer";
@@ -41,7 +40,6 @@ class App extends Component {
     }
     render() {
         if (!this.props.initialized) {
-            console.log("Rendering loading")
             return <Loading/>
         } else {
             return (
@@ -64,7 +62,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("AppMapStateToProps")
     return{initialized: state.app.initialized}
 }
 

@@ -4,7 +4,6 @@ import {Link, NavLink} from 'react-router-dom'
 
 
 const Header =  (props) => {
-        console.log(props.isAuth)
         return (
             <header className={s.item}>
                 <NavLink exact to="/" activeClassName={s.active}>календарь</NavLink>
