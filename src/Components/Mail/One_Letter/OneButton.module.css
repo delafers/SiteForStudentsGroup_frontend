@@ -4,7 +4,6 @@
 }
 
 .mail {
-    border: solid black 2px;
     display: flex;
     margin: 5px auto 0px auto;
     padding: 5px 5px ;
@@ -13,44 +12,39 @@
     flex-direction: column;
     border-radius: 15px;
     max-width: 71vw;
-    background-color: #282c34;
+    background-color: #1e2745;
     box-shadow: 0 1px 10px black;
 }
 .sender {
     margin-top: 15px;
     color: white;
     width: 65vw;
-    border: solid black 2px;
     padding: 5px 5px;
-    background-color: #182039;
 }
 .topic {
     margin-top: 15px;
     color: white;
     width: 65vw;
-    border: solid black 2px;
     padding: 5px 5px;
-    background-color: #182039;
 }
 .text {
     margin-top: 15px;
     color: white;
     width: 65vw;
-    border: solid black 2px;
-    padding: 7px 7px;
-    background-color: #182039;
+    padding-left:7px;
+    padding-bottom: 20px;
 }
 
-.file {
+.file a{
     margin-top: 25px;
-    color: blue;
+    color: #1456FA;
     width: 65vw;
-    background-color: #182039;
-
+    padding-left: 7px;
+    padding-bottom: 20px;
 }
 
 .description {
-    color: black;
+    color: #8c91b6;
     padding: 20px;
 }
 

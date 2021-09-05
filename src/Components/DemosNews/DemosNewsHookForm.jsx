@@ -3,7 +3,6 @@ import {Field , reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import s from './DemosNews.module.css'
 import OneTag from "./OneTag";
-import PostsContainer from "./Post/PostContainer";
 import ModalCreate from "./CreateNewsPopup/CreateNews";
 import PostsView from "./AddPost/AddPostContainer";
 import {getNewsByTags, removeTag, SetActiveTags} from "../../Redux/demosNews_reducer";
