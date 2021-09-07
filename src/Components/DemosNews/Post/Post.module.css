@@ -1,10 +1,18 @@
 .Post {
 
 }
+.base button{
+    background-color: #50b5ff;
+    border: #50b5ff solid 1px;
+    color: white;
+    height: 40px;
+    border-radius: 5px;
+}
 .Post textarea{
     width: 90%;
 }
-.text textarea{
+.text {
+    width: 90%;
     height: 150px;
 }
 .title {

@@ -28,7 +28,7 @@ const Posts = ({postTag="", title="", textUser="",onPostChangeR,onTagsChangeR,on
     }
 
     return (
-        <div>
+        <div className={s.base}>
             <div>
                 <textarea ref={NewTag} onChange={onTagsChange} value={postTag} className={s.title}/>
             </div>
@@ -39,7 +39,7 @@ const Posts = ({postTag="", title="", textUser="",onPostChangeR,onTagsChangeR,on
                 <textarea ref={NewComment} onChange={onPostChange} value={textUser} className={s.text}/>
             </div>
             <div>
-                <button onClick={onAddComments}>send comment</button>
+                <button onClick={onAddComments} >send comment</button>
             </div>
         </div>
     )
