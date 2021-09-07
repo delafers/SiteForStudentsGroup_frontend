@@ -1,41 +1,42 @@
 import React from 'react'
 import s from './Post.module.css'
+import {PutUpdatedPost} from "../../../Redux/demosNews_reducer";
 
 
 
-const Posts = (props) => {
+const Posts = ({postTag="", title="", textUser="",onPostChangeR,onTagsChangeR,onTitleChangeR,PutUpdatedPost, setActive}) => {
     let NewComment = React.createRef();
     let NewTag = React.createRef()
     const Title = React.createRef()
 
     let onPostChange = () => {
         let comment = NewComment.current.value;
-        props.onPostChange(comment);
+        onPostChangeR(comment);
     }
     let onTagsChange = () => {
         let comment = NewTag.current.value;
-        props.onTagsChange(comment)
+        onTagsChangeR(comment)
     }
     let onTitleChange = () => {
         let comment = Title.current.value;
-        props.onTitleChange(comment)
+        onTitleChangeR(comment)
     }
 
     let onAddComments = () => {
-        props.addPostToServer(props.title, props.textUser, props.postTag)
-        props.setActive(false)
+        setActive(false)
+        PutUpdatedPost()
     }
 
     return (
         <div>
             <div>
-                <textarea ref={NewTag} onChange={onTagsChange} value={props.postTag} className={s.title}>Your tags</textarea>
+                <textarea ref={NewTag} onChange={onTagsChange} value={postTag} className={s.title}/>
             </div>
             <div>
-                <textarea ref={Title} onChange={onTitleChange} value={props.title} className={s.title}>Your title</textarea>
+                <textarea ref={Title} onChange={onTitleChange} value={title} className={s.title}/>
             </div>
             <div>
-                <textarea ref={NewComment} onChange={onPostChange} value={props.textUser} className={s.text}>Your text</textarea>
+                <textarea ref={NewComment} onChange={onPostChange} value={textUser} className={s.text}/>
             </div>
             <div>
                 <button onClick={onAddComments}>send comment</button>

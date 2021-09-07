@@ -6,12 +6,12 @@ const Confirm = () => {
     return(
         <div className={s.center}>
             <h1>
-               You have been successful authorised
+               Вы были успешно авторизованы
             </h1>
             <div>
                 <p>
                     <NavLink to={"/login"}>
-                        return to login
+                        Вернуться к авторизации
                     </NavLink>
                 </p>
             </div>

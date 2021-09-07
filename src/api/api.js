@@ -1,15 +1,7 @@
-import * as axios from "axios";
-
-const debug = false
 const baseURL = 'https://devgang.online/'
 
-if (debug !== true){
-    const baseURL = 'https://aficionadoleague.ru/'}
 
-/*const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'http://localhost:8000/',
-});*/
+
 
 export const authAPI = {
     me(result) {
@@ -119,7 +111,7 @@ export const NewsAPI = {
                 return fetch(baseURL + `api/demosnews/posts/?tags=${activeTag}`, requestOptions)
             }
         }
-        {tags === undefined ? tags = "": tags = "?tags="+tags}
+        tags === undefined ? tags = "": tags = "?tags="+tags
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
         let requestOptions = {
@@ -153,20 +145,33 @@ export const NewsAPI = {
             redirect: 'follow'
         };
        return  fetch(baseURL +"api/demosnews/tags/", requestOptions)
+    },
+    changePost(PostId, tags, title, text){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
+        let formdata = new FormData()
+        formdata.append("title", title)
+        formdata.append("text", text)
+        formdata.append("tags", tags)
+        let requestOptions = {
+            method: 'PUT',
+            body: formdata,
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        debugger
+        return  fetch(baseURL +"api/demosnews/posts/"+PostId, requestOptions)
+    },
+    getOnePost(id){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        return fetch(baseURL +"api/demosnews/posts/"+id, requestOptions)
+    }
 
-    }
-}
-export class DaysService {
-    getDays(year, month) {
-        if (String(month).length === 1) {month = '0' + String(month)};
-        const url = `${baseURL}/api/calendar/days/${year}${month}`;
-        return axios.get(url).then(response => response.data);
-    }
-    getDay(year, month, day) {
-        if (String(month).length === 1) {month = '0' + String(month)};
-        if (String(day).length === 1) {day = '0' + String(day)};
-        const url = `${baseURL}/api/calendar/days/${year}${month}${day}`;
-        return axios.get(url).then(response => response.data);
-    }
 }
 

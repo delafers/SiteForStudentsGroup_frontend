@@ -8,6 +8,11 @@
     background-color: #1e2745;
     border-top: 1px #252e4b solid;
 }
+.Event img{
+    width: 20px;
+    height: 20px;
+    background-color: #1e2745;
+}
 .text{
     width: 65vw;
     padding-top: 3vh;
