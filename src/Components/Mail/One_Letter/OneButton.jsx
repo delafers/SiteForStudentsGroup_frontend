@@ -15,6 +15,7 @@ const Modal = (props) => {
                     </NavLink>
                 </div>
                 <div className={s.mail}>
+                    {props.mail.date_time}
                     <div className={s.sender}>
                    <span className={s.description}>
                        Отправитель:

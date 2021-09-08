@@ -11,13 +11,13 @@ import NewPostCreate from "./Post/CreatePost";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
-import {tagCheckInSearch} from "../../utils/validators/validator";
+import {requiredFindByTag, tagCheckInSearch} from "../../utils/validators/validator";
 
 const TagsForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={s.tagBar}>
-                {createField("Найти по тегу", 'tagName', [tagCheckInSearch], Input )}
+                {createField("Найти по тегу", 'tagName', [tagCheckInSearch, requiredFindByTag], Input )}
                 <button>Поиск</button>
             </div>
         </form>

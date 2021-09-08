@@ -36,7 +36,6 @@ let mapStateToProps = (state) => {
     debugger
     return{
         mail: state.letterPage.mail,
-        zag: state.MailPage.users[0]
     }
 }
 
