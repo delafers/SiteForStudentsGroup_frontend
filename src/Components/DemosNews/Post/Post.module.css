@@ -8,6 +8,14 @@
     height: 40px;
     border-radius: 5px;
 }
+.base img{
+    width: 40px;
+    height: 40px;
+    padding-left: 65%;
+}
+base span{
+
+}
 .Post textarea{
     width: 90%;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import Posts from "./PostChange";
 import {connect} from "react-redux";
 import {
-    addPostToServer,
+    addPostToServer, DeletePost,
     getNewsByTags,
     onPostChange,
     onTagsChange, onTitleChange, pushAllTags, PutUpdatedPost, setDataForChangingTag
@@ -13,14 +13,15 @@ class PostChangeContainer extends React.Component{
     render() {
         return<div>
             <Posts postTag={this.props.postTag} title={this.props.title} textUser={this.props.text}
-                   onPostChangeR={this.props.onPostChange} onTagsChangeR={this.props.onTagsChange}
+                   id={this.props.id} onPostChangeR={this.props.onPostChange} onTagsChangeR={this.props.onTagsChange}
                    onTitleChangeR={this.props.onTitleChange} PutUpdatedPost={this.props.PutUpdatedPost}
-                   setActive={this.props.setActive}/>
+                   setActive={this.props.setActive} DeletePost={this.props.DeletePost}/>
         </div>
     }
 }
 let mapStateToProps = (state) => {
     return{
+        id: state.news.id,
         title: state.news.title,
         text: state.news.textUser,
         postTag: state.news.postTag,
@@ -29,5 +30,5 @@ let mapStateToProps = (state) => {
 
 
 const PostsContainer = connect(mapStateToProps,{onPostChange, onTagsChange, onTitleChange,
-    getNewsByTags,addPostToServer, pushAllTags, setDataForChangingTag,PutUpdatedPost})(PostChangeContainer);
+    getNewsByTags,addPostToServer, pushAllTags, setDataForChangingTag,PutUpdatedPost, DeletePost})(PostChangeContainer);
 export default PostsContainer

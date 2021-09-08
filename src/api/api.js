@@ -171,6 +171,16 @@ export const NewsAPI = {
             redirect: 'follow'
         };
         return fetch(baseURL +"api/demosnews/posts/"+id, requestOptions)
+    },
+    deleteOnePost(id){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
+        let requestOptions = {
+            method: 'DELETE',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+        return fetch(baseURL +"api/demosnews/posts/"+id, requestOptions)
     }
 
 }

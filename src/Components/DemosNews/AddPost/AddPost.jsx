@@ -24,7 +24,7 @@ const OnePost = (props) => {
                 {props.title}
             </div>
                 <div className={s.tags}>
-                {props.tags[0] && props.tags[0].name}{props.tags[1] && (", " + props.tags[1].name)}{props.tags[2] && ", " + props.tags[2].name}
+                {props.tags[0] && props.tags[0].name}{props.tags[1] && (", " + props.tags[1].name)}{props.tags[2] && ", " + props.tags[2].name}{props.tags[3] && ", " + props.tags[3].name}
                 </div>
                 <div className={s.text}>
                 {props.text}

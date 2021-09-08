@@ -133,15 +133,26 @@ export const SetRefactoringPostData = (PostId) => async (dispatch, getState) => 
                 if (data.tags[1] !== undefined) {
                     tags = tags + "," + data.tags[1].name
                 }
+                if (data.tags[2] !== undefined) {
+                    tags = tags + "," + data.tags[2].name
+                }
+                if (data.tags[3] !== undefined) {
+                    tags = tags + "," + data.tags[3].name
+                }
             }
             dispatch(setDataForChangingTag(data.id, tags, data.title, data.text))
         })
 }
 export const PutUpdatedPost = () => (dispatch, getState) => {
-
     NewsAPI.changePost(getState().news.id, getState().news.postTag, getState().news.title, getState().news.textUser)
         .then(() => {
             dispatch(getNewsByTags())
         })
+}
+export const DeletePost = (id) => async(dispatch, getState) => {
+    await NewsAPI.deleteOnePost(id)
+        .then(
+            dispatch(getNewsByTags())
+        )
 }
 export default DemosNewsReducer;

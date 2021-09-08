@@ -1,10 +1,11 @@
 import React from 'react'
 import s from './Post.module.css'
-import {PutUpdatedPost} from "../../../Redux/demosNews_reducer";
+import {DeletePost, PutUpdatedPost} from "../../../Redux/demosNews_reducer";
 
 
 
-const Posts = ({postTag="", title="", textUser="",onPostChangeR,onTagsChangeR,onTitleChangeR,PutUpdatedPost, setActive}) => {
+const Posts = ({postTag="", title="", textUser="", id, onPostChangeR,
+                   onTagsChangeR,onTitleChangeR,PutUpdatedPost, setActive, DeletePost}) => {
     let NewComment = React.createRef();
     let NewTag = React.createRef()
     const Title = React.createRef()
@@ -39,7 +40,11 @@ const Posts = ({postTag="", title="", textUser="",onPostChangeR,onTagsChangeR,on
                 <textarea ref={NewComment} onChange={onPostChange} value={textUser} className={s.text}/>
             </div>
             <div>
-                <button onClick={onAddComments} >send comment</button>
+                <button onClick={onAddComments}>Сохранить изменения</button>
+                <span><img src="https://cdn-icons-png.flaticon.com/512/216/216658.png"
+                           onClick={() => {
+                               setActive(false)
+                               DeletePost(id)}}/></span>
             </div>
         </div>
     )
