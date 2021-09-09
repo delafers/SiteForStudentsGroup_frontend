@@ -1,4 +1,6 @@
 import {NewsAPI} from "../api/api";
+import CheckAccess from "../Components/common/AccessLifeCheck/LifeAccess";
+import {refreshToken} from "./token_reducer";
 
 const REFACTOR_COMMENT = 'ADD-COMMENT'
 const UPDATE_COMMENT_TEXT = 'UPDATE-COMMENT-TEXT'
@@ -88,13 +90,25 @@ const removeActiveTag = (oneTag) => ({type: REMOVE_TAG, oneTag})
 const setActiveTag = (tag) => ({type: SET_ACTIVE_TAGS, tag})
 
 export const getNewsByTags = (tags) => (dispatch) => {
+    if(CheckAccess()){
     NewsAPI.getCurrentNews(tags)
         .then(response => response.text())
         .then(result => {
             let NewsData = JSON.parse(result)
             dispatch(setNewsData(NewsData.results))
             dispatch(pushAllTags())
-        })
+        })}else{
+        refreshToken().then(() => {
+            debugger
+            NewsAPI.getCurrentNews(tags)
+                .then(response => response.text())
+                .then(result => {
+                    let NewsData = JSON.parse(result)
+                    dispatch(setNewsData(NewsData.results))
+                    dispatch(pushAllTags())
+                })}
+        )
+    }
 }
 export const addPostToServer = (title, text, tag) => async (dispatch) => {
     await NewsAPI.sendNewPost(title, text, tag)

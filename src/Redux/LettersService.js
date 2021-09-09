@@ -1,4 +1,6 @@
 import {mailAPI} from "../api/api";
+import CheckAccess from "../Components/common/AccessLifeCheck/LifeAccess";
+import {refreshToken} from "./token_reducer";
 
 const SET_USERS = 'SET-USERS'
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
@@ -47,18 +49,28 @@ export const setTotalUsersCount = (totalCount) => ({type: SET_TOTAL_USERS_COUNT,
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const disableButton = (isDisabled) => ({type: BUTTON_DISABLED, isDisabled})
 
+const getMailsLogic = async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    await mailAPI.getAllMails()
+        .then(response => response.text())
+        .then(result => {
+            let mailsData = JSON.parse(result)
+            dispatch(setUsers(mailsData.results))
+            dispatch(setTotalUsersCount(mailsData.count))
+            dispatch(toggleIsFetching(false))
+        })
 
+}
 export const getMails = () => {
     return async (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        await mailAPI.getAllMails()
-            .then(response => response.text())
-            .then(result => {
-                let mailsData = JSON.parse(result)
-                dispatch(setUsers(mailsData.results))
-                dispatch(setTotalUsersCount(mailsData.count))
-                dispatch(toggleIsFetching(false))
+        if(CheckAccess()){
+           await getMailsLogic(dispatch)
+        }else{
+             refreshToken().then(() => {
+                debugger
+                dispatch(getMailsLogic(dispatch))
             })
+        }
 
     }
 }
