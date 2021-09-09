@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
-import {Field , reduxForm} from "redux-form";
+import React from 'react'
+import {reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {login, logout, registr} from "../../Redux/createUser_reducer";
-import {NavLink, Redirect} from "react-router-dom";
+import {registr} from "../../Redux/createUser_reducer";
+import {NavLink} from "react-router-dom";
 import s from "./login.module.css";
 import {createField, Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validator";
@@ -19,7 +19,7 @@ const LoginForm = (props) => {
             <div>
                 {createField("Password",'password',[required], Input,"password")}
             </div>
-            { props.error != "Created" && <div className={s.formSummaryError}>
+            { props.error !== "Created" && <div className={s.formSummaryError}>
                 {props.error}
             </div>}
             <div>

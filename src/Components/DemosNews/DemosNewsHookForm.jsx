@@ -11,7 +11,7 @@ import NewPostCreate from "./Post/CreatePost";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {withRouter} from "react-router-dom";
-import {requiredFindByTag, tagCheckInSearch} from "../../utils/validators/validator";
+import {maxNumberOfTags, requiredFindByTag, tagCheckInSearch} from "../../utils/validators/validator";
 
 const TagsForm = (props) => {
     return(

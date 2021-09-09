@@ -22,13 +22,14 @@ a {
    padding-left: 29vw;
 }
 .loginPlace button{
-    height: calc(5px + 3vh);
+    height: calc(2px + 3vh);
     width: 70px;
     background-color: #50b5ff;
     color: white;
     margin-right: 10px;
     border: none;
     border-radius: 3px;
+    margin-bottom: 5px;
 }
 .item a {
     text-align: center;

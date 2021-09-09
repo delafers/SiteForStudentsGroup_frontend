@@ -27,7 +27,6 @@ export const login = (requestOptions) => (dispatch) => {
         .then(response =>
         response.text())
         .then(result => {
-            debugger
             let accessToken = JSON.parse(result)
             if (accessToken.error === undefined) {
                 let parceAccess = accessToken.access.split(/(\.)/);

@@ -21,3 +21,9 @@ export const tagCheckInSearch = (value = "") => {
         return "Поиск по одному тегу"
     }
 }
+export const maxNumberOfTags = value => {
+    if(value.split(",").length >= 5){
+        debugger
+        return "4 тега тебе хватит"
+    }
+}

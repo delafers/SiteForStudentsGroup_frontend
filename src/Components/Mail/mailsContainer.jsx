@@ -1,14 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
-import * as axios from "axios";
 import Loading from "../Loading/Loading";
 import {
     getMails,
-    setCurrentPage,
     setMailPage,
-    setTotalUsersCount,
-    setUsers,
-    toggleIsFetching, updateMails
+     updateMails
 } from "../../Redux/LettersService";
 import Mail from "./MailsView";
 import {compose} from "redux";
@@ -34,7 +30,6 @@ class letterContainer extends React.Component {
     }
 }
 let mapStateToProps =(state) => {
-    console.log("MailMapStateToProps")
     return{
         users: state.MailPage.users,
         totalUsersCount: state.MailPage.totalUsersCount,

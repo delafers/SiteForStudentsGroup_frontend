@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Mail.module.css'
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import Paginator from "../common/Paginator/Paginator";
 
 let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, updateMails, isAuth}) => {
@@ -29,7 +29,7 @@ let Mail = ({totalUsersCount, currentPage, onPageChanged, users, isFetching, upd
                         </div>
                         <div className={s.text}>
                             <span className={s.time}>Заголовок: </span>{u.topic}
-                            {u.letter[0] === undefined ? "" : <img src={"https://image.flaticon.com/icons/png/512/124/124506.png"}/>}
+                            {u.letter[0] === undefined ? "" : <img src="https://image.flaticon.com/icons/png/512/124/124506.png" />}
                         </div>
                         <div className={s.text}>
                             <span className={s.time}>Текст: </span>{u.text}
