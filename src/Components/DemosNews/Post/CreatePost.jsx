@@ -11,7 +11,7 @@ const NewsForm = (props) => {
         <form onSubmit={props.handleSubmit}>
             <div className={s.Post}>
             <div>
-                {createField("Тэги",'tags',[required, tagCheck,maxNumberOfTags], Textarea)}
+                {createField("Тэги(если хотите добавить несколько тегов, напишите их через запятую)",'tags',[required,maxNumberOfTags], Textarea)}
             </div>
             <div>
                 {createField("Заголовок",'title',[required], Textarea)}

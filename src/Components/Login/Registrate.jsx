@@ -12,16 +12,16 @@ const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                {createField("Username",'username',[required], Input)}
+                {createField("Имя пользователя",'username',[required], Input)}
             </div>
             <div>
-                {createField("Email",'email',[required], Input)}
+                {createField("Почта",'email',[required], Input)}
             </div>
             <div>
-                {createField("Password",'password',[required], Input,"password")}
+                {createField("Пароль",'password',[required], Input,"password")}
             </div>
             <div>
-                {createField("PasswordConfirm",'password2',[required], Input,"password")}
+                {createField("Подтверждение пароля",'password2',[required], Input,"password")}
             </div>
             { props.error !== "Created" && <div className={s.formSummaryError}>
                 {props.error === "Пароли не совпадают" && "Пароли не совпадают"}

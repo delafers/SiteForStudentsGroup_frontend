@@ -12,10 +12,10 @@ const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                {createField("Username", "username", [required], Input)}
+                {createField("Имя пользователя", "username", [required], Input)}
             </div>
             <div>
-                {createField("Password", "password", [required], Input, "password")}
+                {createField("Пароль", "password", [required], Input, "password")}
             </div>
             { props.error && <div className={s.formSummaryError}>
                 {props.error}
