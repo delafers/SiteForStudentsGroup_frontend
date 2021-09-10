@@ -8,6 +8,7 @@ import {createField, Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validator";
 
 const LoginForm = (props) => {
+    debugger
     return(
         <form onSubmit={props.handleSubmit}>
             <div>

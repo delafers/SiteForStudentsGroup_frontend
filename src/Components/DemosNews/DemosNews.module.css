@@ -58,12 +58,15 @@
 }
 .tag{
     margin-left: 0.5rem;
+    margin-top: 6px;
+    padding-left: 5px;
     display: flex;
     background-color: lightslategray;
     height: 25px;
-    border-radius: 8px;
+    border-radius: 4px;
 }
 .close{
+    padding-right: 2px;
     color: red;
     margin-left: 0.5rem;
 }

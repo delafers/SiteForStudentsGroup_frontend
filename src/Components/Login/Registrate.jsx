@@ -1,11 +1,12 @@
 import React from 'react'
-import {reduxForm} from "redux-form";
+import {reduxForm, stopSubmit} from "redux-form";
 import {connect} from "react-redux";
 import {registr} from "../../Redux/createUser_reducer";
 import {NavLink} from "react-router-dom";
 import s from "./login.module.css";
 import {createField, Input} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validator";
+import {StopSubmit} from "../../Redux/registr_reducer";
 
 const LoginForm = (props) => {
     return(
@@ -19,8 +20,11 @@ const LoginForm = (props) => {
             <div>
                 {createField("Password",'password',[required], Input,"password")}
             </div>
+            <div>
+                {createField("PasswordConfirm",'password2',[required], Input,"password")}
+            </div>
             { props.error !== "Created" && <div className={s.formSummaryError}>
-                {props.error}
+                {props.error === "Пароли не совпадают" && "Пароли не совпадают"}
             </div>}
             <div>
                 <button className={s.authButton}>Создать пользователя</button>
@@ -35,7 +39,7 @@ const CreateAccountReduxForm = reduxForm({form: 'auth'})(LoginForm)
 
 const Registration = (props) => {
     const onSubmit = (formdatas) => {
-        debugger
+        if(formdatas.password === formdatas.password2){
         let formdata = new FormData();
         formdata.append("username",formdatas.username);
         formdata.append("email",formdatas.email);
@@ -48,6 +52,9 @@ const Registration = (props) => {
             redirect:'follow'
         }
         props.registr(requestOptions)
+        } else {
+            props.StopSubmit()
+        }
     }
 
     return<div className={s.center}>
@@ -66,4 +73,4 @@ const mapStateToProps = (state) => ({
     isAuth:state.auth.isAuth
 })
 
-export default connect(mapStateToProps, {registr}) (Registration)
+export default connect(mapStateToProps, {registr, StopSubmit }) (Registration)

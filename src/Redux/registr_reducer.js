@@ -1,4 +1,5 @@
 import {authAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'
 
@@ -29,6 +30,9 @@ export const getUserAuthData = () => (dispatch) => {
             let {id, email, login} = response.data.data;
             dispatch(setAuthUserData(id , email, login, true ))
         }});
+}
+export const StopSubmit = () => (dispatch) => {
+    dispatch(stopSubmit("auth", {_error: "Пароли не совпадают"}))
 }
 
 export const logout = () => (dispatch) => {
