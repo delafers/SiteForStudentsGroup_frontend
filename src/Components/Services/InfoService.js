@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_URL = 'https://devgang.online/'
+const API_URL = 'https://dev.devgang.online/'
 
 export default class InfoService{
     getInfo() {

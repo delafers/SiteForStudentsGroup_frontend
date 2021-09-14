@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import s from './AddPost.module.css';
 import ModalCreate from "../CreateNewsPopup/CreateNews";
-import NewPostCreate from "../Post/CreatePost";
 import PostsContainer from "../Post/PostChangeContainer";
 
 
@@ -29,6 +28,9 @@ const OnePost = (props) => {
                 <div className={s.text}>
                 {props.text}
                 </div>
+                <div className={s.mainPic} >
+                    <img src={props.picture}/>
+                </div>
         </div>
             <div>
                 <ModalCreate active={modalActive} setActive={setModalActive} >
@@ -42,7 +44,7 @@ const OnePost = (props) => {
 const AddPost = (props) => {
     let PostsElements = props.postInfo.map(post => <OnePost id={post.id}tags={post.tags} date={post.date} username={post.author.username}
                                                             title={post.title} text={post.text} registerUser={props.registerUser}
-                                                            SetRefactoringPostData={props.SetRefactoringPostData}/>);
+                                                            SetRefactoringPostData={props.SetRefactoringPostData} picture={post.picture}/>);
     return(
         <div >
             {PostsElements}

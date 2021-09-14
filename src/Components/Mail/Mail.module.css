@@ -13,6 +13,7 @@
     border: 1px #252e4b solid;
 }
 
+
 .letter:hover {
     border: solid lightslategray 1px;
     box-shadow: 0 0 10px #10394f;

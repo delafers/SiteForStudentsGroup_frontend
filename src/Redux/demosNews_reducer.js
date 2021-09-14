@@ -10,6 +10,7 @@ const SET_NEWS = 'SET_NEWS'
 const SET_TAGS = 'SET_TAGS'
 const SET_ACTIVE_TAGS = 'SET_ACTIVE_TAGS'
 const REMOVE_TAG = 'REMOVE_TAG'
+const SAVE_PHOTO = "SAVE_PHOTO"
 let initialState = {
     postInfo: [],
     allTags: [],
@@ -18,7 +19,8 @@ let initialState = {
     title: null,
     textUser: null,
     postTag: null,
-    tagsCreate: null
+    tagsCreate: null,
+    img: null
 };
 
 const DemosNewsReducer = (state = initialState, action) => {
@@ -66,14 +68,20 @@ const DemosNewsReducer = (state = initialState, action) => {
             }
         }
         case REFACTOR_COMMENT: {
-            debugger
             return {
                 ...state,
                 id: action.id,
                 title: action.title,
                 textUser: action.text,
                 postTag: action.tags,
+                img: action.img
             }
+        }
+        case SAVE_PHOTO: {
+           return {
+               ...state,
+               img: action.photo
+           }
         }
         default:
             return state;
@@ -85,9 +93,10 @@ export const onTagsChange = (comment) => ({type: UPDATE_TAGS_TEXT, textareatag: 
 export const onTitleChange = (comment) => ({type: UPDATE_TITLE_TEXT, textareatitle: comment})
 const setNewsData = (postInfo) => ({type: SET_NEWS, postInfo})
 const setTagsData = (tags) => ({type: SET_TAGS, tags})
-export const setDataForChangingTag = (id, tags, title, text) => ({type: REFACTOR_COMMENT, id, tags, title, text})
+export const setDataForChangingTag = (id, tags, title, text, img) => ({type: REFACTOR_COMMENT, id, tags, title, text, img})
 const removeActiveTag = (oneTag) => ({type: REMOVE_TAG, oneTag})
 const setActiveTag = (tag) => ({type: SET_ACTIVE_TAGS, tag})
+export const setPhoto = (photo) => ({type: SAVE_PHOTO, photo})
 
 export const getNewsByTags = (tags) => (dispatch) => {
     if(CheckAccess()){
@@ -99,7 +108,6 @@ export const getNewsByTags = (tags) => (dispatch) => {
             dispatch(pushAllTags())
         })}else{
         refreshToken().then(() => {
-            debugger
             NewsAPI.getCurrentNews(tags)
                 .then(response => response.text())
                 .then(result => {
@@ -110,8 +118,8 @@ export const getNewsByTags = (tags) => (dispatch) => {
         )
     }
 }
-export const addPostToServer = (title, text, tag) => async (dispatch) => {
-    await NewsAPI.sendNewPost(title, text, tag)
+export const addPostToServer = (title, text, tag, img) => async (dispatch) => {
+    await NewsAPI.sendNewPost(title, text, tag, img)
     dispatch(getNewsByTags())
 }
 export const pushAllTags = () => (dispatch) => {
@@ -154,11 +162,12 @@ export const SetRefactoringPostData = (PostId) => async (dispatch, getState) => 
                     tags = tags + "," + data.tags[3].name
                 }
             }
-            dispatch(setDataForChangingTag(data.id, tags, data.title, data.text))
+            dispatch(setDataForChangingTag(data.id, tags, data.title, data.text, data.picture))
         })
 }
 export const PutUpdatedPost = () => (dispatch, getState) => {
-    NewsAPI.changePost(getState().news.id, getState().news.postTag, getState().news.title, getState().news.textUser)
+    NewsAPI.changePost(getState().news.id, getState().news.postTag, getState().news.title,
+        getState().news.textUser, getState().news.img)
         .then(() => {
             dispatch(getNewsByTags())
         })

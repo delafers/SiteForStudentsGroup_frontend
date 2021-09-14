@@ -8,13 +8,18 @@
     height: 40px;
     border-radius: 5px;
 }
-.base img{
+.delete img{
     width: 40px;
     height: 40px;
     padding-left: 65%;
 }
-base span{
-
+.changeImg span{
+    padding-right: 30px;
+    color: #8c91b6;
+}
+.postImg img{
+    width: 40%;
+    height: auto;
 }
 .Post textarea{
     width: 90%;

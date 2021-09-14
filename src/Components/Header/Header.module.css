@@ -7,7 +7,7 @@ header {
     text-align: center;
     align-items: center;
     justify-content: flex-end;
-    min-width: 640px;
+    min-width: 240px;
     font-size: calc(5px + 2vh);
     max-height: 35px;
 }

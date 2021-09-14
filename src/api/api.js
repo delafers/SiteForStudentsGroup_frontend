@@ -1,6 +1,4 @@
-const baseURL = 'https://devgang.online/'
-
-
+const baseURL = 'https://dev.devgang.online/'
 
 
 export const authAPI = {
@@ -121,13 +119,23 @@ export const NewsAPI = {
         };
         return fetch(baseURL+`api/demosnews/posts/${tags}`, requestOptions)
     },
-    sendNewPost(title, text, tag){
+    savePhoto(photoFile){
+        let formData = new FormData()
+        formData.append("image",photoFile)
+        let myHeaders = new Headers();
+        myHeaders.append('Content-Type', "multipart/form-data")
+        return fetch(`profile/photo`, formData, {
+
+        } )
+    },
+    sendNewPost(title, text, tag, img){
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
         let formdata = new FormData();
         formdata.append("title", title);
         formdata.append("text", text);
         formdata.append("tags", tag);
+        formdata.append("picture", img)
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -146,20 +154,20 @@ export const NewsAPI = {
         };
        return  fetch(baseURL +"api/demosnews/tags/", requestOptions)
     },
-    changePost(PostId, tags, title, text){
+    changePost(PostId, tags, title, text, img){
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
         let formdata = new FormData()
         formdata.append("title", title)
         formdata.append("text", text)
         formdata.append("tags", tags)
+        formdata.append("picture", img)
         let requestOptions = {
             method: 'PUT',
             body: formdata,
             headers: myHeaders,
             redirect: 'follow'
         };
-        debugger
         return  fetch(baseURL +"api/demosnews/posts/"+PostId, requestOptions)
     },
     getOnePost(id){

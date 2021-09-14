@@ -8,7 +8,7 @@
     background-color: #1e2745;
     border-top: 1px #252e4b solid;
 }
-.Event img{
+.Username img{
     width: 20px;
     height: 20px;
     background-color: #1e2745;
@@ -17,6 +17,11 @@
     width: 65vw;
     padding-top: 3vh;
     padding-bottom: 2vh;
+}
+.mainPic img{
+    max-width: 85%;
+    max-height: 400px;
+    padding-bottom: 15px;
 }
 .Username{
     color: #50b5ff;
