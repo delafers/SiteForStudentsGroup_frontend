@@ -1,6 +1,21 @@
 .App {
   background-color: #182039;
 }
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: #252e4b;
+}
+::-webkit-scrollbar-thumb{
+  background: dimgray;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #7191b6;
+  border-radius: 6px;
+}
+
 
 
 @media (prefers-reduced-motion: no-preference) {

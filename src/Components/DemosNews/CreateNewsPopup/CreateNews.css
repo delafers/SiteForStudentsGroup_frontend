@@ -1,4 +1,38 @@
-.modal {
+@media only screen and (min-width: 1001px){
+    .modal {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s;
+    }
+    .modal__content {
+        padding: 20px;
+        border-radius: 12px;
+        background-color: #1e2745;
+        width: 50vw;
+        height: auto;
+        transform: scale(0.5);
+        transition: 0.4s all;
+    }
+    .modal__content textarea{
+        background-color: #1e2745;
+        color: #8d91b6;
+        border: 1px solid #252e4b;
+        height: 8vh;
+        padding-top: 10px;
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .modal {
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.4);
@@ -12,31 +46,103 @@
     pointer-events: none;
     transition: 0.5s;
 }
+    .modal__content {
+        padding: 20px;
+        border-radius: 12px;
+        background-color: #1e2745;
+        width: 65vw;
+        height: auto;
+        transform: scale(0.5);
+        transition: 0.4s all;
+    }
+    .modal__content textarea{
+        background-color: #1e2745;
+        color: #8d91b6;
+        border: 1px solid #252e4b;
+        height: 8vh;
+        padding-top: 10px;
+        width: 90%;
+    }
+}
+@media only screen and (max-width: 690px){
+    .modal {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.5s;
+    }
+    .modal__content {
+         padding: 14px;
+         border-radius: 12px;
+         background-color: #1e2745;
+         width: 80vw;
+         height: auto;
+         transform: scale(0.5);
+         transition: 0.4s all;
+     }
+    .modal__content textarea{
+        background-color: #1e2745;
+        color: #8d91b6;
+        border: 1px solid #252e4b;
+        height: 8vh;
+        padding-top: 10px;
+        width: 90%;
+    }
+
+}
+@media only screen and (max-width: 340px){
+    .modal {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.7s;
+}
+    .modal__content {
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #1e2745;
+        width: 86vw;
+        height: auto;
+        transform: scale(0.7);
+        transition: 0.7s all;
+    }
+    .modal__content textarea{
+        background-color: #1e2745;
+        color: #8d91b6;
+        border: 1px solid #252e4b;
+        height: 8vh;
+        padding-top: 8px;
+        width: 100%;
+    }
+}
+
 
 .modal.active {
     opacity: 1;
     pointer-events: all;
 ;}
 
-.modal__content {
-    padding: 20px;
-    border-radius: 12px;
-    background-color: #1e2745;
-    width: 50vw;
-    transform: scale(0.5);
-    transition: 0.4s all;
-}
+
 .modal__content h2{
     color: #50b5ff;
 }
-.modal__content textarea{
-    background-color: #1e2745;
-    color: #8d91b6;
-    border: 1px solid #252e4b;
-    height: 8vh;
-    padding-top: 10px;
-    width: 90%;
-}
+
 .modal__content button{
     background-color: #50b5ff;
     border: #50b5ff solid 1px;

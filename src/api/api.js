@@ -129,13 +129,16 @@ export const NewsAPI = {
         } )
     },
     sendNewPost(title, text, tag, img){
+        debugger
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
         let formdata = new FormData();
         formdata.append("title", title);
         formdata.append("text", text);
         formdata.append("tags", tag);
+        if(img !== null){
         formdata.append("picture", img)
+        }
         let requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -161,7 +164,9 @@ export const NewsAPI = {
         formdata.append("title", title)
         formdata.append("text", text)
         formdata.append("tags", tags)
+
         formdata.append("picture", img)
+
         let requestOptions = {
             method: 'PUT',
             body: formdata,

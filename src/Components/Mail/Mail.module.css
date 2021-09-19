@@ -1,36 +1,156 @@
-.activePage {
-    font-weight: bold;
+@media only screen and (min-width: 1001px){
+    .letter {
+        margin: 0px auto 0px auto;
+        align-items: center;
+        width: 70vw;
+        border-radius: 15px;
+        max-width: 71vw;
+        min-height: 8vh;
+        background-color: #1e2745;
+        border: 1px #252e4b solid;
+    }
+    .letterHead {
+        display: flex;
+        text-align: center;
+        margin: 10px auto 0px auto;
+        padding: 10px;
+        width: 70vw;
+        box-shadow: 0 0 10px #29324f;
+        border-radius: 15px;
+        align-items: center;
+        border: solid #252e4b 3px;
+        background-color: #1e2745;
+    }
+    .buttonUpdateMailsPlace {
+        position: absolute;
+        right: 0px;
+        padding-right: 20px;
+    }
+    .buttonUpdateMailsPlace button {
+        background-color: #1e2745;
+        color: #8c91b6;
+        border: solid #252e4b 1px;
+        border-radius: 2px;
+        height: 8vh;
+        width: 10vw;
+    }
 }
-
-.letter {
-    margin: 0px auto 0px auto;
-    align-items: center;
-    width: 70vw;
-    border-radius: 15px;
-    max-width: 71vw;
-    min-height: 8vh;
-    background-color: #1e2745;
-    border: 1px #252e4b solid;
+@media only screen and (max-width: 1000px){
+    .letter {
+        margin: 0px auto 0px auto;
+        width: 71vw;
+        border-radius: 15px;
+        max-width: 71vw;
+        min-height: 8vh;
+        background-color: #1e2745;
+        border: 1px #252e4b solid;
+    }
+    .letterHead {
+        display: flex;
+        text-align: center;
+        padding: 10px;
+        width: 72%;
+        margin: 8px auto 0px auto;
+        box-shadow: 0 0 10px #29324f;
+        border-radius: 15px;
+        border: solid #252e4b 2px;
+        background-color: #1e2745;
+    }
+    .buttonUpdateMailsPlace {
+        text-align: center;
+    }
+    .buttonUpdateMailsPlace button {
+        position: absolute;
+        right: 5px;
+        background-color: #1e2745;
+        color: #8c91b6;
+        border: solid #252e4b 1px;
+        border-radius: 20px;
+        height: 35px;
+        width: 10vw;
+        margin-top: 12px;
+        margin-bottom: 10px;
+    }
 }
-
+@media only screen and (max-width: 690px){
+    .letter {
+        margin: 0px auto 0px auto;
+        width: 91vw;
+        border-radius: 15px;
+        max-width: 91vw;
+        min-height: 8vh;
+        background-color: #1e2745;
+        border: 1px #252e4b solid;
+    }
+    .letterHead {
+        display: flex;
+        text-align: center;
+        margin-left: 18px;
+        padding: 10px;
+        width: 90%;
+        box-shadow: 0 0 10px #29324f;
+        border-radius: 15px;
+        border: solid #252e4b 2px;
+        background-color: #1e2745;
+    }
+    .buttonUpdateMailsPlace {
+        text-align: center;
+    }
+    .buttonUpdateMailsPlace button {
+        position: sticky;
+        background-color: #1e2745;
+        color: #8c91b6;
+        border: solid #252e4b 1px;
+        border-radius: 20px;
+        height: 35px;
+        width: 100vw;
+        margin-top: 12px;
+        margin-bottom: 10px;
+    }
+}
+@media only screen and (max-width: 340px){
+    .letter {
+        margin: 0px auto 0px auto;
+        width: 91vw;
+        border-radius: 15px;
+        max-width: 91vw;
+        min-height: 8vh;
+        background-color: #1e2745;
+        border: 1px #252e4b solid;
+    }
+    .letterHead {
+        display: flex;
+        text-align: center;
+        margin-left: 5px;
+        padding: 10px;
+        width: 90%;
+        box-shadow: 0 0 10px #29324f;
+        border-radius: 15px;
+        border: solid #252e4b 2px;
+        background-color: #1e2745;
+    }
+    .buttonUpdateMailsPlace {
+        text-align: center;
+    }
+    .buttonUpdateMailsPlace button {
+        position: sticky;
+        background-color: #1e2745;
+        color: #8c91b6;
+        border: solid #252e4b 1px;
+        border-radius: 20px;
+        height: 35px;
+        width: 100vw;
+        margin-top: 12px;
+        margin-bottom: 10px;
+    }
+}
 
 .letter:hover {
     border: solid lightslategray 1px;
     box-shadow: 0 0 10px #10394f;
 }
 
-.letterHead {
-    display: flex;
-    text-align: center;
-    margin: 0px auto 0px auto;
-    padding: 10px;
-    width: 70vw;
-    box-shadow: 0 0 10px #29324f;
-    border-radius: 15px;
-    align-items: center;
-    border: solid #252e4b 3px;
-    background-color: #1e2745;
-}
+
 .letterHead button{
     background-color: #182039;
     color: #8c91b6;
@@ -52,12 +172,6 @@
     max-height: 44px;
     font-size: 16px;
 }
-.shadow{
-    width: 80vw;
-    margin: 0px auto 0px auto;
-    padding-top: 15px;
-    min-height: 100vh;
-}
 
 .text img {
     height: 16px;
@@ -75,17 +189,4 @@
     padding-left: 15px;
     color: #E0CA3C;
 }
-.buttonUpdateMailsPlace button {
-    background-color: #1e2745;
-    color: #8c91b6;
-    border: solid #252e4b 1px;
-    border-radius: 2px;
-    height: 8vh;
-    width: 10vw;
-    margin-top: 12px;
-}
-.buttonUpdateMailsPlace {
-    position: absolute;
-    right: 0px;
-    padding-right: 20px;
-    }
+

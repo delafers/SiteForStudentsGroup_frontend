@@ -149,7 +149,6 @@ export const SetRefactoringPostData = (PostId) => async (dispatch, getState) => 
         .then(result => {
             let data = JSON.parse(result)
             let tags = ""
-            debugger
             if (data.tags[0] !== undefined) {
                 tags = data.tags[0].name
                 if (data.tags[1] !== undefined) {

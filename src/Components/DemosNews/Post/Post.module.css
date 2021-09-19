@@ -1,5 +1,37 @@
-.Post {
-
+@media only screen and (min-width: 1001px){
+    .delete img{
+    position: sticky;
+    width: 40px;
+    height: 40px;
+    padding-left: 200px;
+    align-items: center;
+}}
+@media only screen and (max-width: 1000px){
+    .delete img{
+        position: sticky;
+        width: 40px;
+        height: 40px;
+        padding-left: 170px;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 690px){
+    .delete img{
+        position: sticky;
+        width: 35px;
+        height: 35px;
+        padding-left: 80px;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 340px){
+    .delete img{
+        position: sticky;
+        width: 30px;
+        height: 30px;
+        padding-left: 50px;
+        align-items: center;
+    }
 }
 .base button{
     background-color: #50b5ff;
@@ -8,11 +40,7 @@
     height: 40px;
     border-radius: 5px;
 }
-.delete img{
-    width: 40px;
-    height: 40px;
-    padding-left: 65%;
-}
+
 .changeImg span{
     padding-right: 30px;
     color: #8c91b6;

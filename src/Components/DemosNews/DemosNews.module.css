@@ -1,71 +1,256 @@
-.tagBar {
-    display: flex;
-    background-color: #1e2745;
-    text-align: center;
-    margin: 5px auto 0px auto;
-    padding: 4px ;
-    align-items: center;
-    width: auto;
-    max-width: 150vh;
-    border-radius: 5px;
-}
-.tagBar input{
-    width: 20vw;
-    min-width: 90px;
-    height: 30px;
-    border: 1px solid #252e4b;
-    background-color: #1e2745;
-    border-radius: 5px;
-    color: #8c91b6;
-}
-.tagBar button{
-    height: 25px;
-    background-color: #50b5ff;
-    margin-left: 3px;
-    margin-right: 30px;
-    width: 10vw;
-    border: 2px solid #50b5ff;
-    color: white;
-    border-radius: 5px;
+@media only screen and (min-width: 1001px) {
+    .tagBar {
+        display: flex;
+        background-color: #1e2745;
+        text-align: center;
+        margin: 5px auto 0px auto;
+        padding: 4px;
+        align-items: center;
+        width: auto;
+        max-width: 150vh;
+        border-radius: 5px;
+    }
+    .tagBar input {
+        width: 20vw;
+        min-width: 90px;
+        height: 30px;
+        border: 1px solid #252e4b;
+        background-color: #1e2745;
+        border-radius: 5px;
+        color: #8c91b6;
+    }
+    .tagBar button {
+        height: 25px;
+        background-color: #50b5ff;
+        margin-left: 3px;
+        margin-right: 30px;
+        width: 10vw;
+        border: 2px solid #50b5ff;
+        color: white;
+        border-radius: 5px;
+    }
+    .main {
+        width: 80vw;
+        margin: 0px auto 0px auto;
+        padding-top: 15px;
+    }
+    .modalButton button {
+        width: 30vw;
+        height: auto;
+        max-height: 60px;
+        color: white;
+        background-color: #50b5ff;
+        border: #50b5ff solid 2px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        margin: 5px auto 10px auto;
+        padding: 5px;
+    }
+    .tag {
+        min-width: 55px;
+        margin-left: 0.5rem;
+        margin-top: 6px;
+        padding-left: 5px;
+        display: flex;
+        background-color: #000033;
+        height: 25px;
+        border-radius: 4px;
+    }
 }
 
-.main{
-    width: 80vw;
-    margin: 0px auto 0px auto;
-    padding-top: 15px;
+@media only screen and (max-width: 1000px) {
+    .tagBar {
+        display: flex;
+        background-color: #1e2745;
+        text-align: center;
+        margin: 5px auto 0px auto;
+        padding: 4px;
+        align-items: center;
+        width: auto;
+        max-width: 150vh;
+        border-radius: 5px;
+    }
+    .tagBar input{
+        width: 20vw;
+        min-width: 90px;
+        height: 30px;
+        border: 1px solid #252e4b;
+        background-color: #1e2745;
+        border-radius: 5px;
+        color: #8c91b6;
+    }
+    .tagBar button {
+        height: 25px;
+        background-color: #50b5ff;
+        margin-left: 3px;
+        margin-right: 30px;
+        width: 10vw;
+        border: 2px solid #50b5ff;
+        color: white;
+        border-radius: 5px;
+    }
+    .main {
+        width: 80vw;
+        margin: 0px auto 0px auto;
+        padding-top: 15px;
+    }
+    .modalButton button {
+        width: 35vw;
+        max-height: 60px;
+        color: white;
+        background-color: #50b5ff;
+        border: #50b5ff solid 2px;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 7px;
+        margin: 5px auto 10px auto;
+        padding: 5px;
+    }
+    .tag {
+        min-width: 50px;
+        margin-left: 0.5rem;
+        margin-top: 6px;
+        padding-left: 5px;
+        display: flex;
+        background-color: #000033;
+        height: 25px;
+        border-radius: 4px;
+    }
 }
-.centralItems{
+
+@media only screen and (max-width: 690px) {
+    .tagBar {
+        display: flex;
+        background-color: #1e2745;
+        text-align: center;
+        margin: 5px auto 0px auto;
+        padding: 4px;
+        align-items: center;
+        width: auto;
+        border-radius: 5px;
+    }
+    .tagBar input{
+        width: 20vw;
+        min-width: 90px;
+        height: 30px;
+        border: 1px solid #252e4b;
+        background-color: #1e2745;
+        border-radius: 5px;
+        color: #8c91b6;
+    }
+    .tagBar button {
+        height: 25px;
+        background-color: #50b5ff;
+        margin-left: 3px;
+        margin-right: 30px;
+        width: 60px;
+        border: 2px solid #50b5ff;
+        color: white;
+        border-radius: 5px;
+    }
+    .main {
+        width: 90vw;
+        margin: 0px auto 0px auto;
+        padding-top: 15px;
+    }
+    .modalButton button {
+        width: 50vw;
+        height: auto;
+        max-height: 60px;
+        color: white;
+        background-color: #50b5ff;
+        border: #50b5ff solid 2px;
+        font-size: 18px;
+        border-radius: 5px;
+        margin: 5px auto 10px auto;
+        padding: 5px;
+    }
+    .tag {
+        min-width: 50px;
+        margin-left: 0.5rem;
+        margin-top: 6px;
+        padding-left: 5px;
+        display: flex;
+        background-color: #000033;
+        height: 25px;
+        border-radius: 5px;
+        color: white;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    .tagBar {
+        display: flex;
+        background-color: #1e2745;
+        text-align: center;
+        margin: 5px auto 0px auto;
+        padding: 4px;
+        align-items: center;
+        width: 98%;
+        max-width: 100%;
+        border-radius: 5px;
+    }
+    .tagBar input{
+        width: 20vw;
+        min-width: 90px;
+        height: 30px;
+        border: 1px solid #252e4b;
+        background-color: #1e2745;
+        border-radius: 5px;
+        color: #8c91b6;
+    }
+    .tagBar button {
+        height: 25px;
+        background-color: #50b5ff;
+        margin-left: 3px;
+        width: 55px;
+        border: 2px solid #50b5ff;
+        color: white;
+        border-radius: 5px;
+    }
+    .main {
+        width: 96vw;
+        margin: 0px auto 0px auto;
+        padding-top: 15px;
+    }
+    .modalButton button {
+        width: 65vw;
+        max-height: 50px;
+        color: white;
+        background-color: #50b5ff;
+        border: #50b5ff solid 2px;
+        font-size: 16px;
+        border-radius: 5px;
+        margin: 5px auto 5px auto;
+        padding: 5px;
+    }
+    .tag {
+        min-width: 40px;
+        margin-left: 0.5rem;
+        margin-top: 6px;
+        padding-left: 5px;
+        display: flex;
+        background-color: #000033;
+        height: 25px;
+        border-radius: 5px;
+        color: white;
+    }
+}
+
+.centralItems {
     text-align: center;
 }
-.centralItems h1{
+
+.centralItems h1 {
     color: #8c91b6;
 }
-.modalButton{
+
+.modalButton {
     padding: 8px;
 }
-.modalButton button{
-    width: 30vw;
-    height: auto;
-    max-height: 60px;
-    color: white;
-    background-color: #50b5ff;
-    border: #50b5ff solid 2px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin: 5px auto 10px auto;
-    padding: 5px;
-}
-.tag{
-    margin-left: 0.5rem;
-    margin-top: 6px;
-    padding-left: 5px;
-    display: flex;
-    background-color: lightslategray;
-    height: 25px;
-    border-radius: 4px;
-}
-.close{
+
+.close {
     padding-right: 2px;
     color: red;
     margin-left: 0.5rem;

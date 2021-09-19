@@ -1,4 +1,5 @@
-.Event {
+@media only screen and (min-width: 1001px){
+    .Event {
     margin: 0px auto 0px auto;
     padding: 2px 3vw ;
     width: 70vw;
@@ -7,17 +8,72 @@
     color: #8c91b6;
     background-color: #1e2745;
     border-top: 1px #252e4b solid;
-}
-.Username img{
-    width: 20px;
-    height: 20px;
-    background-color: #1e2745;
-}
-.text{
+}}
+    .text{
     width: 65vw;
     padding-top: 3vh;
     padding-bottom: 2vh;
 }
+@media only screen and (max-width: 1000px){
+    .Event {
+        margin: 0px auto 0px auto;
+        padding: 2px 3vw ;
+        width: 75vw;
+        border-radius: 0px;
+        max-width: 75vw;
+        color: #8c91b6;
+        background-color: #1e2745;
+        border-top: 1px #252e4b solid;
+    }
+    .text{
+        width: 70vw;
+        padding-top: 3vh;
+        padding-bottom: 2vh;
+    }
+}
+@media only screen and (max-width: 690px){
+    .Event {
+        margin: 0px auto 0px auto;
+        padding: 2px 3vw ;
+        width: 80vw;
+        border-radius: 0px;
+        max-width: 80vw;
+        color: #8c91b6;
+        background-color: #1e2745;
+        border-top: 1px #252e4b solid;
+    }
+    .text{
+        width: 90%;
+        padding-top: 3vh;
+        padding-bottom: 2vh;
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 340px){
+    .Event {
+        margin: 0px auto 0px auto;
+        padding: 2px 3vw ;
+        width: 90vw;
+        max-width: 90vw;
+        color: #8c91b6;
+        background-color: #1e2745;
+        border-top: 1px #252e4b solid;
+    }
+    .text{
+        width: 98%;
+        padding-top: 3vh;
+        padding-bottom: 2vh;
+        font-size: 12px;
+    }
+}
+
+.Username img{
+    width: 20px;
+    height: 20px;
+    background-color: #1e2745;
+    cursor: pointer;
+}
+
 .mainPic img{
     max-width: 85%;
     max-height: 400px;
