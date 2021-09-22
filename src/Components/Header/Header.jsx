@@ -11,10 +11,11 @@ const Header =  (props) => {
                 <NavLink to="/demosnews" activeClassName={s.active}>суровости</NavLink>
                     <span className={s.loginPlace}>
                     {props.isAuth
-                        ? <span>{props.username}  <button onClick={props.logout}>Выйти</button></span>
-                        : <NavLink to='/login' activeClassName={s.active} >Авторизация</NavLink>}
+                        ? <span> {props.username} <button onClick={props.logout}>Выйти</button></span>
+                        : <NavLink to='/login' activeClassName={s.active}>Авторизация</NavLink>}
                     </span>
             </header>
-        );
+        )
 }
+
 export default Header;

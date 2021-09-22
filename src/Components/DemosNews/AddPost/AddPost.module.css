@@ -14,6 +14,11 @@
     padding-top: 3vh;
     padding-bottom: 2vh;
 }
+    .mainPic img{
+    max-width: 85%;
+    max-height: 400px;
+    padding-bottom: 15px;
+}
 @media only screen and (max-width: 1000px){
     .Event {
         margin: 0px auto 0px auto;
@@ -29,6 +34,11 @@
         width: 70vw;
         padding-top: 3vh;
         padding-bottom: 2vh;
+    }
+    .mainPic img{
+        max-width: 85%;
+        max-height: 400px;
+        padding-bottom: 15px;
     }
 }
 @media only screen and (max-width: 690px){
@@ -48,6 +58,11 @@
         padding-bottom: 2vh;
         font-size: 14px;
     }
+    .mainPic img{
+        max-width: 90%;
+        max-height: 300px;
+        padding-bottom: 15px;
+    }
 }
 @media only screen and (max-width: 340px){
     .Event {
@@ -65,6 +80,11 @@
         padding-bottom: 2vh;
         font-size: 12px;
     }
+    .mainPic img{
+        max-width: 95%;
+        max-height: 200px;
+        padding-bottom: 10px;
+    }
 }
 
 .Username img{
@@ -74,11 +94,6 @@
     cursor: pointer;
 }
 
-.mainPic img{
-    max-width: 85%;
-    max-height: 400px;
-    padding-bottom: 15px;
-}
 .Username{
     color: #50b5ff;
     font-weight: bold;

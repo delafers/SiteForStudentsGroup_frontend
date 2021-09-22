@@ -164,9 +164,7 @@ export const NewsAPI = {
         formdata.append("title", title)
         formdata.append("text", text)
         formdata.append("tags", tags)
-
         formdata.append("picture", img)
-
         let requestOptions = {
             method: 'PUT',
             body: formdata,

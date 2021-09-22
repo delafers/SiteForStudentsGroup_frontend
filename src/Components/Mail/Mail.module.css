@@ -34,6 +34,12 @@
         height: 8vh;
         width: 10vw;
     }
+    .text {
+        padding: 0 5px;
+        overflow: hidden;
+        max-height: 44px;
+        font-size: 16px;
+    }
 }
 @media only screen and (max-width: 1000px){
     .letter {
@@ -71,6 +77,13 @@
         margin-top: 12px;
         margin-bottom: 10px;
     }
+    .text {
+        padding: 0 5px;
+        overflow: hidden;
+        max-height: 44px;
+        font-size: 16px;
+    }
+
 }
 @media only screen and (max-width: 690px){
     .letter {
@@ -107,6 +120,13 @@
         margin-top: 12px;
         margin-bottom: 10px;
     }
+    .text {
+        padding: 0 5px;
+        overflow: hidden;
+        max-height: 44px;
+        font-size: 16px;
+    }
+
 }
 @media only screen and (max-width: 340px){
     .letter {
@@ -121,7 +141,6 @@
     .letterHead {
         display: flex;
         text-align: center;
-        margin-left: 5px;
         padding: 10px;
         width: 90%;
         box-shadow: 0 0 10px #29324f;
@@ -142,6 +161,12 @@
         width: 100vw;
         margin-top: 12px;
         margin-bottom: 10px;
+    }
+    .text {
+        padding: 0 5px;
+        overflow: hidden;
+        max-height: 36px;
+        font-size: 14px;
     }
 }
 
@@ -165,12 +190,6 @@
 }
 .sender{
     color: #ffdd;
-}
-.text {
-    padding: 0 5px;
-    overflow: hidden;
-    max-height: 44px;
-    font-size: 16px;
 }
 
 .text img {

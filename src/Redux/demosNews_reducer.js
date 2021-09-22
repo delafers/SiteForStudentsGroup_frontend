@@ -119,8 +119,15 @@ export const getNewsByTags = (tags) => (dispatch) => {
     }
 }
 export const addPostToServer = (title, text, tag, img) => async (dispatch) => {
-    await NewsAPI.sendNewPost(title, text, tag, img)
-    dispatch(getNewsByTags())
+    if(CheckAccess()){
+        await NewsAPI.sendNewPost(title, text, tag, img)
+        dispatch(getNewsByTags())
+    }else{
+        refreshToken().then(() => {
+        NewsAPI.sendNewPost(title, text, tag, img)
+        dispatch(getNewsByTags())
+        })
+    }
 }
 export const pushAllTags = () => (dispatch) => {
     NewsAPI.getAllTags()
@@ -142,7 +149,12 @@ export const SetActiveTags = (tag) => (dispatch, getState) => {
 }
 export const removeTag = (tag) => (dispatch, getState) => {
     dispatch(removeActiveTag(tag))
+    if(CheckAccess()){
     dispatch(getNewsByTags(getState().news.activeTags))
+    }else{
+        refreshToken()
+            .then(dispatch(getNewsByTags(getState().news.activeTags)))
+    }
 }
 export const SetRefactoringPostData = (PostId) => async (dispatch, getState) => {
     await NewsAPI.getOnePost(PostId).then(response => response.text())
@@ -161,20 +173,41 @@ export const SetRefactoringPostData = (PostId) => async (dispatch, getState) => 
                     tags = tags + "," + data.tags[3].name
                 }
             }
-            dispatch(setDataForChangingTag(data.id, tags, data.title, data.text, data.picture))
+            if(CheckAccess()){
+                dispatch(setDataForChangingTag(data.id, tags, data.title, data.text, data.picture))
+            }else{
+                refreshToken()
+                    .then(dispatch(setDataForChangingTag(data.id, tags, data.title, data.text, data.picture)))
+            }
         })
 }
 export const PutUpdatedPost = () => (dispatch, getState) => {
-    NewsAPI.changePost(getState().news.id, getState().news.postTag, getState().news.title,
-        getState().news.textUser, getState().news.img)
-        .then(() => {
-            dispatch(getNewsByTags())
-        })
+    if(CheckAccess()){
+        NewsAPI.changePost(getState().news.id, getState().news.postTag, getState().news.title,
+            getState().news.textUser, getState().news.img)
+            .then(() => {
+                dispatch(getNewsByTags())
+            })
+    }else{
+        refreshToken().then(
+            NewsAPI.changePost(getState().news.id, getState().news.postTag, getState().news.title,
+                getState().news.textUser, getState().news.img)
+                .then(() => {
+                    dispatch(getNewsByTags())
+                })
+        )
+    }
+
 }
 export const DeletePost = (id) => async(dispatch, getState) => {
+    if(CheckAccess()){
     await NewsAPI.deleteOnePost(id)
-        .then(
-            dispatch(getNewsByTags())
+        .then(dispatch(getNewsByTags()))
+    }else{
+        refreshToken()
+            .then(NewsAPI.deleteOnePost(id)
+                .then(dispatch(getNewsByTags()))
         )
+    }
 }
 export default DemosNewsReducer;

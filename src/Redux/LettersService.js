@@ -67,7 +67,6 @@ export const getMails = () => {
            await getMailsLogic(dispatch)
         }else{
              refreshToken().then(() => {
-                debugger
                 dispatch(getMailsLogic(dispatch))
             })
         }
@@ -78,6 +77,7 @@ export const setMailPage= (pageNumber) =>{
     return async (dispatch) =>{
         dispatch(setCurrentPage(pageNumber));
         dispatch(toggleIsFetching(true));
+        if(CheckAccess()){
         await mailAPI.getCurrentPageMails(pageNumber)
             .then(response => response.text())
             .then(result => {
@@ -85,15 +85,28 @@ export const setMailPage= (pageNumber) =>{
                 dispatch(setUsers(mailsData.results))
                 dispatch(toggleIsFetching(false))
             })
-
+        }else{
+           refreshToken().then( mailAPI.getCurrentPageMails(pageNumber)
+                .then(response => response.text())
+                .then(result => {
+                    let mailsData = JSON.parse(result)
+                    dispatch(setUsers(mailsData.results))
+                    dispatch(toggleIsFetching(false))
+        }
+        ))}
     }
 }
 export const updateMails = () => {
     return async (dispatch) =>{
-        dispatch(disableButton(true))
-        await mailAPI.mailCheck()
-        dispatch(getMails())
-        dispatch(disableButton(false))
+        if(CheckAccess()){
+            await mailAPI.mailCheck()
+            dispatch(getMails())
+        }else{
+            refreshToken().then(() => {
+            mailAPI.mailCheck()
+            dispatch(getMails())
+            })
+        }
     }
 }
 export default lettersReducer
