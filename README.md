@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Getting Started
-Working project located at https://dev.devgang.online/   
+Working project located at https://dev.studorg.online/   
 If tou want check project use:
 username: TestUser
 password: zxcqwe12
