@@ -47,12 +47,12 @@ class App extends Component {
                 <BrowserRouter>
                     <div className={Style.App}>
                         <TeddyHead/>
-                        <Route exact path='/' render={CalendarMenuContainer}/>
+                        <Route exact path='/calendar' render={CalendarMenuContainer}/>
                         <Route path='/demosnews' render={withSuspense(Tags)}/>
-                        <Route exact path='/mail' render={withSuspense(MailsContainer)}/>
+                        <Route exact path='/' render={withSuspense(MailsContainer)}/>
                         <Route path='/mail/:mailId' render={withSuspense(OneMail)}/>
                         <Route path='/login' render={() => <Login/>}/>
-                        <Route path='/profile' render={() => <ProfileView/>}/>
+                        <Route path='/profile/:user?' render={() => <ProfileView/>}/>
                         <Route path='/registrate' render={() => <Registration/>}/>
                         <Route path='/activate/:userId/:userData' render={() => <MailConfirm/>}/>
                         <Footer/>

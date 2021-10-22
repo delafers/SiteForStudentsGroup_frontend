@@ -22,13 +22,17 @@ const appReducer = (state = initialState, action) => {
 export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS})
 
 export const initializeApp = (token) => (dispatch) => {
-    dispatch(getUserAuthData(token)).then(
-        dispatch(initializedSuccess()))
+    let promise = new Promise((resolve, reject) => {
+        dispatch(getUserAuthData(token))
+    })
+    promise.then(dispatch(initializedSuccess()), null)
 }
 export const initializeAppWithRefresh = () =>  (dispatch) => {
-    let promise = dispatch(refreshToken())
-    Promise.all([promise]).then(() => {
+    let promise = new Promise(dispatch(refreshToken()))
+    promise.then(() => {
         dispatch(initializedSuccess())
+    }).catch(    err => {
+        localStorage.removeItem('access')
     })
 }
 

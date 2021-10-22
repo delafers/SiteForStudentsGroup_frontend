@@ -1,11 +1,11 @@
-@media only screen and (min-width: 1001px) {
+@media only screen and (min-width: 2001px) {
     .loginPlace{
         color: #8c91b6;
-        padding-left: 29vw;
+        padding-left: 32vw;
     }
     .loginPlace button{
         height: calc(2px + 3vh);
-        width: 70px;
+        width: 100px;
         background-color: #50b5ff;
         color: white;
         margin-right: 10px;
@@ -29,12 +29,93 @@
         text-decoration: none;
         margin: 10px;
         padding-bottom: 2px;
+    }
+    .item a {
+        text-align: center;
+        color: #8c91b6;
+        text-decoration: none;
+    }
+}
+@media only screen and (max-width: 2000px) {
+    .loginPlace{
+        color: #8c91b6;
+        padding-left: 30vw;
+    }
+    .loginPlace button{
+        height: calc(2px + 3vh);
+        width: 90px;
+        background-color: #50b5ff;
+        color: white;
+        margin-right: 10px;
+        border: none;
+        border-radius: 3px;
+        margin-bottom: 5px;
+    }
+    header {
+        background-color: #1e2745;
+        height: 6vh;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: calc(5px + 2vh);
+        max-height: 35px;
+    }
+    a {
+        color: #8c91b6;
+        text-decoration: none;
+        margin: 10px;
+        padding-bottom: 2px;
+    }
+    .item a {
+        text-align: center;
+        color: #8c91b6;
+        text-decoration: none;
+    }
+}
+@media only screen and (max-width: 1500px) {
+    .loginPlace{
+        color: #8c91b6;
+        padding-left: 28vw;
+    }
+    .loginPlace button{
+        height: calc(2px + 3vh);
+        width: 80px;
+        background-color: #50b5ff;
+        color: white;
+        margin-right: 10px;
+        border: none;
+        border-radius: 3px;
+        margin-bottom: 5px;
+    }
+    header {
+        background-color: #1e2745;
+        height: 6vh;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: calc(5px + 2vh);
+        max-height: 35px;
+    }
+    a {
+        color: #8c91b6;
+        text-decoration: none;
+        margin: 10px;
+        padding-bottom: 2px;
+    }
+    .item a {
+        text-align: center;
+        color: #8c91b6;
+        text-decoration: none;
     }
 }
 @media only screen and (max-width: 1000px) {
     .loginPlace{
         color: #8c91b6;
-        padding-left: 29vw;
+        padding-left: 22vw;
     }
     .loginPlace button{
         height: calc(2px + 3vh);
@@ -63,11 +144,16 @@
         margin: 10px;
         padding-bottom: 2px;
     }
+    .item a {
+        text-align: center;
+        color: #8c91b6;
+        text-decoration: none;
+    }
 }
 @media only screen and (max-width: 690px) {
     .loginPlace{
         color: #8c91b6;
-        padding-left: 70px;
+        padding-left: 14vw;
         font-size: 12px;
     }
     header {
@@ -95,7 +181,11 @@
         border-radius: 2px;
         margin-bottom: 3px;
     }
-
+    .item a {
+        text-align: center;
+        color: #8c91b6;
+        text-decoration: none;
+    }
 }
 @media only screen and (max-width: 340px) {
     .loginPlace{
@@ -109,6 +199,7 @@
         font-size: calc(5px + 1vh);
         max-height: 30px;
         padding-top: 5px;
+        width: 100vw;
     }
     a {
         color: #8c91b6;
@@ -127,16 +218,11 @@
         border-radius: 2px;
         margin-bottom: 3px;
     }
-
-}
-
-
-
-
-.item a {
-    text-align: center;
-    color: #8c91b6;
-    text-decoration: none;
+    .item a {
+        text-align: center;
+        color: #8c91b6;
+        text-decoration: none;
+    }
 }
 
 .item a.active {

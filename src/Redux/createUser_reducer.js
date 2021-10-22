@@ -36,9 +36,16 @@ export const getUserAuthData = () => (dispatch) => {
 export const registr = (requestOptions) => (dispatch) => {
     authAPI.auth(requestOptions).
         then(response => {
-            if(response.status != 200 ){
-            dispatch(stopSubmit("auth", {_error: response.statusText}))
+        if(response.status !== 200 && response.status !== 201){
+        response.text().then(
+            result => {
+                let errUser = JSON.parse(result).username ? JSON.parse(result).username : ""
+                let errMail = JSON.parse(result).email ? JSON.parse(result).email : ""
+                let error = errUser + errMail
+                dispatch(stopSubmit("auth", {_error: error}))
             }
+        )
+    }
         })
 }
 

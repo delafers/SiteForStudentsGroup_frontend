@@ -38,8 +38,6 @@ const Tags = (props) => {
         setTags(tags.filter(tag => tag != textToRemove))
         props.removeTag(textToRemove)
     }
-
-
     return<div className={s.main}>
         <div className={s.centralItems}>
         <h1>СТАТЬИ И НОВОСТИ</h1>

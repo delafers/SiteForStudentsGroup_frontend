@@ -1,0 +1,32 @@
+    .modals {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.92);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.7s;
+    }
+
+    .modals__content {
+        background-color: #1e2745;
+        height: auto;
+        transition: 0.4s all;
+        padding: 1px;
+    }
+
+
+.modals.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+.modal__content.active{
+    transform: scale(1);
+}

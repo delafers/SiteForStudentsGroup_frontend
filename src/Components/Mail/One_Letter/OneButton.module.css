@@ -34,6 +34,7 @@
     width: 65vw;
     padding-left:7px;
     padding-bottom: 20px;
+    white-space: break-spaces;
 }
 
 .file a{
@@ -42,6 +43,11 @@
     width: 65vw;
     padding-left: 7px;
     padding-bottom: 20px;
+}
+.file img{
+    width: 50px;
+    height: 50px;
+    padding-left: 10px;
 }
 
 .description {

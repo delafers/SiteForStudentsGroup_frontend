@@ -23,8 +23,8 @@ const LoginForm = (props) => {
             <div>
                 {createField("Подтверждение пароля",'password2',[required], Input,"password")}
             </div>
-            { props.error !== "Created" && <div className={s.formSummaryError}>
-                {props.error === "Пароли не совпадают" && "Пароли не совпадают"}
+            { (props.error !== "Created" && props.error !== undefined) && <div className={s.formSummaryError}>
+                {props.error}
             </div>}
             <div>
                 <button className={s.authButton}>Создать пользователя</button>

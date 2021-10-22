@@ -48,12 +48,13 @@
 .postImg img{
     width: 40%;
     height: auto;
+    max-height: 240px;
 }
 .Post textarea{
     width: 90%;
 }
 .text {
-    width: 90%;
+    width: 100%;
     height: 150px;
 }
 .title {

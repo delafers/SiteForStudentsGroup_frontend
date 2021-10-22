@@ -1,5 +1,5 @@
 import axios from 'axios'
-const API_URL = 'https://dev.devgang.online/'
+const API_URL = 'https://dev.studorg.online/'
 
 
 export default class DaysService{

@@ -1,7 +1,8 @@
 import React from "react";
 import s from './OneButton.module.css'
 import Loading from "../../Loading/Loading";
-import {NavLink, Redirect} from "react-router-dom";
+import {Link, NavLink, Redirect} from "react-router-dom";
+import file from "./../../../assets/file_2.png"
 
 const Modal = (props) => {
     if(!props.mail) {
@@ -35,8 +36,11 @@ const Modal = (props) => {
                         {props.mail.text}
                     </div>
                     {props.mail.letter[0] && <div className={s.file}>
-                        <a href={props.mail.letter[0] === undefined ? "" : props.mail.letter[0].file}>
-                            {props.mail.letter[0] === undefined ? "" : props.mail.letter[0].file}
+                        <a href={props.mail.letter[0] === undefined ? "" : props.mail.letter[0].file} target="_blank">
+                            {props.mail.letter[0] === undefined ? "" : <img src={file}/>}
+                        </a>
+                        <a href={props.mail.letter[1] === undefined ? "" : props.mail.letter[1].file} target="_blank">
+                            {props.mail.letter[1] === undefined ? "" : <img src={file}/> }
                         </a>
                     </div>}
                 </div>
@@ -45,4 +49,5 @@ const Modal = (props) => {
         )
     }
 }
+
 export default Modal

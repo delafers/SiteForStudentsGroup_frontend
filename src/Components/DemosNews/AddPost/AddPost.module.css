@@ -1,28 +1,36 @@
-@media only screen and (min-width: 1001px){
-    .Event {
-    margin: 0px auto 0px auto;
-    padding: 2px 3vw ;
-    width: 70vw;
-    border-radius: 0px;
-    max-width: 70vw;
-    color: #8c91b6;
-    background-color: #1e2745;
-    border-top: 1px #252e4b solid;
-}}
-    .text{
-    width: 65vw;
-    padding-top: 3vh;
-    padding-bottom: 2vh;
-}
-    .mainPic img{
-    max-width: 85%;
-    max-height: 400px;
-    padding-bottom: 15px;
-}
-@media only screen and (max-width: 1000px){
+@media only screen and (min-width: 1001px) {
     .Event {
         margin: 0px auto 0px auto;
-        padding: 2px 3vw ;
+        padding: 2px 3vw;
+        width: 70vw;
+        border-radius: 0px;
+        max-width: 70vw;
+        color: #8c91b6;
+        background-color: #1e2745;
+        border-top: 1px #252e4b solid;
+    }
+    .text {
+        width: 65vw;
+        padding-top: 3vh;
+        padding-bottom: 2vh;
+        white-space: break-spaces;
+    }
+    .mainPic img {
+        max-width: 85%;
+        max-height: 400px;
+        padding-bottom: 15px;
+    }
+
+    .ImgWindow img {
+        max-width: 60vw;
+        max-height: 80vh;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .Event {
+        margin: 0px auto 0px auto;
+        padding: 2px 3vw;
         width: 75vw;
         border-radius: 0px;
         max-width: 75vw;
@@ -30,21 +38,30 @@
         background-color: #1e2745;
         border-top: 1px #252e4b solid;
     }
-    .text{
+    .Event plaintext {
+        max-width: 80%;
+    }
+    .text {
         width: 70vw;
+        white-space: break-spaces;
         padding-top: 3vh;
         padding-bottom: 2vh;
     }
-    .mainPic img{
+    .mainPic img {
         max-width: 85%;
         max-height: 400px;
         padding-bottom: 15px;
     }
+    .ImgWindow img {
+        max-width: 80vw;
+        max-height: 90vh;
+    }
 }
-@media only screen and (max-width: 690px){
+
+@media only screen and (max-width: 690px) {
     .Event {
         margin: 0px auto 0px auto;
-        padding: 2px 3vw ;
+        padding: 2px 3vw;
         width: 80vw;
         border-radius: 0px;
         max-width: 80vw;
@@ -52,68 +69,97 @@
         background-color: #1e2745;
         border-top: 1px #252e4b solid;
     }
-    .text{
+
+    .Event plaintext {
+        max-width: 85%;
+    }
+
+    .text {
         width: 90%;
         padding-top: 3vh;
         padding-bottom: 2vh;
         font-size: 14px;
+        white-space: break-spaces;
     }
-    .mainPic img{
+
+    .mainPic img {
         max-width: 90%;
         max-height: 300px;
         padding-bottom: 15px;
     }
+
+    .ImgWindow img {
+        max-width: 90vw;
+        max-height: 90vh;
+    }
 }
-@media only screen and (max-width: 340px){
+
+@media only screen and (max-width: 340px) {
     .Event {
         margin: 0px auto 0px auto;
-        padding: 2px 3vw ;
+        padding: 2px 3vw;
         width: 90vw;
         max-width: 90vw;
         color: #8c91b6;
         background-color: #1e2745;
         border-top: 1px #252e4b solid;
     }
-    .text{
+
+    .Event plaintext {
+        max-width: 90%;
+    }
+
+    .text {
         width: 98%;
         padding-top: 3vh;
         padding-bottom: 2vh;
         font-size: 12px;
+        white-space: break-spaces;
     }
-    .mainPic img{
+
+    .mainPic img {
         max-width: 95%;
         max-height: 200px;
         padding-bottom: 10px;
     }
+
+    .ImgWindow img {
+        width: 95vw;
+        max-height: 90vh;
+    }
 }
 
-.Username img{
+
+.Username img {
     width: 20px;
     height: 20px;
     background-color: #1e2745;
     cursor: pointer;
 }
 
-.Username{
+.Username {
     color: #50b5ff;
     font-weight: bold;
     font-size: 3.1vh;
     align-items: start;
     padding-top: 10px;
 }
-.Title{
+
+.Title {
     color: darkcyan;
     font-weight: bold;
     font-size: 3.5vh;
     align-items: start;
 }
-.time{
+
+.time {
     align-items: start;
     color: lightblue;
     font-size: 2vh;
     font-weight: normal;
 }
-.tags{
+
+.tags {
     align-items: start;
     color: lightblue;
     font-size: 2.4vh;
@@ -121,6 +167,6 @@
     padding-top: 8px;
 }
 
-.Event span{
+.Event span {
     padding-left: 20px;
 }

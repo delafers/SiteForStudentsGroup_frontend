@@ -2,7 +2,6 @@ import React from "react"
 import "./CreateNews.css"
 
 const ModalCreate = ({active, setActive, children},props) => {
-
     return(
         <div className={active ? "modal active" : "modal"} onClick={() => {
             setActive(false)}}>

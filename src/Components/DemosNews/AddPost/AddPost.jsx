@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import s from './AddPost.module.css';
 import ModalCreate from "../CreateNewsPopup/CreateNews";
 import PostsContainer from "../Post/PostChangeContainer";
+import ImgPopup from "../CreateNewsPopup/PopupImg";
 
 
 const OnePost = (props) => {
     const [modalActive, setModalActive] = useState(false)
+    const [modalImgActive, setModalImgActive] = useState(false)
     return (
         <>
         <div className={s.Event}>
@@ -25,11 +27,11 @@ const OnePost = (props) => {
                 <div className={s.tags}>
                 {props.tags[0] && props.tags[0].name}{props.tags[1] && (", " + props.tags[1].name)}{props.tags[2] && ", " + props.tags[2].name}{props.tags[3] && ", " + props.tags[3].name}
                 </div>
-                <div className={s.text}>
+                <p className={s.text}>
                 {props.text}
-                </div>
+                </p>
                 <div className={s.mainPic} >
-                    <img src={props.picture}/>
+                    <img src={props.picture} onClick={() => setModalImgActive(true)}/>
                 </div>
         </div>
             <div>
@@ -37,6 +39,11 @@ const OnePost = (props) => {
                     <PostsContainer setActive={setModalActive}/>
                 </ModalCreate>
             </div>
+            <span className={s.ImgWindow}>
+                <ImgPopup active={modalImgActive} setActive={setModalImgActive} >
+                    <img src={props.picture} />
+                </ImgPopup>
+            </span>
         </>
 
     )

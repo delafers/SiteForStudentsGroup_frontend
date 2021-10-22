@@ -21,7 +21,7 @@ const NewsForm = (props) => {
             <div>
                 {createField("Заголовок",'title',[required], Textarea)}
             </div>
-            <div className={s.text}>
+            <div className={s.Post}>
                 {createField("Текст",'text',[required], Textarea)}
             <div>
                 <div>

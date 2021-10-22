@@ -21,11 +21,6 @@
     border-radius: 5px;
 }
 
-@media (max-width: 768px) {
-    .Info {
-        margin: 15px 0 15px 0;
-    }
-}
 
 @media (max-width: 480px) {
 

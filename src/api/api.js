@@ -1,5 +1,4 @@
-const baseURL = 'https://dev.devgang.online/'
-
+const baseURL = 'https://dev.studorg.online/'
 
 export const authAPI = {
     me(result) {
@@ -129,7 +128,6 @@ export const NewsAPI = {
         } )
     },
     sendNewPost(title, text, tag, img){
-        debugger
         let myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
         let formdata = new FormData();
@@ -164,7 +162,10 @@ export const NewsAPI = {
         formdata.append("title", title)
         formdata.append("text", text)
         formdata.append("tags", tags)
+        if(typeof img !== "string" && img !== null){
+
         formdata.append("picture", img)
+        }
         let requestOptions = {
             method: 'PUT',
             body: formdata,
@@ -194,5 +195,10 @@ export const NewsAPI = {
         return fetch(baseURL +"api/demosnews/posts/"+id, requestOptions)
     }
 
+}
+export const ProfileAPI = {
+    getUserPosts(){
+
+    }
 }
 

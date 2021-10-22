@@ -6,8 +6,8 @@ import { NavLink} from 'react-router-dom'
 const Header =  (props) => {
         return (
             <header className={s.item}>
-                <NavLink exact to="/" activeClassName={s.active}>календарь</NavLink>
-                <NavLink to="/mail" activeClassName={s.active}>почта</NavLink>
+                <NavLink exact to="/" activeClassName={s.active}>почта</NavLink>
+                <NavLink  to="/calendar" activeClassName={s.active}>календарь</NavLink>
                 <NavLink to="/demosnews" activeClassName={s.active}>суровости</NavLink>
                     <span className={s.loginPlace}>
                     {props.isAuth
