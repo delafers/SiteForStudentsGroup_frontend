@@ -18,7 +18,6 @@ class oneLetterContainer extends React.Component {
         this.props.getMailData(mailId)
     }
     componentDidMount() {
-        debugger
        this.refreshId()
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,7 +32,6 @@ class oneLetterContainer extends React.Component {
 }
 }
 let mapStateToProps = (state) => {
-    debugger
     return{
         mail: state.letterPage.mail,
     }

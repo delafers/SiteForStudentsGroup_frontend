@@ -12,7 +12,7 @@ const Modal = (props) => {
             <div>
                 <div>
                     <NavLink to='/mail' className={s.returnBack}>
-                        Return to mails list
+                        Вернуться к списку писем
                     </NavLink>
                 </div>
                 <div className={s.mail}>

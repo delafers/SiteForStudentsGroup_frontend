@@ -26,7 +26,6 @@ const TagsForm = (props) => {
 const TagsReduxForm = reduxForm({form: 'tags'})(TagsForm)
 
 const Tags = (props) => {
-
     const [tags, setTags] = useState([]);
     const [modalActive, setModalActive] = useState(false)
 

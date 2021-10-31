@@ -197,8 +197,15 @@ export const NewsAPI = {
 
 }
 export const ProfileAPI = {
-    getUserPosts(){
-
+    getOneUserData(username){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`);
+        let requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+        };
+       return fetch(`https://dev.studorg.online/auth/user/${username}`, requestOptions)
     }
 }
 

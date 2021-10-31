@@ -7,6 +7,7 @@ import thunkMiddleware from "redux-thunk"
 import tokenReducer from "./token_reducer";
 import DemosNewsReducer from "./demosNews_reducer";
 import appReducer from "./app_reducer";
+import profileReducer from "./Profile_reducer";
 
 
 
@@ -17,6 +18,7 @@ let reducers = combineReducers({
         token: tokenReducer,
         news: DemosNewsReducer,
         app: appReducer,
+        profile:profileReducer,
         form: formReducer
     }
 );
