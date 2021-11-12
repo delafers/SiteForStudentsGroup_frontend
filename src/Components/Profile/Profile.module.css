@@ -1,9 +1,11 @@
 .profilePage{
-    display: grid;
-    grid-template-areas:
-        "p  i"
+    padding-left: 10px;
 }
-
+.formSummaryError {
+    padding-left: 10px;
+    color: brown;
+    font-size: 20px;
+}
 .Event {
     margin: 0px auto 0px auto;
     padding: 2px 3vw;

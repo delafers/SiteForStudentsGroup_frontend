@@ -53,7 +53,7 @@ const Registration = (props) => {
         }
         props.registr(requestOptions)
         } else {
-            props.StopSubmit()
+            props.StopSubmit("auth")
         }
     }
 

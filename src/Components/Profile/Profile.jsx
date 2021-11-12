@@ -1,75 +1,78 @@
 import {useState} from "react";
 import React from "react";
 import s from "./Profile.module.css"
-import ImgPopup from "../DemosNews/CreateNewsPopup/PopupImg";
 import {createField, Input} from "../common/FormsControls/FormsControls";
-import {requiredFindByTag, tagCheckInSearch} from "../../utils/validators/validator";
 import {reduxForm} from "redux-form";
+import {NewPopup} from "./tetsPopup";
 const ChangeProfileInfoForms = (props) => {
+
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <p>
-                {createField("Имя пользователя", 'mailChange', [], Input )}
-                </p>
-                {createField("Изменит пароль", 'password', [tagCheckInSearch, requiredFindByTag], Input )}
-                {createField("Подтвердите пароль", 'passwordConfirm', [tagCheckInSearch, requiredFindByTag], Input )}
+                {createField("Имя пользователя", 'username', [], Input )}
+                {createField("Подтверждение пароля", 'password', [], Input )}
                 <button>Сохранить изменения</button>
+            </div>
+            { props.error && <div className={s.formSummaryError}>
+                {props.error}
+            </div>}
+        </form>
+    )
+}
+const ChangeProfilePasswordForm = (props) => {
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                {createField("Новый пароль", 'newPassword', [], Input )}
+                {createField("Подтвердить новый пароль", 'passwordConfirm', [], Input )}
+                {createField("Нынешний пароль", 'password', [], Input )}
+                { props.error && <div className={s.formSummaryError}>
+                    {props.error}
+                </div>}
+                <button>Измененить пароль</button>
             </div>
         </form>
     )
 }
 
-const ChangeProfileInfoReduxForm = reduxForm({form: 'tags'})(ChangeProfileInfoForms)
+const ChangeProfileInfoReduxForm = reduxForm({form: 'username'})(ChangeProfileInfoForms)
+
+const ChangeProfilePasswordReduxForm = reduxForm({form: 'passwordChange'})(ChangeProfilePasswordForm)
 
 const Profile = (props) => {
     const [modalImgActive, setModalImgActive] = useState(false)
     const [redactMode, setRedactMode] = useState(false)
+    const [redactPassword, setRedactPassword] = useState(false)
+
     const onSubmit = (formdatas) => {
-        console.log(formdatas)
+        props.changeUsername(formdatas.username, formdatas.password)
     }
-    return <div>
-        <h1>
-            Profile {props.user}
-        </h1>
+    const onConfirm = (formdata) => {
+        props.changePassword(formdata.newPassword, formdata.password)
+    }
+
+    return <div className={s.profilePage}>
+        <h2>
+            Вы на странице {props.user}
+        </h2>
         <div>
             {props?.user === props.mainUser && !redactMode ? <button onClick={() => {setRedactMode(true)}}>Редактиовать профиль</button>
                 : <button onClick={() => {setRedactMode(false)}}>Закрыть редактирование</button> }
-            {props?.email}
         </div>
+
         { redactMode ? <div>
             <ChangeProfileInfoReduxForm onSubmit={onSubmit}/>
         </div>
             : ""}
+        { redactPassword ? <div>
+            <ChangeProfilePasswordReduxForm onSubmit={onConfirm}/>
+            <button onClick={() => setRedactPassword(false) }>Закрыть редактирование</button>
+        </div> : <button onClick={() => setRedactPassword(true) }>Изменить пароль</button>}
+
         <div>
-            {props.posts.map(p => <>
-                    <div className={s.Event}>
-                        <div className={s.Username}>
-                            {p.username}
-                            <span className={s.time}>
-                    {p.date}
-                </span>
-                        </div>
-                        <div className={s.Title}>
-                            {p.title}
-                        </div>
-                        <div className={s.tags}>
-                            {p.tags[0] && p.tags[0].name}{p.tags[1] && (", " + p.tags[1].name)}
-                            {p.tags[2] && ", " + p.tags[2].name}{p.tags[3] && ", " + p.tags[3].name}
-                        </div>
-                        <p className={s.text}>
-                            {p.text}
-                        </p>
-                        <div className={s.mainPic}>
-                            <img src={p.picture} onClick={() => setModalImgActive(true)}/>
-                        </div>
-                    </div>
-                    <span className={s.ImgWindow}>
-                <ImgPopup active={modalImgActive} setActive={setModalImgActive}>
-                    <img src={p.picture}/>
-                </ImgPopup>
-            </span>
-                </>
+            {props.posts.map(p => <NewPopup username={p.username} date={p.date} tags={p.tags}
+                                            title={p.title} text={p.text} setModalImgActive={setModalImgActive}
+                                            picture={p.picture} modalImgActive={modalImgActive}/>
             )}
 
         </div>

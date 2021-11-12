@@ -20,6 +20,8 @@ import {getUserAuthData} from "./Redux/auth_reducer";
 import Loading from "./Components/Loading/Loading";
 import {withSuspense} from "./hoc/LazyFunctoin";
 import ProfileView from "./Components/Profile/ProfileContaner";
+import Restore from "./Components/Login/RestorePassword";
+import ConfirmPasswordPage from "./Components/Login/RestorePasswordConfirm";
 
 const MailsContainer = React.lazy(() => import("./Components/Mail/mailsContainer"))
 const Tags = React.lazy(() => import("./Components/DemosNews/DemosNewsHookForm"))
@@ -52,9 +54,11 @@ class App extends Component {
                         <Route exact path='/' render={withSuspense(MailsContainer)}/>
                         <Route path='/mail/:mailId' render={withSuspense(OneMail)}/>
                         <Route path='/login' render={() => <Login/>}/>
+                        <Route path='/restore' render={() => <Restore/>}/>
                         <Route path='/profile/:user?' render={() => <ProfileView/>}/>
                         <Route path='/registrate' render={() => <Registration/>}/>
                         <Route path='/activate/:userId/:userData' render={() => <MailConfirm/>}/>
+                        <Route path='/password/reset/confirm/:userId/:userData' render={() => <ConfirmPasswordPage/>}/>
                         <Footer/>
                     </div>
                 </BrowserRouter>

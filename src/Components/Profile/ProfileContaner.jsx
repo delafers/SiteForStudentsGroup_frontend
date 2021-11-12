@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Profile from "./Profile";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
-import {getProfileData} from "../../Redux/Profile_reducer";
+import {changePassword, changeUsername, getProfileData} from "../../Redux/Profile_reducer";
 import {ProfileAPI} from "../../api/api";
 
 const ProfileContainer = (props) => {
@@ -12,7 +12,8 @@ const ProfileContainer = (props) => {
     }, [])
     return<div>
         <Profile user={props.match.params.user} email={props.email}
-        mainUser={props.mainUser} posts={props.posts}/>
+        mainUser={props.mainUser} posts={props.posts} changeUsername={props.changeUsername}
+                 changePassword={props.changePassword}/>
     </div>
 }
 
@@ -25,7 +26,7 @@ const MapStateToProps = (state) => {
 }
 
 const ProfileView = compose(
-    connect(MapStateToProps,{getProfileData}),
+    connect(MapStateToProps,{getProfileData, changeUsername, changePassword}),
     withRouter
 )(ProfileContainer)
 export default ProfileView

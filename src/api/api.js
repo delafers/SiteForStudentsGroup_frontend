@@ -194,8 +194,8 @@ export const NewsAPI = {
         };
         return fetch(baseURL +"api/demosnews/posts/"+id, requestOptions)
     }
-
 }
+
 export const ProfileAPI = {
     getOneUserData(username){
         let myHeaders = new Headers();
@@ -206,6 +206,56 @@ export const ProfileAPI = {
             redirect: 'follow'
         };
        return fetch(`https://dev.studorg.online/auth/user/${username}`, requestOptions)
+    },
+    changeUsername(username, password){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
+        let formdata = new FormData()
+        formdata.append("new_username", username);
+        formdata.append("current_password", password);
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+        return fetch(baseURL +`auth/users/set_username/`, requestOptions)
+    },
+    changePassword(newPassword, password){
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", `Bearer ${localStorage.getItem("access")}`)
+        let formdata = new FormData()
+        formdata.append("new_password", newPassword);
+        formdata.append("current_password", password);
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+        return fetch(baseURL +`auth/users/set_password/`, requestOptions)
+    },
+    resetPassword(email){
+        let formdata = new FormData();
+        formdata.append("email", email);
+        let requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        };
+        return fetch("https://dev.studorg.online/auth/users/reset_password/", requestOptions)
+    },
+    resetPasswordConfirm(userId, userdata, newPassword){
+        let formdata = new FormData()
+        formdata.append("uid", userId);
+        formdata.append("token", userdata);
+        formdata.append("new_password", newPassword);
+        let requestOptions = {
+            method: 'POST',
+            body: formdata,
+            redirect: 'follow'
+        }
+        return fetch("https://dev.studorg.online/auth/users/reset_password_confirm/", requestOptions)
     }
 }
 

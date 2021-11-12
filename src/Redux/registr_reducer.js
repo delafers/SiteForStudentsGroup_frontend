@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import {authAPI, ProfileAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA'
@@ -31,8 +31,8 @@ export const getUserAuthData = () => (dispatch) => {
             dispatch(setAuthUserData(id , email, login, true ))
         }});
 }
-export const StopSubmit = () => (dispatch) => {
-    dispatch(stopSubmit("auth", {_error: "Пароли не совпадают"}))
+export const StopSubmit = (formName) => (dispatch) => {
+    dispatch(stopSubmit(formName, {_error: "Пароли не совпадают"}))
 }
 
 export const logout = () => (dispatch) => {
@@ -41,6 +41,15 @@ export const logout = () => (dispatch) => {
         if (response.data.resultCode === 0){
             dispatch(setAuthUserData(null , null, null, false ))
         }});
+}
+
+export const passwordChangeConfirm = (userId, userdata, newPassword) => async (dispatch) => {
+    let response = await ProfileAPI.resetPasswordConfirm(userId, userdata, newPassword)
+    response.text().then(
+        result => {
+            debugger
+        }
+    )
 }
 
 export default authReducer

@@ -1,4 +1,4 @@
-import {authAPI} from "../api/api";
+import {authAPI, ProfileAPI} from "../api/api";
 const SET_USER_DATA = 'SET_USER_DATA'
 
 let initialState = {
@@ -37,6 +37,14 @@ export const logout = () => (dispatch) => {
             dispatch(setAuthUserData(null , null, null, false ))
             localStorage.removeItem('access')
         });
+}
+export const resetPassword = (email) => async (dispatch) => {
+    await ProfileAPI.resetPassword(email).then(
+        response => {
+            debugger
+
+        }
+    )
 }
 
 export default authReducer
