@@ -1,6 +1,7 @@
 import {NewsAPI} from "../api/api";
 import CheckAccess from "../Components/common/AccessLifeCheck/LifeAccess";
 import {refreshToken} from "./token_reducer";
+import {reset} from "redux-form";
 
 const REFACTOR_COMMENT = 'ADD-COMMENT'
 const UPDATE_COMMENT_TEXT = 'UPDATE-COMMENT-TEXT'
@@ -122,10 +123,12 @@ export const addPostToServer = (title, text, tag, img) => async (dispatch) => {
     if(CheckAccess()){
         await NewsAPI.sendNewPost(title, text, tag, img)
         dispatch(getNewsByTags())
+        dispatch(reset("createPost"))
     }else{
-        refreshToken().then(() => {
-        NewsAPI.sendNewPost(title, text, tag, img)
-        dispatch(getNewsByTags())
+        await dispatch(refreshToken()).then(() => {
+            NewsAPI.sendNewPost(title, text, tag, img)
+            dispatch(getNewsByTags())
+            dispatch(reset("createPost"))
         })
     }
 }
@@ -146,6 +149,7 @@ export const SetActiveTags = (tag) => (dispatch, getState) => {
         }
         i++
     }
+    dispatch(reset('tags'))
 }
 export const removeTag = (tag) => (dispatch, getState) => {
     dispatch(removeActiveTag(tag))

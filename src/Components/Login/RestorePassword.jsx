@@ -11,7 +11,7 @@ const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                {createField("Ваша почта", "email", [required], Input)}
+                {createField("Ваша почта, к которой привязан аккаунт", "email", [required], Input)}
             </div>
             { props.error && <div className={s.formSummaryError}>
                 {props.error}
@@ -29,7 +29,6 @@ const Restore = ({resetPassword}) => {
         const onSubmit = (email) => {
             resetPassword(email.email)
     }
-
     return<div className={s.center}>
         <h2>Восстановить пароль</h2>
         <RestoreReduxForm onSubmit={onSubmit}/>

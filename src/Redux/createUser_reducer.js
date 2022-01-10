@@ -44,7 +44,9 @@ export const registr = (requestOptions) => (dispatch) => {
                 dispatch(stopSubmit("auth", {_error: err?.username || err?.email || err?.password}))
             }
         )
-    }
+    }else{
+            dispatch(stopSubmit("auth", {_error:"Created"}))
+        }
         })
 }
 

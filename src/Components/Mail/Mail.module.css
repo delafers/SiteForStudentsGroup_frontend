@@ -20,6 +20,7 @@
         align-items: center;
         border: solid #252e4b 3px;
         background-color: #1e2745;
+        color: #50b5ff;
     }
     .buttonUpdateMailsPlace {
         position: absolute;
@@ -71,7 +72,7 @@
         background-color: #1e2745;
         color: #8c91b6;
         border: solid #252e4b 1px;
-        border-radius: 20px;
+        border-radius: 10px;
         height: 35px;
         width: 10vw;
         margin-top: 12px;
@@ -114,7 +115,7 @@
         background-color: #1e2745;
         color: #8c91b6;
         border: solid #252e4b 1px;
-        border-radius: 20px;
+        border-radius: 10px;
         height: 35px;
         width: 100vw;
         margin-top: 12px;

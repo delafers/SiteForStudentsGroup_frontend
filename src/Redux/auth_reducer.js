@@ -29,7 +29,9 @@ export const getUserAuthData = (resultAccess) => async (dispatch) => {
             let userData = JSON.parse(result)
             let {id, email, username} = userData;
             dispatch(setAuthUserData(id , email, username, true ))
-        })
+        }).catch(err => {
+            debugger
+            })
 }
 export const logout = () => (dispatch) => {
     authAPI.logout().
@@ -41,8 +43,6 @@ export const logout = () => (dispatch) => {
 export const resetPassword = (email) => async (dispatch) => {
     await ProfileAPI.resetPassword(email).then(
         response => {
-            debugger
-
         }
     )
 }

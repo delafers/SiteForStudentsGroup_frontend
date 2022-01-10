@@ -49,6 +49,11 @@ const Login = ({login, isAuth}) => {
         <h1>Авторизация</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
         <p>
+            <NavLink to="/restore">
+            Восстановить пароль
+            </NavLink>
+        </p>
+        <p>
             <NavLink to='/registrate'>Если ты не зарегистрирован, жми сюда</NavLink>
         </p>
     </div>

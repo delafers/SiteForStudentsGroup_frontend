@@ -9,16 +9,34 @@
 .center h1{
     color: #8c91b6;
 }
+.center h2{
+    color: #8c91b6;
+}
 .after {
     color: #8c91b6;
 }
 .center button{
     border: 1px solid #252e4b;
     background-color: #1e2745;
-    width: 120px;
-    height: auto;
-    color: gray;
+    width: 200px;
+    color: whitesmoke;
+    margin-top: 5px;
+    height: 30px;
+    border-radius: 3px;
 }
+.center button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+.center input {
+    background-color: #182039;
+    border: #1e2745 solid 1px;
+    height: 35px;
+    color: white;
+    width: 30%;
+    min-width: 200px;
+}
+
 .formSummaryError {
     padding-left: 10px;
     color: brown;
@@ -27,10 +45,25 @@
 .authButton button{
     border: 1px solid #252e4b;
     background-color: #1e2745;
-    width: 120px;
-    height: auto;
-    color: gray;
+    height: 30px;
+    color: whitesmoke;
+    width: 200px;
+    animation-name: example;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
+.authButton button:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+.authButton button:hover{
+    border: 2px solid #252e4b;
+    height: 30px;
+    color: whitesmoke;
+    width: 200px;
+    background-color: #1e2745;
+}
+
 .text{
     font-size: 30px;
 }

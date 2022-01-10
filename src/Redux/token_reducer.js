@@ -41,7 +41,6 @@ export const login = (requestOptions) => (dispatch) => {
                 dispatch(refreshToken(requestOptions))
             }
             }else {
-                debugger
                 dispatch(stopSubmit("login", {_error: accessToken.error}))
             }
         }
@@ -53,10 +52,13 @@ export const refreshToken = () => (dispatch) => {
         then(result => {
             let accessToken = JSON.parse(result)
             localStorage.setItem("access", accessToken.access)
+        if(accessToken.access === undefined){
+            localStorage.removeItem("access")
+        }else{
             dispatch(getUserAuthData(localStorage.getItem("access")))
         }
-    ).catch((result)=>{
-        console.log("result")})
+        }
+    )
 }
 
 export default tokenReducer

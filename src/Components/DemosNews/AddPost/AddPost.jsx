@@ -3,6 +3,7 @@ import s from './AddPost.module.css';
 import ModalCreate from "../CreateNewsPopup/CreateNews";
 import PostsContainer from "../Post/PostChangeContainer";
 import ImgPopup from "../CreateNewsPopup/PopupImg";
+import {NavLink} from "react-router-dom";
 
 
 const OnePost = (props) => {
@@ -12,7 +13,9 @@ const OnePost = (props) => {
         <>
         <div className={s.Event}>
             <div className={s.Username}>
+                <NavLink to={"/profile/"+props.username}>
                 {props.username}
+                </NavLink>
                 <span className={s.time}>
                     {props.date}
                 </span>

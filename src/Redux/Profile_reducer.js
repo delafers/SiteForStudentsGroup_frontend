@@ -27,12 +27,20 @@ export const setProfileData = (id, email, username, posts) => ({type: SET_PROFIL
 
 export const getProfileData = (username) => async (dispatch) => {
     await ProfileAPI.getOneUserData(username)
-        .then(response => response.text())
-        .then(result => {
-            let userData = JSON.parse(result)
-            let {id, email, username, posts = []} = userData;
-            dispatch(setProfileData(id , email, username, posts))
+        .then(response => {
+            debugger
+            if (response.status === 401 | response.status === 404){
+                dispatch(setProfileData(null , null, null, []))
+            }else{
+            response.text().then(result => {
+                let userData = JSON.parse(result)
+                let {id, email, username, posts = []} = userData;
+                dispatch(setProfileData(id, email, username, posts))
+                })
+            }
+
         })
+
 }
 
 export const changeUsername = (username, password) => async (dispatch) =>{

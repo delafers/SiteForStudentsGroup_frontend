@@ -205,7 +205,7 @@ export const ProfileAPI = {
             headers: myHeaders,
             redirect: 'follow'
         };
-       return fetch(`https://dev.studorg.online/auth/user/${username}`, requestOptions)
+       return fetch(baseURL +`auth/user/${username}`, requestOptions)
     },
     changeUsername(username, password){
         let myHeaders = new Headers();
@@ -243,7 +243,7 @@ export const ProfileAPI = {
             body: formdata,
             redirect: 'follow'
         };
-        return fetch("https://dev.studorg.online/auth/users/reset_password/", requestOptions)
+        return fetch(baseURL +"auth/users/reset_password/", requestOptions)
     },
     resetPasswordConfirm(userId, userdata, newPassword){
         let formdata = new FormData()
@@ -255,7 +255,7 @@ export const ProfileAPI = {
             body: formdata,
             redirect: 'follow'
         }
-        return fetch("https://dev.studorg.online/auth/users/reset_password_confirm/", requestOptions)
+        return fetch(baseURL +"auth/users/reset_password_confirm/", requestOptions)
     }
 }
 

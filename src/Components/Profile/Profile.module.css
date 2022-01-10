@@ -1,13 +1,17 @@
 .profilePage{
     padding-left: 10px;
 }
+.profilePage h2 {
+    text-align: center;
+    color: #50b5ff;
+}
 .formSummaryError {
     padding-left: 10px;
     color: brown;
     font-size: 20px;
 }
 .Event {
-    margin: 0px auto 0px auto;
+    margin: 15px auto 0px auto;
     padding: 2px 3vw;
     width: 70vw;
     border-radius: 0px;
@@ -18,9 +22,11 @@
 }
 .text {
     width: 65vw;
+    max-width: 50vw;
     padding-top: 3vh;
     padding-bottom: 2vh;
     white-space: break-spaces;
+    overflow-wrap: break-word;
 }
 .mainPic img {
     max-width: 85%;
@@ -45,6 +51,8 @@
     font-weight: bold;
     font-size: 3.5vh;
     align-items: start;
+    max-width: 700px;
+    overflow-wrap: break-word;
 }
 
 .time {
@@ -64,4 +72,30 @@
 
 .Event span {
     padding-left: 20px;
+}
+.profileChange {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    text-align: center;
+}
+.profileChange button{
+    width: 100%;
+    max-width: 380px;
+    background-color: #50b5ff;
+    color: white;
+    height: 5vh;
+    border: hidden;
+    box-shadow: 0 1px 8px black;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.profileChange input {
+    background-color: #182039;
+    border: #1e2745 solid 1px;
+    height: 35px;
+    color: white;
+    width: 50%;
+    min-width: 200px;
 }

@@ -25,14 +25,16 @@ export const initializeApp = (token) => (dispatch) => {
     let promise = new Promise((resolve, reject) => {
         dispatch(getUserAuthData(token))
     })
-    promise.then(dispatch(initializedSuccess()), null)
+    promise.then(dispatch(initializedSuccess()), null).catch(err => {
+
+    })
 }
 export const initializeAppWithRefresh = () =>  (dispatch) => {
     let promise = new Promise(dispatch(refreshToken()))
+    debugger
+    //localStorage.removeItem('access')
     promise.then(() => {
         dispatch(initializedSuccess())
-    }).catch(    err => {
-        localStorage.removeItem('access')
     })
 }
 

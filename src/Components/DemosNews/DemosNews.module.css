@@ -29,6 +29,10 @@
         color: white;
         border-radius: 5px;
     }
+    .tagBar button:active {
+        background-color: #252e4b;
+        border: none;
+    }
     .main {
         width: 80vw;
         margin: 0px auto 0px auto;
