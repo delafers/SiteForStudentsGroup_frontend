@@ -50,6 +50,10 @@ const Posts = ({postTag = "", title = "", textUser = "", id, onPostChangeR,
             <div className={s.changeImg}>
                 <span>Изменить фото к посту:</span>
                 <input type="file" onChange={onMainPhotoSelected}/>
+                {img && <span onClick={() => {
+                    setPhoto(null)
+                    setImgActive(false)
+                }}>Удалить фото</span>}
             </div>
             <div className={s.delete}>
                 <button onClick={() => {

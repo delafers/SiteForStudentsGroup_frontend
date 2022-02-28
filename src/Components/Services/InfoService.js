@@ -1,5 +1,7 @@
 import axios from 'axios';
 const API_URL = 'https://dev.studorg.online/'
+//const API_URL = 'https://studorg.online/'
+
 
 export default class InfoService{
     getInfo() {

@@ -1,4 +1,5 @@
 const baseURL = 'https://dev.studorg.online/'
+//const baseURL = 'https://studorg.online/'
 
 export const authAPI = {
     me(result) {
@@ -37,7 +38,8 @@ export const tokenAPI = {
             method: 'GET',
             redirect: 'follow',
             withCredentials: true
-        };
+        }
+        debugger
         return fetch(baseURL + "auth/jwt/refresh/", requestOptions)
     }
 }
@@ -163,8 +165,10 @@ export const NewsAPI = {
         formdata.append("text", text)
         formdata.append("tags", tags)
         if(typeof img !== "string" && img !== null){
-
         formdata.append("picture", img)
+        }
+        if(img === null){
+            formdata.append("delete_picture", "true")
         }
         let requestOptions = {
             method: 'PUT',

@@ -29,7 +29,7 @@ const Restore = ({resetPassword}) => {
         const onSubmit = (email) => {
             resetPassword(email.email)
     }
-    return<div className={s.center}>
+    return<div className={s.center1}>
         <h2>Восстановить пароль</h2>
         <RestoreReduxForm onSubmit={onSubmit}/>
         <p>

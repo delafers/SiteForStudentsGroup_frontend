@@ -23,6 +23,7 @@ const tokenReducer = (state = initialState, action) => {
 export const setTokenData = (accessToken, timeLifeToken) => ({type: SET_USER_DATA, payload:{accessToken, timeLifeToken}})
 
 export const login = (requestOptions) => (dispatch) => {
+    debugger
     authAPI.login(requestOptions)
         .then(response =>
         response.text())
@@ -33,12 +34,14 @@ export const login = (requestOptions) => (dispatch) => {
                 let secondPart = atob(parceAccess[2])
                 let now = new Date();
                 let timeLifeToken = JSON.parse(secondPart).exp;
-                if ((timeLifeToken - now.getTime() / 1000 - 1800) < 60) {
+                if (((timeLifeToken - now.getTime() / 1000 )- 10) > 0) {
+                    debugger
                     dispatch(setTokenData(accessToken, timeLifeToken))
                     dispatch(getUserAuthData(accessToken.access))
                     localStorage.setItem("access", accessToken.access)
                 } else {
-                dispatch(refreshToken(requestOptions))
+                    debugger
+                //dispatch(refreshToken(requestOptions))
             }
             }else {
                 dispatch(stopSubmit("login", {_error: accessToken.error}))
